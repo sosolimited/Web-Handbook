@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="style.css" type="text/css"></link>
 		<script type="text/javascript" src="lib/paper-full.js"></script>
 		<script type="text/x-paperscript" data-paper-canvas="myCanvas">
 			var path = new Path();
 			path.strokeColor = "black";
 			var start = new Point(100, 100);
+			var end = start * 2;
 			path.moveTo(start);
 			path.lineTo(start + [200, -50]);
+			path.lineTo(end);
+
+			var circle = new Path.Circle(new Point(100, 200), 20);
+			circle.strokeColor = "red";
+			circle.add(new Point(0, 0), new Point(100, 50));
+			circle.fullySelected = true;
+			circle.closed = false;
+
+			var copy = circle.clone();
+			copy.fullySelected = false;
+			copy.position.x += 100;
+			copy.smooth();
 
 			function onResize(event) {
 				path.position = view.center;
@@ -15,6 +29,6 @@
 		</script>
 	</head>
 	<body>
-		<canvas id="myCanvas" data-paper-resize="true"></canvas>
+		<canvas id="myCanvas" resize></canvas>
 	</body>
 </html>
