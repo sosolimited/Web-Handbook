@@ -48,6 +48,7 @@
 
       var circles = [],
           circ,
+          inverseScale = 1.0,
           style;
       function onMouseDown(event) {
         style = {
@@ -61,15 +62,24 @@
         circ.style = style;
       }
       function onMouseDrag(event) {
+        var amount = (event.point - event.downPoint).length;
+        if (amount > 1) {
+          circ.scale(inverseScale);
+          circ.scale(amount);
+          inverseScale = 1.0 / amount;
+        }
+        /*
         circ.remove();
         circ = new Path.Circle({
           center: event.downPoint,
           radius: (event.point - event.downPoint).length
         });
         circ.style = style;
+        */
       }
       function onMouseUp(event) {
         circles.push(circ);
+        inverseScale = 1.0;
       }
       function onFrame(event) {
         circles.forEach(function (circle) {
