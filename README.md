@@ -1,1 +1,3 @@
-Javascript CodeCamp
+Sosolimited Code Camp
+
+Javascript Edition
