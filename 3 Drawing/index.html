@@ -1,75 +1,85 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" href="style.css" type="text/css"></link>
-		<script type="text/javascript" src="lib/paper-full.js"></script>
-		<script type="text/x-paperscript" data-paper-canvas="myCanvas">
-			var path = new Path();
-			path.strokeColor = "black";
-			var start = new Point(100, 100);
-			var end = start * 2;
-			path.moveTo(start);
-			path.lineTo(start + [200, -50]);
-			path.lineTo(end);
+  <head>
+    <link rel="stylesheet" href="style.css" type="text/css"></link>
+    <script type="text/javascript" src="lib/paper-full.js"></script>
+    <script type="text/x-paperscript" data-paper-canvas="myCanvas">
+      var path = new Path();
+      path.strokeColor = "black";
+      var start = new Point(100, 100);
+      var end = start * 2;
+      path.moveTo(start);
+      path.lineTo(start + [200, -50]);
+      path.lineTo(end);
 
-			var circle = new Path.Circle(new Point(100, 200), 20);
-			circle.strokeColor = "red";
-			circle.fillColor = new Color(0.1, 0.5, 0.9);
-			circle.strokeWidth = 4;
-			circle.strokeCap = "round";
-			circle.strokeJoin = "round";
-			circle.dashArray = [4, 10];
+      var circle = new Path.Circle(new Point(100, 200), 20);
+      circle.strokeColor = "red";
+      circle.fillColor = new Color(0.1, 0.5, 0.9);
+      circle.strokeWidth = 4;
+      circle.strokeCap = "round";
+      circle.strokeJoin = "round";
+      circle.dashArray = [4, 10];
 
-			project.currentStyle = {
-				strokeColor: "#000000",
-				fillColor: "#FFFF00",
-				strokeWidth: 5,
-				strokeJoin: "round"
-			};
+      project.currentStyle = {
+        strokeColor: "#000000",
+        fillColor: "#FFFF00",
+        strokeWidth: 5,
+        strokeJoin: "round"
+      };
 
-			var rect = new Path.Rectangle(10, 10, 100, 100);
+      var rect = new Path.Rectangle(10, 10, 100, 100);
 
-			function onResize(event) {
-				path.position = view.center;
-				circle.position = view.center;
-			}
-			
-			var circ,
-				style;
-			function randomColor(hueMin, hueMax, brightness) {
-				var c = new Color(),
-					hueMin = hueMin || 0,
-					hueMax = hueMax || 360
-					brightness = brightness || 0.9;
-				c.brightness = brightness;
-				c.saturation = 1.0;
-				c.hue = hueMin + Math.random() * (hueMax - hueMin);
+      function onResize(event) {
+        path.position = view.center;
+        circle.position = view.center;
+      }
 
-				return c;
-			}
+      function randomColor(hueMin, hueMax, brightness) {
+        var c = new Color(),
+          hueMin = hueMin || 0,
+          hueMax = hueMax || 360
+          brightness = brightness || 0.9;
+        c.brightness = brightness;
+        c.saturation = 1.0;
+        c.hue = hueMin + Math.random() * (hueMax - hueMin);
 
-			function onMouseDown(event) {
-				style = {
-					strokeColor: randomColor(15, 65, 1.0),
-					fillColor: randomColor(120, 200)
-				};
-				circ = new Path.Circle({
-					center: event.point,
-					radius: 1
-				});
-				circ.style = style;
-			}
-			function onMouseDrag(event) {
-				circ.remove();
-				circ = new Path.Circle({
-					center: event.downPoint,
-					radius: (event.point - event.downPoint).length
-				});
-				circ.style = style;
-			}
-		</script>
-	</head>
-	<body>
-		<canvas id="myCanvas" resize></canvas>
-	</body>
+        return c;
+      }
+
+      var circles = [],
+          circ,
+          style;
+      function onMouseDown(event) {
+        style = {
+          strokeColor: randomColor(15, 65, 1.0),
+          fillColor: randomColor(120, 200)
+        };
+        circ = new Path.Circle({
+          center: event.point,
+          radius: 1
+        });
+        circ.style = style;
+      }
+      function onMouseDrag(event) {
+        circ.remove();
+        circ = new Path.Circle({
+          center: event.downPoint,
+          radius: (event.point - event.downPoint).length
+        });
+        circ.style = style;
+      }
+      function onMouseUp(event) {
+        circles.push(circ);
+      }
+      function onFrame(event) {
+        circles.forEach(function (circle) {
+          circle.fillColor.hue += 0.5;
+          circle.strokeColor.hue += 0.5;
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="myCanvas" resize></canvas>
+  </body>
 </html>
