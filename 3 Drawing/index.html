@@ -34,12 +34,30 @@
 				circle.position = view.center;
 			}
 			
-			var circ;
+			var circ,
+				style;
+			function randomColor(hueMin, hueMax, brightness) {
+				var c = new Color(),
+					hueMin = hueMin || 0,
+					hueMax = hueMax || 360
+					brightness = brightness || 0.9;
+				c.brightness = brightness;
+				c.saturation = 1.0;
+				c.hue = hueMin + Math.random() * (hueMax - hueMin);
+
+				return c;
+			}
+
 			function onMouseDown(event) {
+				style = {
+					strokeColor: randomColor(15, 65, 1.0),
+					fillColor: randomColor(120, 200)
+				};
 				circ = new Path.Circle({
 					center: event.point,
 					radius: 1
 				});
+				circ.style = style;
 			}
 			function onMouseDrag(event) {
 				circ.remove();
@@ -47,6 +65,7 @@
 					center: event.downPoint,
 					radius: (event.point - event.downPoint).length
 				});
+				circ.style = style;
 			}
 		</script>
 	</head>
