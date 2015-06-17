@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="lib/paper-full.js"></script>
+		<script type="text/x-paperscript" data-paper-canvas="myCanvas">
+			var path = new Path();
+			path.strokeColor = "black";
+			var start = new Point(100, 100);
+			path.moveTo(start);
+			path.lineTo(start + [200, -50]);
+
+			function onResize(event) {
+				path.position = view.center;
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="myCanvas" data-paper-resize="true"></canvas>
+	</body>
+</html>
