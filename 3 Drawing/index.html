@@ -14,17 +14,39 @@
 
 			var circle = new Path.Circle(new Point(100, 200), 20);
 			circle.strokeColor = "red";
-			circle.add(new Point(0, 0), new Point(100, 50));
-			circle.fullySelected = true;
-			circle.closed = false;
+			circle.fillColor = new Color(0.1, 0.5, 0.9);
+			circle.strokeWidth = 4;
+			circle.strokeCap = "round";
+			circle.strokeJoin = "round";
+			circle.dashArray = [4, 10];
 
-			var copy = circle.clone();
-			copy.fullySelected = false;
-			copy.position.x += 100;
-			copy.smooth();
+			project.currentStyle = {
+				strokeColor: "#000000",
+				fillColor: "#FFFF00",
+				strokeWidth: 5,
+				strokeJoin: "round"
+			};
+
+			var rect = new Path.Rectangle(10, 10, 100, 100);
 
 			function onResize(event) {
 				path.position = view.center;
+				circle.position = view.center;
+			}
+			
+			var circ;
+			function onMouseDown(event) {
+				circ = new Path.Circle({
+					center: event.point,
+					radius: 1
+				});
+			}
+			function onMouseDrag(event) {
+				circ.remove();
+				circ = new Path.Circle({
+					center: event.downPoint,
+					radius: (event.point - event.downPoint).length
+				});
 			}
 		</script>
 	</head>
