@@ -209,3 +209,11 @@ while(array.length < 100) {
 ```
 
 Notice the similarity in structure between if() { ... }, while() { ... }, and function () { ... }. They all store instructions inside the curly braces. They differ in when you enter the curly braces to run those instructions. Also, of the three, only function is an object that you can store in a variable.
+
+### The Future
+
+ES6 introduces classes to Javascript. While browser support for ES6 is a ways out, you can use javascript compilers to use many of the new language features now.
+
+When building big libraries, using one of these compilers might be a real boon. When you don’t want to set up a big build environment, the lambda capture approach to building objects is the way to go.
+
+https://babeljs.io/
