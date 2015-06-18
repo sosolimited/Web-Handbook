@@ -4,34 +4,9 @@
     <link rel="stylesheet" href="style.css" type="text/css"></link>
     <script type="text/javascript" src="lib/paper-full.js"></script>
     <script type="text/x-paperscript" data-paper-canvas="myCanvas">
-      var path = new Path();
-      path.strokeColor = "black";
-      var start = new Point(100, 100);
-      var end = start * 2;
-      path.moveTo(start);
-      path.lineTo(start + [200, -50]);
-      path.lineTo(end);
-
-      var circle = new Path.Circle(new Point(100, 200), 20);
-      circle.strokeColor = "red";
-      circle.fillColor = new Color(0.1, 0.5, 0.9);
-      circle.strokeWidth = 4;
-      circle.strokeCap = "round";
-      circle.strokeJoin = "round";
-      circle.dashArray = [4, 10];
-
-      project.currentStyle = {
-        strokeColor: "#000000",
-        fillColor: "#FFFF00",
-        strokeWidth: 5,
-        strokeJoin: "round"
-      };
-
-      var rect = new Path.Rectangle(10, 10, 100, 100);
+      project.currentStyle.strokeWidth = 5;
 
       function onResize(event) {
-        path.position = view.center;
-        circle.position = view.center;
       }
 
       function randomColor(hueMin, hueMax, brightness) {
@@ -52,39 +27,37 @@
           style;
       function onMouseDown(event) {
         style = {
-          strokeColor: randomColor(15, 16, 1.0),
-          fillColor: randomColor(120, 121)
+          strokeColor: 0.0,
+          fillColor: 1.0
         };
         circ = new Path.Circle({
           center: event.point,
           radius: 1
         });
         circ.style = style;
+        circ.scaleFactor = 1.0;
       }
       function onMouseDrag(event) {
         var amount = (event.point - event.downPoint).length;
         if (amount > 1) {
           circ.scale(inverseScale);
           circ.scale(amount);
+          circ.scaleFactor = amount / 4.0;
           inverseScale = 1.0 / amount;
         }
-        /*
-        circ.remove();
-        circ = new Path.Circle({
-          center: event.downPoint,
-          radius: (event.point - event.downPoint).length
-        });
-        circ.style = style;
-        */
       }
       function onMouseUp(event) {
         circles.push(circ);
+        circ.theta = 0.0;
         inverseScale = 1.0;
       }
       function onFrame(event) {
         circles.forEach(function (circle) {
-          circle.fillColor.hue += 0.5;
-          circle.strokeColor.hue += 0.5;
+          circle.fillColor.lightness = Math.cos(circle.theta) * 0.5 + 0.5;
+          circle.strokeColor.lightness = 1.0 - circle.fillColor.lightness;
+          circle.theta += event.delta;
+          circle.position.x += Math.cos(circle.theta) * circle.scaleFactor;
+          circle.position.y += Math.sin(circle.theta * 1.5) * circle.scaleFactor;
         })
       }
     </script>
