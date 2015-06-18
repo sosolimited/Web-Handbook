@@ -52,7 +52,17 @@
 
       }
 
+      function updatePath(dt) {
+        path.segments[0].point.x += Math.cos(dt);
+        path.segments[0].point.y += Math.sin(dt);
+
+        path.segments[1].point.x += Math.cos(dt * 0.9);
+        path.segments[1].point.y += Math.sin(dt * 0.9);
+        path.smooth();
+      }
+
       function onFrame(event) {
+        updatePath(event.time);
         var len = path.length
         followers.forEach(function (f) {
           var vel = len / f.secondsPerLoop;
