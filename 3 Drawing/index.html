@@ -10,16 +10,35 @@
       }
 
       function randomColor(hueMin, hueMax, brightness) {
-        var c = new Color(),
-          hueMin = hueMin || 0,
-          hueMax = hueMax || 360
-          brightness = brightness || 0.9;
-        c.brightness = brightness;
-        c.saturation = 1.0;
-        c.hue = hueMin + Math.random() * (hueMax - hueMin);
+        var hueMin = hueMin || 0,
+            hueMax = hueMax || 360
+            brightness = brightness || 0.9;
 
-        return c;
+        return new Color({
+          hue: hueMin + Math.random() * (hueMax - hueMin),
+          saturation: 1.0,
+          brightness: brightness
+        });
       }
+
+      // Create shapes by adding points together
+      var path = new Path();
+      path.fillColor = randomColor(10, 60);
+      path.add([10, 30]);
+      path.add([50, 60]);
+      path.add([10, 90]);
+      path.closed = true;
+
+      // Duplicate shapes with clone()
+      var other = path.clone();
+      other.position.x += 75;
+      other.fillColor = randomColor(60, 120);
+
+      // Smooth shapes
+      var smoothed = other.clone();
+      smoothed.fillColor = randomColor(120, 180);
+      smoothed.position.x += 75;
+      smoothed.smooth();
 
       var circles = [],
           circ,
