@@ -12,6 +12,10 @@ Douglas Crockford has written and spoken a lot [about JavaScript](http://javascr
 
 For a comparison of prototypal and factory-based object creation, see a post by [Eric Elliot](http://ericleads.com/2013/01/javascript-constructor-functions-vs-factory-functions/). That post makes the argument for factory functions (which we describe below) over constructors.
 
+### Further reading:
+[Javascript: The Good Parts](http://www.amazon.com/exec/obidos/ASIN/0596517742/wrrrldwideweb)
+[Speaking Javascript](http://speakingjs.com/es5/index.html)
+
 ## What We’re Working With
 
 ### Objects and their properties
@@ -206,6 +210,19 @@ for (i = 0; i < end; i += 1) {
       three = arrayThree[i];
   // do something with all three.
 }
+```
+
+### Associative Containers: Call them by Name
+
+Javascript objects behave similarly to dictionaries/maps. Unfortunately, they also come loaded with a bunch of baggage from the Object prototype. This can cause unexpected errors when using them to count the frequency of different words, for example. Fortunately, ES5 (the common version of javascript) provides a way to create an object without a prototype. These objects then behave just like an associative container.
+
+Note that you are not limited to using strings as keys. You can also use an object as a key to information that you may not want to store in the object itself.
+
+```javascript
+// Create a dictionary (an object with no prototype)
+var dict = Object.create(null);
+
+dict["key"] = value;
 ```
 
 ### Logic Structures and Comparison

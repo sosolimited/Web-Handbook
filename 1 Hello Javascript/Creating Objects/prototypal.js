@@ -23,6 +23,7 @@ Thing.prototype.update = function() {
 };
 
 /// Derived objects call thing.
+/// Note that the DerivedThing does not work correctly.
 var DerivedThing = function (options) {
   Thing.call(this);
   this.name = options && options.name || "Default name";
@@ -40,7 +41,7 @@ DerivedThing.prototype.update = function () {
 var thing = new Thing(),
     derived = new DerivedThing({name: "Custom Name"});
 
-for (var i = 0; i < 5; i += 1) {
+for (var i = 0; i < 2; i += 1) {
   thing.update();
   derived.update();
 }

@@ -30,6 +30,10 @@ function createThing() {
   return out;
 }
 
+var thing = createThing();
+thing.update();
+thing.update();
+
 /// Derived objects create base object directly
 function createDerivedThing(options) {
   var out = createThing(),
@@ -50,13 +54,9 @@ function createDerivedThing(options) {
   return out;
 }
 
-var thing = createThing(),
-    derived = createDerivedThing({name: "Custom Name"});
-
-for (var i = 0; i < 5; i += 1) {
-  thing.update();
-  derived.update();
-}
+var derived = createDerivedThing({name: "Custom Name"});
+derived.update();
+derived.update();
 
 return {thing: thing, derived: derived};
 
