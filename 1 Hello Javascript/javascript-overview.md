@@ -252,6 +252,41 @@ while(array.length < 100) {
 
 Notice the similarity in structure between if() { ... }, while() { ... }, and function () { ... }. They all store instructions inside the curly braces. They differ in when you enter the curly braces to run those instructions. Also, of the three, only function is an object that you can store in a variable.
 
+### A Note of Scope
+
+Variables are scoped to the lifetime of the function body in which they are created (a closure). This can mean some surprising things; variables declared anywhere within a function body are interpreted by javascript as if they were declared at the top of that scope. To avoid surprises, we declare all our variables for a given scope in a single statement at the beginning of that scope. In addition to preventing surprises, this enables better minification.
+
+```javascript
+var thing = 1,
+    another = 2,
+    more = "Something",
+    i, // used later
+    obj = createObject();
+// Now use those variables
+…
+```
+
+The `var` keyword is critical when creating your variables; without it, variables will live in the global scope. Accidentally storing something in global scope can lead to lots of confusion when different functions are modifying the same data.
+
+To group related functions and variables, create a namespace with a function to avoid having many global variables. You can also make pseudo-constants within a namespace by only exposing an accessor to a scoped variable.
+
+Notice how the namespace is just like a factory function. Only in this case we immediately evaluate it and return since we don’t need to create the namespace more than once.
+
+```javascript
+var namespace = (function (){
+  var obj = {},
+      kG = 6.674e-11;
+
+  obj.doSomething = function () { … };
+  obj.universalConstant = function() { return kG; };
+
+  return obj;
+}());
+
+namespace.doSomething();
+namespace.universalConstant(); // => 6.674e-11
+```
+
 ### The Future
 
 ES6 introduces classes to Javascript. While browser support for ES6 is a ways out, you can use javascript compilers to use many of the new language features now.

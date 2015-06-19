@@ -18,10 +18,11 @@ Below are my presentation notes for talking through everything in this directory
 - Iteration (functional approaches)
 - Associative Containers (Objects!)
 - Control flow
+- Scope
 
 ### Ways of making objects
 
-Many ways to structure things, will need to be aware of when some are used.
+There are many ways to construct objects in javascript. Let’s review them for clarity.
 
 - Factory functions.
   - Our preferred method.
@@ -37,34 +38,3 @@ Many ways to structure things, will need to be aware of when some are used.
   - Class definitions for Constructor functions.
   - Constructed with `new` keyword.
   - `this` keyword binding to function calls.
-
-### About that global namespace thing
-
-- Variables are scoped to the lifetime of the function body in which they are created (a closure).
-- Create all your variables for a given scope in a single statement. This prevents surprises and enables minification.
-
-```javascript
-var thing = 1,
-    another = 2,
-    more = "Something",
-    i, // used later
-    obj = createObject();
-```
-
-- Don’t forget the `var` declaration when creating your variables; otherwise they will live in global scope.
-- For related functions/variables, create a namespace with a function to avoid having many global variables.
-
-```javascript
-var namespace = (function (){
-  var obj = {},
-      kG = 6.674e-11;
-
-  obj.doSomething = function () {};
-  obj.universalConstant = function() { return kG; };
-
-  return obj;
-}());
-
-namespace.doSomething();
-namespace.universalConstant();
-```
