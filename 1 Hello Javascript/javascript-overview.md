@@ -25,7 +25,7 @@ Objects are the essential building blocks in javascript. They are a collection o
 Let’s look at how we create objects and give them properties.
 
 ```javascript
-// Create an object with no properties.
+// Create an object with no properties and keep a reference to it in the variable named `object`.
 var object = {};
 
 // An Object’s properties can be of any type.
