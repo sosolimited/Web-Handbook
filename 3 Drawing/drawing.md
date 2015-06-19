@@ -25,3 +25,5 @@ Some Nice Web Drawings
 
 Drawing with Paper
 ------------------
+- [Drawing Circles with the mouse](circle_looping.html)
+- [Animating along an animated path](path_following.html)
