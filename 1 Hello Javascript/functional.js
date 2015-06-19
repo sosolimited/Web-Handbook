@@ -53,7 +53,7 @@ function createDerivedThing(options) {
 var thing = createThing(),
     derived = createDerivedThing({name: "Custom Name"});
 
-for (var i = 0; i < 5; i += 1) {
+for (var i = 0; i < 2; i += 1) {
   thing.update();
   derived.update();
 }
