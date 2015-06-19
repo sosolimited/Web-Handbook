@@ -58,11 +58,15 @@ Workshop Schedule
   - Importing art assets
   - Exporting art assets
 
+#### Exercise
+  - Draw a shape in Illustrator
+  - Import it into Paper and change it in some way
+
 #### More Fun with Motion
   - Interactivity
-
-  - Animation
-  - Shape analysis
+    - [Drawing Circles with the mouse](circle_looping.html)
+  - Animation and Path Analysis
+    - [Animating along an animated path](path_following.html)
   - Masking a shape
 
 #### Exercise
