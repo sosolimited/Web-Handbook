@@ -252,9 +252,9 @@ while(array.length < 100) {
 
 Notice the similarity in structure between if() { ... }, while() { ... }, and function () { ... }. They all store instructions inside the curly braces. They differ in when you enter the curly braces to run those instructions. Also, of the three, only function is an object that you can store in a variable.
 
-### A Note of Scope
+### A Note on Scope
 
-Variables are scoped to the lifetime of the function body in which they are created (a closure). This can mean some surprising things; variables declared anywhere within a function body are interpreted by javascript as if they were declared at the top of that scope. To avoid surprises, we declare all our variables for a given scope in a single statement at the beginning of that scope. In addition to preventing surprises, this enables better minification.
+Variables in javascript are scoped to the lifetime of the function body in which they are created (a closure). This can mean some surprising things; variables declared anywhere within a function body are interpreted by javascript as if they were declared at the top of that scope. To avoid surprises, we declare all our variables for a given scope in a single statement at the beginning of that scope. In addition to preventing surprises, this enables better minification.
 
 ```javascript
 var thing = 1,
