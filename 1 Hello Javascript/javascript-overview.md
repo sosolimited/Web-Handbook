@@ -6,7 +6,11 @@ This provides an overview of the main concepts in javascript. You can build just
 
 In the wild, you will see many ways of working with javascript. It is important to eventually understand the different ways people use the language and different language features they like. However, I prefer to use only a few parts of the language: the ones I find intuitive and fun to work with.
 
-Douglas Crockford has written and spoken a lot [about JavaScript](http://javascript.crockford.com), and I pull the main ideas for working with javascript from what they consider “[The Good Parts](http://www.amazon.com/exec/obidos/ASIN/0596517742/wrrrldwideweb).”
+## Additional references and sources for this material
+
+Douglas Crockford has written and spoken a lot [about JavaScript](http://javascript.crockford.com), and I pull the main ideas for working with javascript from what Crockford considers “[The Good Parts](http://www.amazon.com/exec/obidos/ASIN/0596517742/wrrrldwideweb).”
+
+For a comparison of prototypal and factory-based object creation, see a post by [Eric Elliot](http://ericleads.com/2013/01/javascript-constructor-functions-vs-factory-functions/). That post makes the argument for factory functions (which we describe below) over constructors.
 
 ## What We’re Working With
 
@@ -43,7 +47,7 @@ So, objects let us store information in javascript. Now, how can we tell javascr
 
 Functions are objects that store instructions for completing an action. They are the verbs that let us perform actions with javascript.
 
-You can tell the function object to perform its instructions by placing parentheses '()' after its name.
+You tell a function object to perform its instructions by placing parentheses`()`—also known as the call operator—after its name.
 
 ```javascript
 // A function that doesn’t do anything
@@ -65,7 +69,7 @@ announceObject(object);
 
 ### Creating Many Similar Objects
 
-If you want to create a lot of objects that have the same basic properties, you can do that with a function.
+If you want to create a lot of objects that have the same basic properties, you can do that with a function. We call these functions factory functions because they create objects.
 
 ```javascript
 // Function to create an object with default properties.
@@ -77,10 +81,9 @@ function createObject(name) {
 
   function announce() {
     console.log("Introducing myself: " + name);
+    console.log("My position is: ", x, y);
   }
 
-  obj.x = x;
-  obj.y = y;
   obj.announce = announce;
 
   return obj;
@@ -95,11 +98,9 @@ function createObject(options) {
 
   function announce() {
     console.log("Introducing myself: " + name);
+    console.log("My position is: ", x, y);
   }
 
-  obj.x = 10;
-  obj.y = 20;
-  obj.name = name;
   obj.doSomething = announce;
 
   return obj;
@@ -108,6 +109,8 @@ function createObject(options) {
 var object = createObject({ name: "Some Name" });
 
 ```
+
+The variables created inside the factory are accessible to the functions created inside the factory. The outside world has access to the pieces we make accessible as properties of the returned object.
 
 ### Arrays: Keeping Track of Many (Similar) Things
 
@@ -141,29 +144,35 @@ Once you have an array of items, you can use functions to do things with every i
 array.forEach(function (item) {
   console.log("Item: ", item);
 });
+
+// Call function with each item and their index.
+// You might want the index to compare previous/next items or to position items.
+array.forEach(function (item, index) {
+  item.x = index * 100;
+})
 ```
 
 Array.forEach is very powerful, and you can do quite a lot with it. For certain situations, other Array functions can better model what you want to do. Below are some examples.
 
 ```javascript
-// Find the largest number in an array using reduce()
+// Turn an array into a single value using reduce()
 var largest = array.reduce(function (a, b) {
   return Math.max(a, b);
 }, 0);
 
-// Equivalent using forEach()
+// Equivalent to reduce using forEach()
 var largest = 0;
 array.forEach(function (element) {
   largest = Math.max(largest, element);
 });
 
 
-// Create a new array from the first array using map().
+// Create values in a new array from the existing array using map().
 var other = array.map(function (element) {
   return element * 2;
 });
 
-// Equivalent using forEach()
+// Equivalent to map using forEach()
 var other = [];
 array.forEach(function (element) {
   other.push(element * 2);
@@ -175,7 +184,7 @@ var smaller = array.filter(function (element) {
   return element < 5;
 });
 
-// Equivalent using forEach()
+// Equivalent to filter using forEach()
 var smaller = [];
 array.forEach(function (element) {
   if (element < 5) {
@@ -183,6 +192,22 @@ array.forEach(function (element) {
   }
 });
 ```
+
+Occasionally, you need to access elements in an array by their index. This may be the case if you want the first (array[0]) or last (array[array.length-1]) element of the array. Other times, you may need to iterate through two or more arrays simultaneously.
+
+While you could add a library that gives you the `zip` function to tie two (or more) arrays together and `forEach` through that, we will stick with the core language features. Also, using the index-based for-loop in as below saves us the creation of a large object and three extra array traversals compared to a zip (unless there is some cleverness underlying the zip object).
+
+```javascript
+var i,
+    end = Math.min(arrayOne.length, arrayTwo.length, arrayThree.length);
+for (i = 0; i < end; i += 1) {
+  var one = arrayOne[i],
+      two = arrayTwo[i],
+      three = arrayThree[i];
+  // do something with all three.
+}
+```
+
 ### Logic Structures and Comparison
 
 Sometimes, you want your program to do things only when certain conditions are met. Javascript provides a handful of useful logical structures for handling those situations.
