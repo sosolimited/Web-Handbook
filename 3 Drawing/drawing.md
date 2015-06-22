@@ -54,13 +54,30 @@ Workshop Schedule
   - For future projects
     - Download [paper.js](http://paperjs.org/download/) and include it via a \<script\> tag
 
-#### Basic I/O and Drawing
+#### Drawing in Paper
+  - Basic Shapes
+    - A Path! A Path!
+    - Circles and Squares
+  - What Makes a Shape
+    - Vertices
+    - Curves
+    - Control Handles
+
+#### Basic I/O
+  [File I/O with Paper](file_io.html)
   - Importing art assets
+    - `paper.project.importSVG(function (svg) {});`
   - Exporting art assets
+    - `text = paper.project.exportSVG({asText: true});` // somehow copy and paste this into `filename.svg`
 
 #### Exercise
   - Draw a shape in Illustrator
   - Import it into Paper and change it in some way
+    - Possibilities:
+    - Transform (scale, rotate, translate)
+    - Color (hue, saturation, brightness)
+    - Move the vertices around
+    - Create new shape(s) based on the source shape
 
 #### More Fun with Motion
   - Interactivity
