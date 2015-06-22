@@ -3,11 +3,12 @@
   <head>
     <link rel="stylesheet" href="style.css" type="text/css"></link>
     <script type="text/javascript" src="lib/paper-full.js"></script>
-    <script type="text/x-paperscript" data-paper-canvas="myCanvas">
-      project.importSVG("img/ghostscript_tiger.svg");
-    </script>
   </head>
   <body>
-    <canvas id="myCanvas" resize></canvas>
+    <canvas id="paper_canvas" resize></canvas>
   </body>
+  <script type="text/javascript">
+    paper.setup(document.getElementById("paper_canvas"));
+    paper.project.importSVG("img/ghostscript_tiger.svg");
+  </script>
 </html>
