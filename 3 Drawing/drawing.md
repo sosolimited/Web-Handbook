@@ -34,6 +34,7 @@ Workshop Schedule
 - [Mozilla Canvas Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)
 - [Dive Into HTML5 Canvas Tutorial](http://diveintohtml5.info/canvas.html)
 - [W3C SVG Tutorial](http://www.w3.org/2002/Talks/www2002-svgtut-ih/hwtut.pdf)
+- [W3 SVG Specification](http://www.w3.org/TR/SVG/)
 - [Mozilla SVG Reference](https://developer.mozilla.org/en-US/docs/Web/SVG)
 - [Learn SVG](http://learnsvg.com/)
 - [Interactive Data Visualization for the Web (SVG/d3)](http://chimera.labs.oreilly.com/books/1230000000345/ch03.html#SVG_3)
