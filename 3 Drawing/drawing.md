@@ -6,6 +6,7 @@ Web Drawing Inspiration
 -----------------------
 - [Santa is Weak](http://santa.animade.tv/)
 - [Weird Faces](http://www.mokafolio.de/works/Weird-Faces)
+- [Shy Birds](http://codepen.io/Yakudoo/pen/LVyJXw)
 
 Sample Files
 ------------
