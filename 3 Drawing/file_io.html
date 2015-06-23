@@ -10,13 +10,15 @@
   <script type="text/javascript">
     paper.setup(document.getElementById("paper_canvas"));
 
-    var svg;
+    var svg,
+        svgItem;
 
     paper.project.importSVG("img/ghostscript_tiger.svg", onSvgLoad);
 
     function onSvgLoad(item) {
       var p;
-      randomlyColorChildren(item.children[0]);
+      svgItem = item.children[0];
+      randomlyColorChildren(svgItem);
       svg = paper.project.exportSVG();
       p = document.createElement("p");
       p.innerText = paper.project.exportSVG({asString: true});
