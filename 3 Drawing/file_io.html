@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" type="text/css"></link>
+    <script type="text/javascript" src="lib/paper-full.js"></script>
+  </head>
+  <body>
+    <canvas id="paper_canvas" resize></canvas>
+  </body>
+  <script type="text/javascript">
+    paper.setup(document.getElementById("paper_canvas"));
+
+    var svg,
+        svgItem;
+
+    paper.project.importSVG("img/ghostscript_tiger.svg", onSvgLoad);
+
+    function onSvgLoad(item) {
+      var p;
+      svgItem = item.children[0];
+      randomlyColorChildren(svgItem);
+      svg = paper.project.exportSVG();
+      p = document.createElement("p");
+      p.innerText = paper.project.exportSVG({asString: true});
+
+      // document.body.appendChild(svg);
+      document.body.appendChild(p);
+    }
+
+    function randomlyColorChildren(item) {
+      var len = item.children.length,
+          hueStep = 360.0 / len;
+      item.children.forEach(function (c, i) {
+        c.fillColor = {
+          hue: hueStep * i,
+          saturation: 1.0,
+          brightness: 1.0
+        };
+      });
+    }
+/*
+    svg.children.forEach(function (child, i) {
+      console.log("Child:", child.name);
+    });
+*/
+  </script>
+</html>
