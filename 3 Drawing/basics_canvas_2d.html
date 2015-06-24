@@ -11,19 +11,21 @@
     var canvas = document.getElementById("canvas"),
         ctx = canvas.getContext("2d"),
         squiggle;
-     
+
      ctx.save(); // push current transformation and style info onto a stack.
      ctx.translate(20, 20);
      // Rectangle
      ctx.fillStyle = "#F09";
      ctx.fillRect(0, 0, 100, 50);
 
+     // Circle
      ctx.translate(150, 0);
      ctx.beginPath();
      ctx.arc(0, 25, 30, 30, 0, Math.PI * 2);
      ctx.fillStyle = "#90F";
      ctx.fill();
 
+     // Triangle Outline
      ctx.translate(75, 0);
      ctx.beginPath();
      ctx.moveTo(0, 0);
@@ -34,6 +36,7 @@
      ctx.closePath();
      ctx.stroke();
 
+     // Squiggle (here two ways)
      ctx.translate(50, 0);
      // The Path2D API allows cacheing of canvas commands in a redrawable shape.
      squiggle = new Path2D();
@@ -52,13 +55,15 @@
      squiggle = new Path2D("M0 25 c0 -30 30 -30 30 0 c0 30 30 30 30 0");
      ctx.strokeStyle = "#9F0";
      ctx.stroke(squiggle);
-     
+
+     // Rectangle masked by a circle
+     // Note that Chrome doesn't antialias the clipping path: https://code.google.com/p/chromium/issues/detail?id=424291
      ctx.translate(110, 0);
      ctx.save();
        ctx.beginPath();
        ctx.arc(0, 25, 25, 25, 0, Math.PI * 2);
        ctx.clip();
-        
+
        ctx.fillStyle = "#F90";
        ctx.fillRect(-25, 25, 100, 100);
      ctx.restore();
