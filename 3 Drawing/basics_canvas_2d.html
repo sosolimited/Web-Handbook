@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" type="text/css"></link>
+  </head>
+  <body>
+    <canvas id="canvas" width="640" height="100"></canvas>
+    <p>Canvas drawing is done through a series of javascript commands. The 2d canvas context provides a path-based API, with paths that can be filled and stroked.</p>
+  </body>
+  <script type="text/javascript">
+    var canvas = document.getElementById("canvas"),
+        ctx = canvas.getContext("2d"),
+        squiggle;
+     
+     ctx.save(); // push current transformation and style info onto a stack.
+     ctx.translate(20, 20);
+     // Rectangle
+     ctx.fillStyle = "#F09";
+     ctx.fillRect(0, 0, 100, 50);
+
+     ctx.translate(150, 0);
+     ctx.beginPath();
+     ctx.ellipse(0, 25, 30, 30, 0, 0, Math.PI * 2);
+     ctx.fillStyle = "#90F";
+     ctx.fill();
+
+     ctx.translate(75, 0);
+     ctx.beginPath();
+     ctx.moveTo(0, 0);
+     ctx.lineTo(30, 50);
+     ctx.lineTo(-30, 50);
+     ctx.strokeStyle = "#09F";
+     ctx.lineWidth = 5;
+     ctx.closePath();
+     ctx.stroke();
+
+     ctx.translate(50, 0);
+     // The Path2D API allows cacheing of canvas commands in a redrawable shape.
+     squiggle = new Path2D();
+     squiggle.moveTo(0, 0);
+     squiggle.bezierCurveTo(0, -30, 30, -30, 30, 0);
+     squiggle.bezierCurveTo(30, 30, 60, 30, 60, 0);
+     ctx.save();
+       ctx.translate(0, 25);
+       ctx.strokeStyle = "#0F9";
+       ctx.lineWidth = 8;
+       ctx.stroke(squiggle);
+     ctx.restore();
+
+     // Path2D's can be created from SVG Path data for interoperability between APIs.
+     // Below we use the same path data used in basics_svg.html.
+     squiggle = new Path2D("M0 25 c0 -30 30 -30 30 0 c0 30 30 30 30 0");
+     ctx.strokeStyle = "#9F0";
+     ctx.stroke(squiggle);
+     
+     ctx.translate(110, 0);
+     ctx.save();
+       ctx.beginPath();
+       ctx.ellipse(0, 25, 25, 25,  0, 0, Math.PI * 2);
+       ctx.clip();
+        
+       ctx.fillStyle = "#F90";
+       ctx.fillRect(-25, 25, 100, 100);
+     ctx.restore();
+
+     ctx.restore(); // pop previous transformation and style info off of a stack
+  </script>
+</html>
