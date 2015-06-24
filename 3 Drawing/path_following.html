@@ -3,81 +3,80 @@
   <head>
     <link rel="stylesheet" href="style.css" type="text/css"></link>
     <script type="text/javascript" src="lib/paper-full.js"></script>
-    <script type="text/x-paperscript" data-paper-canvas="myCanvas">
-      function onResize(event) {
-        path.position = view.center;
-      }
-
-      function randomColor(hueMin, hueMax, brightness) {
-        var hueMin = hueMin || 0,
-            hueMax = hueMax || 360
-            brightness = brightness || 0.9;
-
-        return new Color({
-          hue: hueMin + Math.random() * (hueMax - hueMin),
-          saturation: 1.0,
-          brightness: brightness
-        });
-      }
-      function mix(a, b, t) {
-        return a + (b - a) * t;
-      }
-
-      // Create shapes by adding points together
-      var path = new Path();
-      path.strokeColor = randomColor(10, 60);
-      path.dashArray = [4, 4];
-      path.add([0, 30]);
-      path.add([50, 60]);
-      path.add([0, 90]);
-      path.closed = true;
-      path.scale(5.0);
-      path.smooth();
-
-      var followers = [];
-      function addFollower(position) {
-        var f = new Path.Circle(position, 8.0);
-        f.fillColor = randomColor();
-        f.time = 0.0;
-        f.secondsPerLoop = mix(6.0, 0.5, position.x / view.size.width);
-        console.log(f);
-        followers.push(f);
-      }
-
-      function onMouseDown(event) {
-        addFollower(event.point);
-      }
-
-      function onMouseDrag(event) {
-
-      }
-
-      function updatePath(dt) {
-        path.segments[0].point.x += Math.cos(dt);
-        path.segments[0].point.y += Math.sin(dt);
-
-        path.segments[1].point.x += Math.cos(dt * 0.9);
-        path.segments[1].point.y += Math.sin(dt * 0.9);
-        path.smooth();
-      }
-
-      function onFrame(event) {
-        updatePath(event.time);
-        var len = path.length
-        followers.forEach(function (f) {
-          var vel = len / f.secondsPerLoop;
-          f.time += event.delta * vel;
-          if (f.time > len) {
-            f.time -= len;
-          }
-          f.position = path.getPointAt(f.time);
-        });
-      }
-
-      addFollower(new Point(10, 10));
-    </script>
   </head>
   <body>
-    <canvas id="myCanvas" resize></canvas>
+    <canvas id="paper-canvas" resize keepalive=true></canvas>
   </body>
+  <script type="text/javascript">
+    paper.setup(document.getElementById("paper-canvas"));
+    var path = new paper.Path(),
+        tool = new paper.Tool();
+
+    tool.onMouseDown = function (event) {
+      addFollower(event.point);
+    };
+
+    paper.view.onResize = function (event) {
+      path.position = paper.view.center;
+    };
+
+    paper.view.onFrame = function (event) {
+      updatePath(event.time);
+      var len = path.length
+      followers.forEach(function (f) {
+        var vel = len / f.secondsPerLoop;
+        f.time += event.delta * vel;
+        if (f.time > len) {
+          f.time -= len;
+        }
+        f.position = path.getPointAt(f.time);
+      });
+    };
+
+    function randomColor(hueMin, hueMax, brightness) {
+      var hueMin = hueMin || 0,
+          hueMax = hueMax || 360
+          brightness = brightness || 0.9;
+
+      return new paper.Color({
+        hue: hueMin + Math.random() * (hueMax - hueMin),
+        saturation: 1.0,
+        brightness: brightness
+      });
+    }
+    function mix(a, b, t) {
+      return a + (b - a) * t;
+    }
+
+    // Create shapes by adding points together
+    path.strokeColor = randomColor(10, 60);
+    path.dashArray = [4, 4];
+    path.add([0, 30]);
+    path.add([50, 60]);
+    path.add([0, 90]);
+    path.closed = true;
+    path.scale(5.0);
+    path.smooth();
+
+    var followers = [];
+    function addFollower(position) {
+      var f = new paper.Path.Circle(position, 8.0);
+      f.fillColor = randomColor();
+      f.time = 0.0;
+      f.secondsPerLoop = mix(6.0, 0.5, position.x / paper.view.size.width);
+      followers.push(f);
+    }
+
+    function updatePath(dt) {
+      path.segments[0].point.x += Math.cos(dt);
+      path.segments[0].point.y += Math.sin(dt);
+
+      path.segments[1].point.x += Math.cos(dt * 0.9);
+      path.segments[1].point.y += Math.sin(dt * 0.9);
+      path.smooth();
+    }
+
+    addFollower(new paper.Point(10, 10));
+    paper.view.onResize();
+  </script>
 </html>

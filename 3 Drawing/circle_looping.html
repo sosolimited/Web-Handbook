@@ -3,85 +3,51 @@
   <head>
     <link rel="stylesheet" href="style.css" type="text/css"></link>
     <script type="text/javascript" src="lib/paper-full.js"></script>
-    <script type="text/x-paperscript" data-paper-canvas="myCanvas">
-      project.currentStyle.strokeWidth = 5;
-
-      function onResize(event) {
-      }
-
-      function randomColor(hueMin, hueMax, brightness) {
-        var hueMin = hueMin || 0,
-            hueMax = hueMax || 360
-            brightness = brightness || 0.9;
-
-        return new Color({
-          hue: hueMin + Math.random() * (hueMax - hueMin),
-          saturation: 1.0,
-          brightness: brightness
-        });
-      }
-
-      // Create shapes by adding points together
-      var path = new Path();
-      path.fillColor = randomColor(10, 60);
-      path.add([10, 30]);
-      path.add([50, 60]);
-      path.add([10, 90]);
-      path.closed = true;
-
-      // Duplicate shapes with clone()
-      var other = path.clone();
-      other.position.x += 75;
-      other.fillColor = randomColor(60, 120);
-
-      // Smooth shapes
-      var smoothed = other.clone();
-      smoothed.fillColor = randomColor(120, 180);
-      smoothed.position.x += 75;
-      smoothed.smooth();
-
-      var circles = [],
-          circ,
-          inverseScale = 1.0,
-          style;
-      function onMouseDown(event) {
-        style = {
-          strokeColor: 0.0,
-          fillColor: 1.0
-        };
-        circ = new Path.Circle({
-          center: event.point,
-          radius: 1
-        });
-        circ.style = style;
-        circ.scaleFactor = 1.0;
-      }
-      function onMouseDrag(event) {
-        var amount = (event.point - event.downPoint).length;
-        if (amount > 1) {
-          circ.scale(inverseScale);
-          circ.scale(amount);
-          circ.scaleFactor = amount / 4.0;
-          inverseScale = 1.0 / amount;
-        }
-      }
-      function onMouseUp(event) {
-        circles.push(circ);
-        circ.theta = 0.0;
-        inverseScale = 1.0;
-      }
-      function onFrame(event) {
-        circles.forEach(function (circle) {
-          circle.fillColor.lightness = Math.cos(circle.theta) * 0.5 + 0.5;
-          circle.strokeColor.lightness = 1.0 - circle.fillColor.lightness;
-          circle.theta += event.delta;
-          circle.position.x += Math.cos(circle.theta) * circle.scaleFactor;
-          circle.position.y += Math.sin(circle.theta * 1.5) * circle.scaleFactor;
-        })
-      }
-    </script>
   </head>
   <body>
-    <canvas id="myCanvas" resize></canvas>
+    <canvas id="paper-canvas" resize></canvas>
   </body>
+  <script type="text/javascript">
+    paper.setup("paper-canvas");
+    paper.project.currentStyle.strokeWidth = 5;
+
+    var circles = [],
+        circle,
+        style,
+        tool = new paper.Tool();
+
+    tool.onMouseDown = function (event) {
+      style = {
+        strokeColor: 0.0,
+        fillColor: 1.0
+      };
+      circle = new paper.Shape.Circle({
+        center: event.point,
+        radius: 1
+      });
+      circle.style = style;
+      circle.data.theta = 0.0;
+    }
+    tool.onMouseDrag = function (event) {
+      var amount = (event.point.subtract(event.downPoint)).length;
+      if (amount > 1.0) {
+        circle.radius = amount;
+        circle.data.speed = amount / 4.0;
+      }
+    }
+    tool.onMouseUp = function (event) {
+      circles.push(circle);
+    }
+
+    paper.view.onFrame = function (event) {
+      circles.forEach(function (c) {
+        c.fillColor.lightness = Math.cos(c.data.theta) * 0.5 + 0.5;
+        c.strokeColor.lightness = 1.0 - c.fillColor.lightness;
+        c.data.theta += event.delta;
+        c.position.x += Math.cos(c.data.theta) * c.data.speed;
+        c.position.y += Math.sin(c.data.theta * 1.5) * c.data.speed;
+      })
+    }
+    // paper.project.draw();
+  </script>
 </html>
