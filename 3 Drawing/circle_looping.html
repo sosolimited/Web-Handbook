@@ -21,25 +21,6 @@
         });
       }
 
-      // Create shapes by adding points together
-      var path = new Path();
-      path.fillColor = randomColor(10, 60);
-      path.add([10, 30]);
-      path.add([50, 60]);
-      path.add([10, 90]);
-      path.closed = true;
-
-      // Duplicate shapes with clone()
-      var other = path.clone();
-      other.position.x += 75;
-      other.fillColor = randomColor(60, 120);
-
-      // Smooth shapes
-      var smoothed = other.clone();
-      smoothed.fillColor = randomColor(120, 180);
-      smoothed.position.x += 75;
-      smoothed.smooth();
-
       var circles = [],
           circ,
           inverseScale = 1.0,
