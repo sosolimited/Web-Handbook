@@ -6,6 +6,7 @@ Web Drawing Inspiration
 -----------------------
 - [Santa is Weak](http://santa.animade.tv/)
 - [Weird Faces](http://www.mokafolio.de/works/Weird-Faces)
+- [Patatap](http://www.patatap.com)
 - [Shy Birds](http://codepen.io/Yakudoo/pen/LVyJXw)
 
 Sample Files
@@ -45,46 +46,56 @@ The SVG element defines a vector drawing. The child elements within the SVG desc
 
 ### Getting a more flexible API: Working with a library
 
-#### Canvas
+#### Canvas Libraries
+
 - [Paper.js](http://paperjs.org/)
 - [Three.js](http://threejs.org/)
 - [p5*js](http://p5js.org/)
 
-#### SVG
+#### SVG Libraries
+
 - [d3](http://d3js.org/)
 - [Raphael](http://raphaeljs.com/)
 
 ### Diving into Paper
 
+We will focus on PaperJS as a 2d drawing library worth exploring in depth. It provides us with a drawing API that combines aspects of vector manipulation similar to SVG and raster output in Canvas. In addition, Paper provides geometric operations on the created paths that make it interesting for going beyond straight-ahead drawing.
+
 #### Getting set up
-  - Clone this repository
-  - For future projects
-    - Download [paper.js](http://paperjs.org/download/) and include it via a `<script>` tag
+
+To get started with Paper.js, download the latest release from [paperjs.org](http://paperjs.org/download/). Include the library via a `<script>` tag and you are ready to write code with paper.
+
+In this repository, you will find a number of examples using paper from plain javascript. Look at them for
 
 #### Drawing in Paper
-  - Basic Shapes
-    - A Path! A Path!
-    - Circles and Squares
+
+We can draw in paper much like we can with SVG and Canvas 2d. Notice, however, that there is generally more consistency in the names of functions in paper, and more flexibility in how colors and positions are defined.
+
+[Basics in Paper](basics_paper.html)
+
   - What Makes a Shape
     - Vertices
     - Curves
     - Control Handles
 
-#### Basic I/O
-  [File I/O with Paper](file_io.html)
-  - Importing art assets
-    - `paper.project.importSVG(function (svg) {});`
-  - Exporting art assets
-    - `text = paper.project.exportSVG({asText: true});` // somehow copy and paste this into `filename.svg`
+#### File I/O
 
-#### Exercise
-  - Draw a shape in Illustrator
-  - Import it into Paper and change it in some way
-    - Possibilities:
-    - Transform (scale, rotate, translate)
-    - Color (hue, saturation, brightness)
-    - Move the vertices around
-    - Create new shape(s) based on the source shape
+Paper supports loading SVGs and can output SVG elements for use in the dom or SVG text for saving to file. Note that browsers don’t provide a method to save files from javascript (yet?), so you will need to copy-paste or find another workaround to get the SVG text into a file.
+
+[Paper Tiger](file_io.html)
+
+#### Exercise: Transformation
+
+Draw a shape or shapes in Illustrator or your vector graphics tool of choice.
+Save the drawing as an SVG.
+Import the drawing into Paper.
+Transform the drawing in some way.
+
+Possibilities:
+  - Physical transformation: scale, rotate, translate, skew
+  - Color transformation: hue, saturation, brightness
+  - Vertex transformation
+  - Build new shape(s) based on the source shape’s geometry.
 
 #### More Fun with Motion
   - Interactivity
@@ -93,5 +104,13 @@ The SVG element defines a vector drawing. The child elements within the SVG desc
     - [Animating along an animated path](path_following.html)
   - Masking a shape
 
-#### Exercise
-  - Draw an interactive face
+#### Exercise: Interactivity
+
+Make the transformation you built in the first exercise interactive. You can use either the mouse or the keyboard (if you want to involve other APIs, you could use sound and video, but that will probably take you outside the workshop time).
+
+Possibilities:
+  - Follow
+  - Avoid
+  - Watch
+  - Drive the drawing
+  - Play the drawing
