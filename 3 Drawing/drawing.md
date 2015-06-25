@@ -20,18 +20,17 @@ Workshop Schedule
 
 ### Underlying Technology
 
+[Basics in Underlying APIs](basics.html)
+
 There are two primary drawing technologies in the browser that underly current libraries: canvas and svg. Canvas is flexible in providing different drawing contexts (2d and webgl) and is controlled through JavaScript, while SVG is defined by a set of XML tags that can describe a wide range of drawings declaratively.
 
-- canvas (raster element)
-  - The canvas element and its properties.
-  - Drawing context controlled with javascript
-    - 2d context
-    - webgl context
-- svg (vector elements)
-  - The svg element and its properties.
-  - Drawing defined by child elements.
+#### Canvas (raster element)
 
-- [Basics in Underlying APIs](basics.html)
+The Canvas element exposes a raster drawing context controlled with javascript. The raster drawing surface provides both 2d and webgl rendering contexts. Content is drawn to the canvas when javascript commands are run by the user.
+
+#### SVG (vector elements)
+
+The SVG element defines a vector drawing. The child elements within the SVG describe the shapes that should be drawn and the browser handles redrawing automatically.
 
 #### Further Reading on Canvas and SVG
 
@@ -44,7 +43,7 @@ There are two primary drawing technologies in the browser that underly current l
 - [Mozilla SVG Reference](https://developer.mozilla.org/en-US/docs/Web/SVG)
 - [Interactive Data Visualization for the Web (SVG/d3)](http://chimera.labs.oreilly.com/books/1230000000345/ch03.html#SVG_3)
 
-### A More Flexible API: Working with a Library
+### Getting a more flexible API: Working with a library
 
 #### Canvas
 - [Paper.js](http://paperjs.org/)
@@ -60,7 +59,7 @@ There are two primary drawing technologies in the browser that underly current l
 #### Getting set up
   - Clone this repository
   - For future projects
-    - Download [paper.js](http://paperjs.org/download/) and include it via a \<script\> tag
+    - Download [paper.js](http://paperjs.org/download/) and include it via a `<script>` tag
 
 #### Drawing in Paper
   - Basic Shapes
