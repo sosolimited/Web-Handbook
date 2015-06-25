@@ -12,9 +12,9 @@ Web Drawing Inspiration
 Sample Files
 ------------
 - [Basics in Underlying APIs](basics.html)
-- [Basics in PaperJS](basics_paper.html)
-- [Drawing Circles with the mouse](circle_looping.html)
-- [Animating along an animated path](path_following.html)
+- [Basics in PaperJS](paper_01_basics.html)
+- [Drawing Circles with the mouse](paper_03_circle_looping.html)
+- [Animating along an animated path](paper_04_path_following.html)
 
 Workshop Schedule
 -----------------
@@ -71,12 +71,11 @@ In this repository, you will find a number of examples using paper from plain ja
 
 We can draw in paper much like we can with SVG and Canvas 2d. Notice, however, that there is generally more consistency in the names of functions in paper, and more flexibility in how colors and positions are defined.
 
-[Basics in Paper](basics_paper.html)
+[Basics in Paper](paper_01_basics.html)
 
-  - What Makes a Shape
-    - Vertices
-    - Curves
-    - Control Handles
+#### Shape Anatomy
+
+Paths in Paper are defined by a series of [control points](http://paperjs.org/reference/segment/) and the [curves](http://paperjs.org/reference/curve/) between them.
 
 #### File I/O
 
@@ -99,9 +98,9 @@ Possibilities:
 
 #### More Fun with Motion
   - Interactivity
-    - [Drawing Circles with the mouse](circle_looping.html)
+    - [Drawing Circles with the mouse](paper_03_circle_looping.html)
   - Animation and Path Analysis
-    - [Animating along an animated path](path_following.html)
+    - [Animating along an animated path](paper_04_path_following.html)
   - Masking a shape
 
 #### Exercise: Interactivity
