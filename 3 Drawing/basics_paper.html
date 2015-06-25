@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="style.css" type="text/css"></link>
+    <link rel="stylesheet" href="basics.css" type="text/css"></link>
     <script type="text/javascript" src="lib/paper-full.js"></script>
   </head>
   <body>
-    <canvas id="paper-canvas" width="640" height="200"></canvas>
-    <p>
-      Paper provides a different javascript interface for drawing shapes. It is also path-centric, but retains information that makes object-based animation straightforward.
-    </p>
+    <h1>Drawing Basics with Paper</h1>
+    <section>
+      <h2>Paper</h2>
+      <p>
+        Paper provides a different javascript interface for drawing shapes. It is also path-centric, but retains information that makes object-based animation straightforward.
+      </p>
+      <p>
+        Paper also provides geometric manipulation functions, like smooth, that make modifying shapes straightforward.
+      </p>
+      <canvas id="paper-canvas" width="640" height="200"></canvas>
+    </section>
   </body>
   <script type="text/javascript">
     paper.setup(document.getElementById("paper-canvas"));
