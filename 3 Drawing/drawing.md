@@ -10,23 +10,28 @@ Web Drawing Inspiration
 
 Sample Files
 ------------
+- [Basics in Underlying APIs](basics.html)
+- [Basics in PaperJS](basics_paper.html)
 - [Drawing Circles with the mouse](circle_looping.html)
 - [Animating along an animated path](path_following.html)
 
 Workshop Schedule
 -----------------
 
-### The Underlying Technology
+### Underlying Technology
+
+There are two primary drawing technologies in the browser that underly current libraries: canvas and svg. Canvas is flexible in providing different drawing contexts (2d and webgl) and is controlled through JavaScript, while SVG is defined by a set of XML tags that can describe a wide range of drawings declaratively.
+
 - canvas (raster element)
-  - the html element and its properties
-  - drawing context in javascript
+  - The canvas element and its properties.
+  - Drawing context controlled with javascript
     - 2d context
-      - draw a triangle
     - webgl context
-      - draw a triangle
 - svg (vector elements)
-  - the svg element and its properties
-  - draw a triangle
+  - The svg element and its properties.
+  - Drawing defined by child elements.
+
+- [Basics in Underlying APIs](basics.html)
 
 #### Further Reading on Canvas and SVG
 

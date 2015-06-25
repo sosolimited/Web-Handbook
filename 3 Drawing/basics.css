@@ -1,0 +1,10 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	width: 640px;
+	/*min-height: 250px;*/
+	margin: 0 auto;
+}
+
+section {
+	margin: 1em 0 5em;
+}
