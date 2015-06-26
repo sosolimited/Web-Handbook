@@ -5,72 +5,55 @@
     <script type="text/javascript" src="lib/paper-full.js"></script>
   </head>
   <body>
-    <h1>Drawing Basics with Paper</h1>
+    <h1>Anatomy of a Path with Paper</h1>
     <section>
-      <h2>Paper</h2>
-      <p>
-        Paper provides a different javascript interface for drawing shapes. It is also path-centric, but retains information that makes object-based animation straightforward.
-      </p>
-      <p>
-        Paper also provides geometric manipulation functions, like smooth, that make modifying shapes straightforward.
-      </p>
-      <canvas id="paper-canvas" width="640" height="200"></canvas>
+      <canvas id="paper-canvas" width="640" height="640"></canvas>
     </section>
   </body>
   <script type="text/javascript">
     paper.setup(document.getElementById("paper-canvas"));
 
-    var group,
-        rectangle,
-        circle,
-        triangle,
-        smoothedTriangle,
-        squiggle,
-        clip,
-        maskedShape,
-        maskedGroup;
+    var path,
+        bubblePath,
+        smoothedPath,
+        wigglePath;
 
-    rectangle = new paper.Shape.Rectangle({point: [0, 0], size: [100, 50]});
-    rectangle.fillColor = "#F09";
+    path = new paper.Path();
+    path.strokeWidth = 5.0;
+    path.strokeColor = "#333";
+    path.fullySelected = true;
+    path.add([0, 0], [160, 0], [320, 0]);
+    path.applyMatrix = false;
+    path.translate([0, 100]);
 
-    circle = new paper.Shape.Circle([150, 25], 30);
-    circle.fillColor = "#90F";
+    bubblePath = path.clone();
+    var middle = bubblePath.segments[1];
+    middle.handleIn = [-100, 0];
+    middle.handleOut = [100, 0];
+    bubblePath.translate([0, 100]);
+    bubblePath.fullySelected = true;
 
-    triangle = new paper.Path();
-    triangle.add([0, 0], [30, 50], [-30, 50]);
-    triangle.closed = true;
-    triangle.fillColor = null;
-    triangle.strokeColor = "#09F";
-    triangle.strokeWidth = 5;
-    triangle.position.x = 225;
+    smoothedPath = path.clone();
+    smoothedPath.translate([0, 200]);
+    smoothedPath.smooth();
+    smoothedPath.fullySelected = true;
 
-    smoothedTriangle = triangle.clone();
-    smoothedTriangle.smooth();
-    smoothedTriangle.position.y += 100;
-
-    squiggle = new paper.Path();
-    squiggle.moveTo([0, 0]);
-    squiggle.cubicCurveTo([0, -30], [30, -30], [30, 0]);
-    squiggle.cubicCurveTo([30, 30], [60, 30], [60, 0]);
-    squiggle.strokeColor = "#9F0";
-    squiggle.strokeWidth = 5;
-    squiggle.translate([275, 25]);
-
-    clip = new paper.Shape.Circle([0, 0], 25);
-    maskedShape = new paper.Shape.Rectangle({point: [-25, 0], size: [50, 50]});
-    maskedShape.fillColor = "#F90";
-    maskedGroup = new paper.Group(clip, maskedShape);
-    clip.clipMask = true;
-    maskedGroup.translate(385, 25);
-    // clip.clipMask = true;
-
-    group = new paper.Group(rectangle, circle, triangle, smoothedTriangle, squiggle, maskedGroup);
-    group.translate([20, 20]);
+    wigglePath = path.clone();
+    wigglePath.translate([0, 350]);
+    wigglePath.fullySelected = true;
 
     paper.view.draw();
     paper.view.onFrame = function (event) {
+      var t = event.time * 2.2;
       // clip.radius = (Math.cos(event.time) / 2.0 + 0.5) * 25.0 + 5.0;
-      maskedShape.rotate(event.delta * 10.0);
+      path.segments[1].point.y = Math.sin(t) * 50.0;
+      smoothedPath.segments[1].point.y = Math.sin(t) * 50.0;
+      smoothedPath.smooth();
+      bubblePath.segments[1].point.y = Math.sin(t) * 50.0;
+
+      var middle = wigglePath.segments[1];
+      middle.handleIn = [Math.cos(t) * 100.0, Math.sin(t) * 100.0];
+      middle.handleOut = [Math.sin(t - Math.PI / 2) * 100.0, - Math.cos(t - Math.PI / 2) * 100.0];
     }
   </script>
 </html>
