@@ -1,3 +1,7 @@
+<head>
+  <title>Drawing in Javascript</title>
+  <link rel="stylesheet" href="markdown.css" type="text/css"></link>
+</head>
 
 Drawing in Javascript
 =====================
@@ -9,8 +13,8 @@ Web Drawing Inspiration
 - [Patatap](http://www.patatap.com)
 - [Shy Birds](http://codepen.io/Yakudoo/pen/LVyJXw)
 
-Sample Files
-------------
+Example Files
+-------------
 - [Basics in Underlying APIs](basics.html)
 - [Basics in PaperJS](paper_01_basics.html)
 - [Drawing Circles with the mouse](paper_03_circle_looping.html)
@@ -21,8 +25,6 @@ Workshop Schedule
 
 ### Underlying Technology
 
-[Basics in Underlying APIs](basics.html)
-
 There are two primary drawing technologies in the browser that underly current libraries: canvas and svg. Canvas is flexible in providing different drawing contexts (2d and webgl) and is controlled through JavaScript, while SVG is defined by a set of XML tags that can describe a wide range of drawings declaratively.
 
 #### Canvas (raster element)
@@ -32,6 +34,8 @@ The Canvas element exposes a raster drawing context controlled with javascript. 
 #### SVG (vector elements)
 
 The SVG element defines a vector drawing. The child elements within the SVG describe the shapes that should be drawn and the browser handles redrawing automatically.
+
+[Example: Basics in Underlying APIs](basics.html)
 
 #### Further Reading on Canvas and SVG
 
@@ -71,7 +75,7 @@ In this repository, you will find a number of examples using paper from plain ja
 
 We can draw in paper much like we can with SVG and Canvas 2d. Notice, however, that there is generally more consistency in the names of functions in paper, and more flexibility in how colors and positions are defined.
 
-[Basics in Paper](paper_01_basics.html)
+[Example: Basics in Paper](paper_01_basics.html)
 
 #### Shape Anatomy
 
@@ -81,7 +85,7 @@ Paths in Paper are defined by a series of [control points](http://paperjs.org/re
 
 Paper supports loading SVGs and can output SVG elements for use in the dom or SVG text for saving to file. Note that browsers don’t provide a method to save files from javascript (yet?), so you will need to copy-paste or find another workaround to get the SVG text into a file.
 
-[Paper Tiger](file_io.html)
+[Example: Paper Tiger](file_io.html)
 
 #### Exercise: Transformation
 
@@ -98,9 +102,9 @@ Possibilities:
 
 #### More Fun with Motion
   - Interactivity
-    - [Drawing Circles with the mouse](paper_03_circle_looping.html)
+    - [Example: Drawing Circles with the mouse](paper_03_circle_looping.html)
   - Animation and Path Analysis
-    - [Animating along an animated path](paper_04_path_following.html)
+    - [Example: Animating along an animated path](paper_04_path_following.html)
   - Masking a shape
 
 #### Exercise: Interactivity
