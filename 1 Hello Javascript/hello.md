@@ -9,7 +9,7 @@ Below are my presentation notes for talking through everything in this directory
 
 ## Language Basics
 
-### [Javascript Overview](javascript-overview.md).
+### [Javascript Overview](javascript-overview.md)
 
 - Objects/values/variables
 - Functions
@@ -24,17 +24,51 @@ Below are my presentation notes for talking through everything in this directory
 
 There are many ways to construct objects in javascript. Let’s review them for clarity.
 
-- Factory functions.
-  - Our preferred method.
-  - Simply a function that returns an object.
-- Constructor functions.
-  - Use the `new` keyword.
-  - `this` keyword binding to function calls.
-  - Functions named with InitialCapitals.
-  - Built-in types are generally accessed this way.
-- Classes.
-  - Available in ES6 (not yet).
-  - Usable through javascript compilers like [Babeljs](http://babeljs.io/)
-  - Class definitions for Constructor functions.
-  - Constructed with `new` keyword.
-  - `this` keyword binding to function calls.
+#### Factory Functions
+
+Factory functions are our preferred method for building objects. They are simply functions that create and return an object:
+
+```javascript
+function createPoint() {
+  var point = {x: 0, y: 0};
+
+  return point;
+}
+
+var point = createPoint();
+console.log(point.x, point.y) // => 0, 0
+```
+
+Factory functions in javascript are great for a number of reasons: they are explicit about what is returned to the function caller, they take advantage of the function closure to store variables, and they don’t introduce any new concepts beyond functions and objects.
+
+#### Constructor Functions
+
+Constructor functions are a way to introduce explicit types to javascript. Types can be great and provide compilers/parsers opportunities for optimization, but javascript generally ignores types so they don’t provide a big benefit in this language. In general, don’t write your own constructor functions.
+
+You will use constructors when creating objects of built-in types, which are backed by  typed objects managed by the browser in C or C++. Examples of these built-in objects include Dates and TypedArrays. Many libraries also use constructor functions for the types they define.
+
+```javascript
+function Point() {
+  this.x = 0;
+  this.y = 0;
+}
+
+var point = new Point();       // must call constructor function with new!
+console.log(point.x, point.y); // => 0, 0
+```
+
+#### Class Definitions
+
+When you really want types, the ES6 version of javascript (on the horizon) introduces classes. You can use classes and other ES6 features today by using a javascript compiler like [Babeljs](http://babeljs.io/) or [Traceur](https://github.com/google/traceur-compiler).
+
+```javascript
+class Point {
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+  }
+}
+
+var point = new Point();       // must call constructor function with new!
+console.log(point.x, point.y); // => 0, 0
+```
