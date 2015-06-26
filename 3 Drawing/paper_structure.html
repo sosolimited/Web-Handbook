@@ -5,7 +5,7 @@
     <script type="text/javascript" src="lib/paper-full.js"></script>
   </head>
   <body>
-    <h1>Anatomy of a Path with Paper</h1>
+    <h1>A Path, in Parts.</h1>
     <section>
       <canvas id="paper-canvas" width="640" height="640"></canvas>
     </section>
@@ -29,42 +29,42 @@
       path.fullySelected = true;
       group.applyMatrix = false;
       group.translate([10, y]);
-
     }
 
     path = new paper.Path();
     path.strokeWidth = 5.0;
     path.strokeColor = "#333";
     path.fullySelected = true;
-    path.applyMatrix = false;
     path.add([0, 0], [160, 0], [320, 0]);
     positionSamplePath(path, "Basic Path, animating segment position.", 100);
 
     // Paper can auto-smooth paths by adjusting their control handles.
     smoothedPath = path.clone();
     smoothedPath.smooth();
-    positionSamplePath(smoothedPath, "Smoothed Path", 200);
+    positionSamplePath(smoothedPath, "Animating segment position and using smooth().", 200);
 
     // We can adjust the control handles ourselves to get results we like.
     bubblePath = path.clone();
     var middle = bubblePath.segments[1];
     middle.handleIn = [-100, 0];
     middle.handleOut = [100, 0];
-    positionSamplePath(bubblePath, "Custom Handles", 300);
+    positionSamplePath(bubblePath, "Custom (static) Handles, animating segment position.", 300);
 
     wigglePath = path.clone();
-    positionSamplePath(wigglePath, "Animated Handles", 450);
+    positionSamplePath(wigglePath, "Animated Handles. Static segments positions.", 450);
 
     curvePath = path.clone();
-    positionSamplePath(curvePath, "curvePath", 600);
+    positionSamplePath(curvePath, "curvePath. No animation; manipulate in the console.", 600);
 
     paper.view.draw();
     paper.view.onFrame = function (event) {
       var t = event.time * 2.2;
-      // clip.radius = (Math.cos(event.time) / 2.0 + 0.5) * 25.0 + 5.0;
+
       path.segments[1].point.y = Math.sin(t) * 50.0;
+
       smoothedPath.segments[1].point.y = Math.sin(t) * 50.0;
       smoothedPath.smooth();
+
       bubblePath.segments[1].point.y = Math.sin(t) * 50.0;
 
       var middle = wigglePath.segments[1];
