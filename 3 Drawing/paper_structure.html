@@ -10,37 +10,53 @@
       <canvas id="paper-canvas" width="640" height="640"></canvas>
     </section>
   </body>
-  <script type="text/javascript">
+  <script type="text/javascript" keepalive>
     paper.setup(document.getElementById("paper-canvas"));
+
 
     var path,
         bubblePath,
         smoothedPath,
-        wigglePath;
+        wigglePath,
+        curvePath;
+
+    function positionSamplePath(path, label, y) {
+      var text = new paper.PointText(path.lastSegment.point.add([10, 0])),
+          group = new paper.Group(text, path);
+
+      text.content = label;
+      text.fillColor = "#333";
+      path.fullySelected = true;
+      group.applyMatrix = false;
+      group.translate([10, y]);
+
+    }
 
     path = new paper.Path();
     path.strokeWidth = 5.0;
     path.strokeColor = "#333";
     path.fullySelected = true;
-    path.add([0, 0], [160, 0], [320, 0]);
     path.applyMatrix = false;
-    path.translate([0, 100]);
+    path.add([0, 0], [160, 0], [320, 0]);
+    positionSamplePath(path, "Basic Path, animating segment position.", 100);
 
+    // Paper can auto-smooth paths by adjusting their control handles.
+    smoothedPath = path.clone();
+    smoothedPath.smooth();
+    positionSamplePath(smoothedPath, "Smoothed Path", 200);
+
+    // We can adjust the control handles ourselves to get results we like.
     bubblePath = path.clone();
     var middle = bubblePath.segments[1];
     middle.handleIn = [-100, 0];
     middle.handleOut = [100, 0];
-    bubblePath.translate([0, 100]);
-    bubblePath.fullySelected = true;
-
-    smoothedPath = path.clone();
-    smoothedPath.translate([0, 200]);
-    smoothedPath.smooth();
-    smoothedPath.fullySelected = true;
+    positionSamplePath(bubblePath, "Custom Handles", 300);
 
     wigglePath = path.clone();
-    wigglePath.translate([0, 350]);
-    wigglePath.fullySelected = true;
+    positionSamplePath(wigglePath, "Animated Handles", 450);
+
+    curvePath = path.clone();
+    positionSamplePath(curvePath, "curvePath", 600);
 
     paper.view.draw();
     paper.view.onFrame = function (event) {
