@@ -7,7 +7,7 @@
   <body>
     <h1>A Path, in Parts.</h1>
     <section>
-      <canvas id="paper-canvas" width="640" height="800" keepalive="true"></canvas>
+      <canvas id="paper-canvas" width="640" height="1000" keepalive="true"></canvas>
     </section>
   </body>
   <script type="text/javascript">
@@ -22,17 +22,21 @@
         huePath,
         saturationPath,
         lightnessPath,
-        samplePaths = [];
+        samplePaths = [],
+        verticalPosition = 0;
 
-    function addSamplePath(path, label, y) {
+    function addSamplePath(path, label, heightOffset) {
       var text = new paper.PointText(path.lastSegment.point.add([10, 0])),
-          group = new paper.Group(text, path);
+          group = new paper.Group(text, path),
+          heightOffset = heightOffset || 100;
 
       text.content = label;
       text.fillColor = "#333";
       path.fullySelected = true;
       group.applyMatrix = false;
-      group.translate([10, y]);
+      group.translate([10, verticalPosition + heightOffset / 2]);
+
+      verticalPosition += heightOffset;
 
       samplePaths.push(path);
     }
@@ -60,10 +64,12 @@
       return (1.0 - t) * a + t * b;
     }
 
-    function createHueCycle(color, min, max) {
+    function createHueCycle(color, min, max, rate) {
       min = min || 0.0;
       max = max || 360.0;
-      return createColorComponentCycle(color, "hue", min, max);
+      var delta = Math.abs(max - min) / 360.0,
+          rate = rate || mix(1.0, 0.1, delta);
+      return createColorComponentCycle(color, "hue", min, max, rate);
     }
 
     function createSaturationCycle(color, min, max) {
@@ -78,13 +84,14 @@
       return createColorComponentCycle(color, "lightness", min, max);
     }
 
-    function createColorComponentCycle(color, component, min, max) {
+    function createColorComponentCycle(color, component, min, max, rate) {
       color = color || "fillColor";
       component = component || "hue";
       min = min || 0.0;
       max = max || (component === "hue" ? 360.0 : 1.0);
+      rate = rate || 1.0;
       return function (path, t) {
-        var t = Math.cos(t) * 0.5 + 0.5;
+        var t = Math.cos(t * rate) * 0.5 + 0.5;
         path[color][component] = mix(min, max, t);
       }
     }
@@ -95,11 +102,11 @@
     path.fullySelected = true;
     path.add([0, 0], [160, 0], [320, 0]);
     path.data.update = null;
-    addSamplePath(path, "Basic Path. Made from three points (segments).", 100);
+    addSamplePath(path, "Basic Path. Made from three points (segments).");
 
     movingPath = path.clone();
     movingPath.data.update = createPointOscillation(50.0);
-    addSamplePath(movingPath, "Basic Path, animating segment position.", 200);
+    addSamplePath(movingPath, "Basic Path, animating segment position.");
 
     // Paper can auto-smooth paths by adjusting their control handles.
     smoothedPath = path.clone();
@@ -109,7 +116,7 @@
       oscillate(path, t);
       path.smooth();
     };
-    addSamplePath(smoothedPath, "Animating segment position and using smooth().", 300);
+    addSamplePath(smoothedPath, "Animating segment position and using smooth().");
 
     // We can adjust the control handles ourselves to get results we like.
     bubblePath = path.clone();
@@ -117,11 +124,27 @@
     middle.handleIn = [-100, 0];
     middle.handleOut = [100, 0];
     bubblePath.data.update = createPointOscillation(50.0);
-    addSamplePath(bubblePath, "Custom (static) Handles, animating segment position.", 400);
+    addSamplePath(bubblePath, "Custom (static) Handles, animating segment position.");
 
     wigglePath = path.clone();
     wigglePath.data.update = createHandleRotation(100.0);
-    addSamplePath(wigglePath, "Animated Handles. Static segments positions.", 550);
+    addSamplePath(wigglePath, "Animated Handles. Static segments positions.", 150);
+
+    huePath = new paper.Path();
+    huePath.add([320, 0], [0, 0], [0, 40], [320, 40]);
+    huePath.fullySelected = true;
+    huePath.closed = true;
+    huePath.fillColor = "#F90";
+    huePath.data.update = createHueCycle("fillColor", 0.0, 320.0);
+    addSamplePath(huePath, "Closed Rectangular Path. Animating hue.");
+
+    saturationPath = huePath.clone();
+    saturationPath.data.update = createSaturationCycle("fillColor");
+    addSamplePath(saturationPath, "Closed Rectangular Path. Animating saturation.");
+
+    lightnessPath = huePath.clone();
+    lightnessPath.data.update = createLightnessCycle("fillColor");
+    addSamplePath(lightnessPath, "Closed Rectangular Path. Animating lightness.");
 
     paper.view.draw();
     paper.view.onFrame = function (event) {
