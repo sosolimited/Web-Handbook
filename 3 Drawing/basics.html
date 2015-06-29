@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basics of drawing with built-in APIs</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="basics.css" type="text/css"></link>
+  </head>
+  <body>
+    <h1>Drawing Basics</h1>
+    <!-- SVG Basics -->
+    <section>
+      <h2>SVG</h2>
+      <p>
+        SVG drawings are defined by a set of declarative elements. You specify the shapes and paths you want the browser to draw as svg tags and the browser draws them according to the svg specification.
+      </p>
+      <p>
+        The SVGs on the page are stored as vector information. This makes it easy to tweak their underlying shape and also allows them to scale to arbitrary sizes.
+      </p>
+      <svg width="640" height="100">
+        <clipPath id="circle-clip">
+          <circle r="25" cx="0" cy="0"/>
+        </clipPath>
+        <g transform="translate(20, 20)">
+          <rect width="100" height="50" x="0" y="0" fill="#F09"/>
+          <circle cx="150" cy="25" r="30" fill="#90F"/>
+          <path d="M 225 0 l 30 50 l -60 0 z" stroke="#09F" stroke-width="5" fill="none"/>
+          <path d="M275 25 c0 -30 30 -30 30 0 c0 30 30 30 30 0" stroke="#9F0" stroke-width="5" fill="none"/>
+          <rect clip-path="url(#circle-clip)" fill="#F90" width="100" height="100" x="-25" transform="translate(385, 25)"/>
+        </g>
+      </svg>
+    </section>
+    <!-- Canvas 2d Basics -->
+    <section>
+      <h2>Canvas 2d</h2>
+      <p>
+        Canvas drawing is done through a series of javascript commands. The 2d canvas context provides a path-based API, with paths that can be filled and stroked. The commands are executed in the order you provide them.
+      </p>
+      <p>
+        Notice below that we can draw the same kinds of content with a 2d canvas that we can with SVG. Other than how we draw shapes, canvas is a bit different from SVG in that it outputs a raster image from its drawing commands. We can manipulate the individual pixels in the raster after drawing, but unless we keep a history of our drawing commands, we can’t easily tweak the vector shapes.
+      </p>
+      <canvas id="canvas_2d" width="640" height="150"></canvas>
+      <script type="text/javascript">
+        var canvas = document.getElementById("canvas_2d"),
+            ctx = canvas.getContext("2d"),
+            squiggle;
+
+         ctx.save(); // push current transformation and style info onto a stack.
+         ctx.translate(20, 20);
+         // Rectangle
+         ctx.fillStyle = "#F09";
+         ctx.fillRect(0, 0, 100, 50);
+
+         // Circle
+         ctx.translate(150, 0);
+         ctx.beginPath();
+         ctx.arc(0, 25, 30, 30, 0, Math.PI * 2);
+         ctx.fillStyle = "#90F";
+         ctx.fill();
+
+         // Triangle Outline
+         ctx.translate(75, 0);
+         ctx.beginPath();
+         ctx.moveTo(0, 0);
+         ctx.lineTo(30, 50);
+         ctx.lineTo(-30, 50);
+         ctx.strokeStyle = "#09F";
+         ctx.lineWidth = 5;
+         ctx.closePath();
+         ctx.stroke();
+
+         // Squiggle (here two ways)
+         ctx.translate(50, 0);
+         // The Path2D API allows cacheing of canvas commands in a redrawable shape.
+         squiggle = new Path2D();
+         squiggle.moveTo(0, 0);
+         squiggle.bezierCurveTo(0, -30, 30, -30, 30, 0);
+         squiggle.bezierCurveTo(30, 30, 60, 30, 60, 0);
+         ctx.save();
+           ctx.translate(0, 100);
+           ctx.strokeStyle = "#0F9";
+           ctx.lineWidth = 5;
+           ctx.stroke(squiggle);
+         ctx.restore();
+
+         // Path2D's can be created from SVG Path data for interoperability between APIs.
+         // Below we use the same path data used in basics_svg.html.
+         squiggle = new Path2D("M0 25 c0 -30 30 -30 30 0 c0 30 30 30 30 0");
+         ctx.strokeStyle = "#9F0";
+         ctx.stroke(squiggle);
+
+         // Rectangle masked by a circle
+         // Note that Chrome doesn't antialias the clipping path: https://code.google.com/p/chromium/issues/detail?id=424291
+         ctx.translate(110, 0);
+         ctx.save();
+           ctx.beginPath();
+           ctx.arc(0, 25, 25, 25, 0, Math.PI * 2);
+           ctx.clip();
+
+           ctx.fillStyle = "#F90";
+           ctx.fillRect(-25, 25, 100, 100);
+         ctx.restore();
+
+         ctx.restore(); // pop previous transformation and style info off of a stack
+      </script>
+    </section>
+    <!-- Canvas WebGL Basics -->
+    <section>
+      <h2>Canvas WebGL</h2>
+      <p>
+        Canvas can also be used to render GPU-accelerated graphics through WebGL. The WebGL API is much lower-level than the 2d drawing API. This allows for lots of power and versatility, but makes getting up and running significantly more involved. We will not attempt to replicate 2d drawing capabilities with WebGL here.
+      </p>
+      <p>
+        WebGL is set up by creating a canvas element and getting a webgl context from it in javascript. From that context, we can do all of the operations specified by the [WebGL specification](https://www.khronos.org/webgl/).
+      </p>
+      <p>
+        The main operations WebGL performs are: passing data from the CPU to the GPU as buffers, textures, and shader uniforms, specifying functions the GPU can apply to data as shaders, and telling the GPU to run data through the shader functions.
+      </p>
+      <canvas id="canvas_webgl" width="640" height="100"></canvas>
+      <!-- WebGL utilities from http://webglfundamentals.org/ to reduce our boilerplate -->
+      <script type="text/javascript" src="lib/webgl-utils.js"></script>
+      <!-- A Vertex Program for GLSL -->
+      <script id="vs" type="x-shader/x-vertex">
+        precision mediump float;
+        attribute vec2 position;
+        varying vec2 vPos;
+
+        void main() {
+          gl_Position = vec4(position, 0, 1);
+          vPos = (position + 1.0) / 2.0;
+        }
+      </script>
+      <!-- A Fragment Program for GLSL -->
+      <script id="fs" type="x-shader/x-fragment">
+        precision mediump float;
+        varying vec2 vPos;
+
+        void main() {
+          gl_FragColor = vec4(vPos, 0.5, 1);  // green
+        }
+      </script>
+      <!-- Our WebGL drawing code -->
+      <script type="text/javascript">
+        var canvas = document.getElementById("canvas_webgl"),
+            gl = canvas.getContext("experimental-webgl"),
+            program = createProgramFromScripts(gl, ["vs", "fs"]),
+            locations = {position: 0},
+            buffer = gl.createBuffer(),
+            positions = [],
+            x, y,
+            rows = 5,
+            columns = 15,
+            steps = {x: 2.0 / columns, y: 2.0 / rows};
+
+        gl.useProgram(program);
+        locations.position = gl.getAttribLocation(program, "position");
+
+        // Create a series of triangles
+        for (x = 0; x < columns; x += 1) {
+          for (y = 0; y < rows; y += 1) {
+            var px = ((x / columns) * 2.0) - 1.0,
+                py = ((y / rows) * 2.0) - 1.0,
+                insetX = 0.02,
+                insetY = 0.03;
+
+            positions.push(px + insetX, py + insetY);
+            positions.push(px + steps.x - insetX, py + insetY);
+            positions.push(px + steps.x / 2, py + steps.y - insetY);
+          }
+        }
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+        gl.enableVertexAttribArray(locations.position);
+        gl.vertexAttribPointer(locations.position, 2, gl.FLOAT, false, 0, 0);
+
+        gl.drawArrays(gl.TRIANGLES, 0, positions.length / 2);
+      </script>
+    </section>
+  </body>
+</html>
