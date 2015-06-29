@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" type="text/css"></link>
+    <script type="text/javascript" src="lib/paper-full.js"></script>
+  </head>
+  <body>
+    <canvas id="paper-canvas" resize></canvas>
+  </body>
+  <script type="text/javascript">
+    paper.setup("paper-canvas");
+    paper.project.currentStyle.strokeWidth = 5;
+
+    var circles = [],
+        circle,
+        style,
+        tool = new paper.Tool();
+
+    tool.onMouseDown = function (event) {
+      style = {
+        strokeColor: 0.0,
+        fillColor: 1.0
+      };
+      circle = new paper.Shape.Circle({
+        center: event.point,
+        radius: 1
+      });
+      circle.style = style;
+      circle.data.theta = 0.0;
+    }
+    tool.onMouseDrag = function (event) {
+      var amount = (event.point.subtract(event.downPoint)).length;
+      if (amount > 1.0) {
+        circle.radius = amount;
+        circle.data.speed = amount / 4.0;
+      }
+    }
+    tool.onMouseUp = function (event) {
+      circles.push(circle);
+    }
+
+    paper.view.onFrame = function (event) {
+      circles.forEach(function (c) {
+        c.fillColor.lightness = Math.cos(c.data.theta) * 0.5 + 0.5;
+        c.strokeColor.lightness = 1.0 - c.fillColor.lightness;
+        c.data.theta += event.delta;
+        c.position.x += Math.cos(c.data.theta) * c.data.speed;
+        c.position.y += Math.sin(c.data.theta * 1.5) * c.data.speed;
+      })
+    }
+    // paper.project.draw();
+  </script>
+</html>
