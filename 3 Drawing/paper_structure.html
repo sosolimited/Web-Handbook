@@ -19,6 +19,9 @@
         bubblePath,
         smoothedPath,
         wigglePath,
+        huePath,
+        saturationPath,
+        lightnessPath,
         samplePaths = [];
 
     function addSamplePath(path, label, y) {
@@ -57,14 +60,32 @@
       return (1.0 - t) * a + t * b;
     }
 
-    function createHueCycle(begin, end) {
-      begin = begin || 0;
-      end = end || 0;
+    function createHueCycle(color, min, max) {
+      min = min || 0.0;
+      max = max || 360.0;
+      return createColorComponentCycle(color, "hue", min, max);
+    }
+
+    function createSaturationCycle(color, min, max) {
+      min = min || 0.0;
+      max = max || 1.0;
+      return createColorComponentCycle(color, "saturation", min, max);
+    }
+
+    function createLightnessCycle(color, min, max) {
+      min = min || 0.0;
+      max = max || 1.0;
+      return createColorComponentCycle(color, "lightness", min, max);
+    }
+
+    function createColorComponentCycle(color, component, min, max) {
+      color = color || "fillColor";
+      component = component || "hue";
+      min = min || 0.0;
+      max = max || (component === "hue" ? 360.0 : 1.0);
       return function (path, t) {
-        var t = (Math.cos(t) * 0.5 + 0.5);
-        path.strokeColor.saturation = 1.0;
-        path.strokeColor.brightness = 0.9;
-        path.strokeColor.hue = mix(begin, end, t);
+        var t = Math.cos(t) * 0.5 + 0.5;
+        path[color][component] = mix(min, max, t);
       }
     }
 
