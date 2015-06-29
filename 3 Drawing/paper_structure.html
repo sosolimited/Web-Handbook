@@ -15,10 +15,10 @@
 
 
     var path,
+        movingPath,
         bubblePath,
         smoothedPath,
         wigglePath,
-        curvePath,
         samplePaths = [];
 
     function addSamplePath(path, label, y) {
@@ -52,6 +52,7 @@
       }
     }
 
+    // Linear mix of a and b. Expects t in range [0, 1].
     function mix(a, b, t) {
       return (1.0 - t) * a + t * b;
     }
@@ -72,8 +73,12 @@
     path.strokeColor = "#333";
     path.fullySelected = true;
     path.add([0, 0], [160, 0], [320, 0]);
-    addSamplePath(path, "Basic Path, animating segment position.", 100);
-    path.data.update = createPointOscillation(50.0);
+    path.data.update = null;
+    addSamplePath(path, "Basic Path. Made from three points (segments).", 100);
+
+    movingPath = path.clone();
+    movingPath.data.update = createPointOscillation(50.0);
+    addSamplePath(movingPath, "Basic Path, animating segment position.", 200);
 
     // Paper can auto-smooth paths by adjusting their control handles.
     smoothedPath = path.clone();
@@ -83,22 +88,19 @@
       oscillate(path, t);
       path.smooth();
     };
-    addSamplePath(smoothedPath, "Animating segment position and using smooth().", 200);
+    addSamplePath(smoothedPath, "Animating segment position and using smooth().", 300);
 
     // We can adjust the control handles ourselves to get results we like.
     bubblePath = path.clone();
     var middle = bubblePath.segments[1];
     middle.handleIn = [-100, 0];
     middle.handleOut = [100, 0];
-    addSamplePath(bubblePath, "Custom (static) Handles, animating segment position.", 300);
+    bubblePath.data.update = createPointOscillation(50.0);
+    addSamplePath(bubblePath, "Custom (static) Handles, animating segment position.", 400);
 
     wigglePath = path.clone();
     wigglePath.data.update = createHandleRotation(100.0);
-    addSamplePath(wigglePath, "Animated Handles. Static segments positions.", 450);
-
-    curvePath = path.clone();
-    curvePath.data.update = null;
-    addSamplePath(curvePath, "curvePath. No animation; manipulate in the console.", 600);
+    addSamplePath(wigglePath, "Animated Handles. Static segments positions.", 550);
 
     paper.view.draw();
     paper.view.onFrame = function (event) {
