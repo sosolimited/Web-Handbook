@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="basics.css" type="text/css"></link>
+    <script type="text/javascript" src="lib/paper-full.js"></script>
+  </head>
+  <body>
+    <h1>Drawing Basics with Paper</h1>
+    <section>
+      <h2>Paper</h2>
+      <p>
+        Paper provides a different javascript interface for drawing shapes. It is also path-centric, but retains information that makes object-based animation straightforward.
+      </p>
+      <p>
+        Paper also provides geometric manipulation functions, like smooth, that make modifying shapes straightforward.
+      </p>
+      <canvas id="paper-canvas" width="640" height="200"></canvas>
+    </section>
+  </body>
+  <script type="text/javascript">
+    paper.setup(document.getElementById("paper-canvas"));
+
+    var group,
+        rectangle,
+        circle,
+        triangle,
+        smoothedTriangle,
+        squiggle,
+        clip,
+        maskedShape,
+        maskedGroup;
+
+    rectangle = new paper.Shape.Rectangle({point: [0, 0], size: [100, 50]});
+    rectangle.fillColor = "#F09";
+
+    circle = new paper.Shape.Circle([150, 25], 30);
+    circle.fillColor = "#90F";
+
+    triangle = new paper.Path();
+    triangle.add([0, 0], [30, 50], [-30, 50]);
+    triangle.closed = true;
+    triangle.fillColor = null;
+    triangle.strokeColor = "#09F";
+    triangle.strokeWidth = 5;
+    triangle.position.x = 225;
+
+    smoothedTriangle = triangle.clone();
+    smoothedTriangle.smooth();
+    smoothedTriangle.position.y += 100;
+
+    squiggle = new paper.Path();
+    squiggle.moveTo([0, 0]);
+    squiggle.cubicCurveTo([0, -30], [30, -30], [30, 0]);
+    squiggle.cubicCurveTo([30, 30], [60, 30], [60, 0]);
+    squiggle.strokeColor = "#9F0";
+    squiggle.strokeWidth = 5;
+    squiggle.translate([275, 25]);
+
+    clip = new paper.Shape.Circle([0, 0], 25);
+    maskedShape = new paper.Shape.Rectangle({point: [-25, 0], size: [50, 50]});
+    maskedShape.fillColor = "#F90";
+    maskedGroup = new paper.Group(clip, maskedShape);
+    clip.clipMask = true;
+    maskedGroup.translate(385, 25);
+    // clip.clipMask = true;
+
+    group = new paper.Group(rectangle, circle, triangle, smoothedTriangle, squiggle, maskedGroup);
+    group.translate([20, 20]);
+
+    paper.view.draw();
+    paper.view.onFrame = function (event) {
+      // clip.radius = (Math.cos(event.time) / 2.0 + 0.5) * 25.0 + 5.0;
+      maskedShape.rotate(event.delta * 10.0);
+    }
+  </script>
+</html>
