@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" type="text/css"></link>
+    <script type="text/javascript" src="lib/paper-full.js"></script>
+  </head>
+  <body>
+    <canvas id="paper_canvas" resize></canvas>
+  </body>
+  <script type="text/javascript">
+    paper.setup(document.getElementById("paper_canvas"));
+
+    var svg,
+        svgItem;
+
+    paper.project.importSVG("contour.svg", onSvgLoad);
+
+    function onSvgLoad(item) {
+      svgItem = item;
+      svgItem.position = paper.view.center;
+      var path = svgItem.children[0];
+      path.strokeWidth = 1.0;
+      path.strokeColor = "black";
+      path.fill = null;
+      replicateOutwards(path, 40);
+
+      paper.view.onResize = function (event) {
+        svgItem.position = paper.view.center;
+      };
+    }
+
+    function replicateOutwards(path, limit) {
+      limit = limit || 50;
+      var center = paper.view.center;
+      console.log(center);
+      for(var i = 0; i < limit; i += 1) {
+        path = path.clone();
+
+        path.segments.forEach(function (p) {
+           var away = p.point.subtract(center).normalize(Math.random() * 18.0 + 12.0);
+           console.log(p, away);
+           p.point = p.point.add(away);
+        });
+
+        path.smooth();
+        path.strokeWidth += Math.random() * 0.1 + 0.1;
+        if(Math.random() < 0.1) {
+          path.strokeWidth = 0.5;// + Math.random() * 18.0;  
+        }        
+
+      }
+    }
+  </script>
+</html>
