@@ -23,7 +23,7 @@
       item.translate(window.innerWidth/2 - item.bounds.width/2, window.innerHeight/2 - item.bounds.height/2);
 
       item.children.forEach(function(child) {
-        console.log(child);
+        // console.log(child);
         if (child._name.match("eyeContainer") ) {
           child.children.forEach(function(c) {
             if (c._name.match("eyeball") ) {
@@ -70,7 +70,7 @@
 
         child.children.forEach(function(c) {
           if (c._name.match("iris") ) {
-          var hueChange = 360 * Math.sin(event.point.y);
+          var hueChange = 180 + 60 * Math.sin(event.point.y*.001);
           c.fillColor = {
             hue: hueChange,
             saturation: 1.0,
