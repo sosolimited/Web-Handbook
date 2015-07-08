@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../style.css" type="text/css"></link>
+    <script type="text/javascript" src="../lib/paper-full.js"></script>
+    <style>
+      canvas{
+        background: #222;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="paper_canvas" resize></canvas>
+  </body>
+  <script type="text/javascript">
+    paper.setup(document.getElementById("paper_canvas"));
+
+    var svg,
+        svgItem,
+        paths = [],
+        tool = new paper.Tool();
+
+    paper.project.importSVG("contour-01.svg", onSvgLoad);
+
+    function onSvgLoad(item) {
+      svgItem = item;
+      svgItem.position = paper.view.center;
+      var path = svgItem.children[0];
+      path.strokeWidth = 1.0;
+      path.strokeColor = "#FC6";
+      path.fill = null;
+      paths.push(path);
+      replicateOutwards(path, 20);
+      var pairs = [];
+      paths.forEach(function (path, i) {
+        if (i < paths.length - 1) {
+          pairs.push({left: path, right: paths[i + 1], mix: path.clone()});
+        }
+        path.remove();
+      });
+
+      pairs[0].left.strokeWidth = 0.0;
+
+      paper.view.onResize = function (event) {
+        svgItem.position = paper.view.center;
+      };
+
+      var i = 0;
+      paper.view.onFrame = function (event) {
+        var t = event.time % 1.0;
+        pairs.forEach(function (pair) {
+          var left = pair.left,
+              right = pair.right,
+              path = pair.mix;
+          path.strokeWidth = lerp(right.strokeWidth, left.strokeWidth, t);
+          path.segments.forEach(function (segment, i) {
+            var l = left.segments[i],
+                r = right.segments[i];
+            segment.point = lerpPoint(r.point, l.point, t);
+            segment.handleIn = lerpPoint(r.handleIn, l.handleIn, t);
+            segment.handleOut = lerpPoint(r.handleOut, l.handleOut, t);
+          });
+        });
+      };
+    }
+
+    function lerpPoint(a, b, t) {
+      return a.add(b.subtract(a).multiply(t));
+    }
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+
+    function replicateOutwards(path, limit) {
+      limit = limit || 50;
+      var center = paper.view.center;
+      for(var i = 0; i < limit; i += 1) {
+        path = path.clone();
+
+        path.segments.forEach(function (p) {
+           var away = p.point.subtract(center).normalize(Math.random() * 24.0 + 32.0);
+           p.point = p.point.add(away);
+        });
+
+        path.smooth();
+        path.strokeWidth += Math.random() * 0.4 + 0.1;
+        if(Math.random() < 0.1) {
+          path.strokeWidth = 1.0;
+        }
+        paths.push(path);
+      }
+    }
+  </script>
+</html>

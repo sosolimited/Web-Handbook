@@ -15,7 +15,7 @@ Javascript, originally designed as the scripting language for Netscape Navigator
 
 - In the browser (Chrome, Firefox, Safari, IE, Opera, etc.)
 - Embedded within a non-browser application (e.g. [V8](https://developers.google.com/v8/), [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey), or ChromiumEmbedded embedding).
-- In the terminal with [Node](https://nodejs.org/), which exposes networking and filesystem features to javascript through V8.
+- In the terminal with [Node](https://nodejs.org/), which exposes networking and filesystem features to javascript through V8. Or [Phantom](http://phantomjs.org/), which is a headless browser.
 - In a web-application wrapping environment with [Electron (née Atom-Shell)](https://github.com/atom/electron) or [nw.js (née Node-Webkit)](https://github.com/nwjs/nw.js/), which provide a native application host for web applications.
 
 ### [Javascript Overview](javascript-overview.md)
