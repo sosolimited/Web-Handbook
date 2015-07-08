@@ -11,7 +11,30 @@
     paper.setup(document.getElementById("paper_canvas"));
 
     var svg,
-        svgItem;
+        svgItem,
+        point = paper.Point,
+        tool = new paper.Tool(),
+        positionModifier = 1,
+        faces = [];
+
+
+    tool.onMouseDrag = function (event) {
+      // console.log(event.point.subtract(event.downPoint).x);
+      var amount = (event.point.subtract(event.downPoint)).x;
+      positionModifier = amount/10;
+    }
+    paper.view.onFrame = function (event) {
+      faces.forEach(function (f, i){
+        f.children.forEach(function (c, ii){
+          // console.log( c.data.originalX );
+          // c.translate( new point( 1*i*ii*positionModifier, 1*i*ii*positionModifier ) );
+          // c.translate( new point( c.originalX*i*ii*positionModifier, c.originalY*i*ii*positionModifier ) );
+          c.position.x = c.data.originalX + i*ii*positionModifier;
+          c.position.y = c.data.originalY + i*ii*positionModifier;
+          c.rotate(positionModifier/10);
+        });
+      });
+    }
 
     paper.project.importSVG("img/jc_photo.svg", onSvgLoad);
 
@@ -33,10 +56,17 @@
         var smallItem = item.clone().scale(0.5);
         smallItem.position.x += (i * 200);
         smallItem.children.forEach(function (c, ii){
-          console.log( "i = "+ i +", ii = "+ ii );
-          c.translate(new paper.Point( i*1, ii*1 ));
+          // console.log( "i = "+ i +", ii = "+ ii );
+          // console.log( c.position.x );
+          c.data.originalX = c.position.x;
+          // console.log( c.data.originalX );
+          c.data.originalY = c.position.y;
+          // c.translate( getRandom( new paper.Point( 0, 0 ), new paper.Point( i*1, ii*1 ) ) );
+          // c.translate( new point( 1*i*ii*positionModifier, 1*i*ii*positionModifier ) );
+          // c.translate( new point( 1*i*ii*positionModifier, 1*i*ii*positionModifier ) );
         });
         randomlyColorChildren(smallItem);
+        faces.push(smallItem);
       }
       item.remove();
     }
@@ -51,6 +81,10 @@
           brightness: 1.0
         };
       });
+    }
+
+    function getRandom(min, max) {
+      return Math.random() * (max - min) + min;
     }
   </script>
 </html>
