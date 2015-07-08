@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Basic//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd">
+<svg version="1.1" baseProfile="basic" id="Layer_1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="309.9px" height="321.8px"
+	 viewBox="0 0 309.9 321.8" xml:space="preserve">
+<path id="XMLID_1_" fill="#F7931E" stroke="#000000" stroke-miterlimit="10" d="M294.8,319H14.5c-6.6,0-12-5.4-12-12V14
+	c0-6.6,5.4-12,12-12h280.4c6.6,0,12,5.4,12,12v293C306.8,313.6,301.4,319,294.8,319z"/>
+<g id="eyeContainer_1_">
+	<ellipse id="XMLID_2_" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="83.3" cy="92.1" rx="32.8" ry="17.2"/>
+	<g id="eyeball">
+		<circle id="iris_1_" fill="#00FFFF" cx="88.2" cy="100.3" r="9.5"/>
+		<circle id="XMLID_3_" cx="88.2" cy="100.3" r="3.6"/>
+	</g>
+</g>
+<g id="eyeContainer">
+	<ellipse id="XMLID_7_" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="208.3" cy="92.1" rx="32.8" ry="17.2"/>
+	<g id="eyeball_1_">
+		<circle id="iris" fill="#00FFFF" cx="213.2" cy="100.3" r="9.5"/>
+		<circle id="XMLID_5_" cx="213.2" cy="100.3" r="3.6"/>
+	</g>
+</g>
+<polyline id="XMLID_8_" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="59,224.5 152,224.5 
+	249,224.5 "/>
+</svg>

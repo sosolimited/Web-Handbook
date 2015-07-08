@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" type="text/css"></link>
+    <script type="text/javascript" src="lib/paper-full.js"></script>
+  </head>
+  <body>
+    <canvas id="paper_canvas" resize></canvas>
+  </body>
+  <script type="text/javascript">
+    paper.setup(document.getElementById("paper_canvas"));
+
+    var svg,
+        eyeballs = [],
+        tool = new paper.Tool();
+
+    paper.project.importSVG("img/Block-Face.svg", onSvgLoad);
+
+    function onSvgLoad(item) {
+      var p;
+      console.log(item);
+
+      item.translate(window.innerWidth/2 - item.bounds.width/2, window.innerHeight/2 - item.bounds.height/2);
+
+      item.children.forEach(function(child) {
+        console.log(child);
+        if (child._name.match("eyeContainer") ) {
+          child.children.forEach(function(c) {
+            if (c._name.match("eyeball") ) {
+              eyeballs.push(c);
+            }
+          });
+        }
+      });
+      console.log(eyeballs.length);
+      // randomlyColorChildren(item);
+      svg = paper.project.exportSVG();
+      p = document.createElement("p");
+      p.innerText = paper.project.exportSVG({asString: true});
+
+      // document.body.appendChild(svg);
+      document.body.appendChild(p);
+    }
+
+    function randomlyColorChildren(item) {
+      var len = item.children.length,
+          hueStep = 360.0 / len;
+      item.children.forEach(function (c, i) {
+        c.fillColor = {
+          hue: hueStep * i,
+          saturation: 1.0,
+          brightness: 1.0
+        };
+      });
+    }
+
+    tool.onMouseMove = function (event) {
+      // console.log(event.point);
+      var percentWidth = event.point.x/window.innerWidth;
+      var percentHeight = event.point.y/window.innerHeight;
+
+      eyeballs.forEach(function(child) {
+        // console.log(child.parent);
+        var vertPos = ((-1 + (2 * percentHeight) ) * 5) + child.parent.position.y;
+        var horzPos = ((-1 + (2 * percentWidth) ) * 20) + child.parent.position.x;
+        // console.log(child.parent.position);
+
+        child.position.x = horzPos;
+        child.position.y = vertPos;
+
+        child.children.forEach(function(c) {
+          if (c._name.match("iris") ) {
+          var hueChange = 360 * Math.sin(event.point.y);
+          c.fillColor = {
+            hue: hueChange,
+            saturation: 1.0,
+            brightness: 1.0
+          }
+        }
+        });
+      });
+    }
+
+    tool.onMouseUp = function (event) {
+      // circles.push(circle);
+    }
+
+    paper.view.onFrame = function (event) {
+      // circles.forEach(function (c) {
+      //   c.fillColor.lightness = Math.cos(c.data.theta) * 0.5 + 0.5;
+      //   c.strokeColor.lightness = 1.0 - c.fillColor.lightness;
+      //   c.data.theta += event.delta;
+      //   c.position.x += Math.cos(c.data.theta) * c.data.speed;
+      //   c.position.y += Math.sin(c.data.theta * 1.5) * c.data.speed;
+      // })
+    }
+  </script>
+</html>
