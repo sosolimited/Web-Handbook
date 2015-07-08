@@ -63,6 +63,11 @@ The SVG element defines a vector drawing. The child elements within the SVG desc
 - [d3](http://d3js.org/)
 - [Raphael](http://raphaeljs.com/)
 
+#### WebGL Canvas Libraries
+
+- [stack.gl](http://stack.gl/)
+- [Three.js](http://threejs.org/)
+
 ### Diving into Paper
 
 We will focus on PaperJS as a 2d drawing library worth exploring in depth. It provides us with a drawing API that combines aspects of vector manipulation similar to SVG and raster output in Canvas. In addition, Paper provides geometric operations on the created paths that make it interesting for going beyond straight-ahead drawing.
