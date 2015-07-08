@@ -13,7 +13,7 @@
     var svg,
         svgItem;
 
-    paper.project.importSVG("img/ghostscript_tiger.svg", onSvgLoad);
+    paper.project.importSVG("img/octopus.svg", onSvgLoad);
 
     function onSvgLoad(item) {
       var p;
@@ -24,7 +24,7 @@
       p.innerText = paper.project.exportSVG({asString: true});
 
       // document.body.appendChild(svg);
-      document.body.appendChild(p);
+      //document.body.appendChild(p);
     }
 
     function randomlyColorChildren(item) {

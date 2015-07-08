@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" type="text/css"></link>
+    <script type="text/javascript" src="lib/paper-full.js"></script>
+  </head>
+  <body>
+    <canvas id="paper_canvas" resize></canvas>
+  </body>
+  <script type="text/javascript">
+    paper.setup(document.getElementById("paper_canvas"));
+
+    var svg,
+        svgItem,
+        tool = new paper.Tool();
+
+    paper.project.importSVG("img/octopus.svg", onSvgLoad);
+
+
+    tool.onMouseDown = function (event) {
+      //randomlyColorChildren(svgItem, event.point.x);
+      echoItem(svgItem);
+    }
+    tool.onMouseDrag = function (event) {
+    
+    }
+    tool.onMouseUp = function (event) {
+    
+    }
+
+
+    paper.view.onFrame = function (event) {
+      var t = event.time;
+      if (svgItem) {
+        randomlyColorChildren(paper.project.layers[0], 40*t);
+        //pulsePieces(paper.project, event.time);
+      }
+    };
+    
+    function pulsePieces(item, time){
+      item.children.forEach(function (c, i) {
+        var s = 0.9 + 0.1*Math.sin(time/6.0 * Math.PI);
+        //var s = 1.0;
+        c.scaling.x *= s;
+        c.scaling.y *= s;
+      });
+    }
+
+    function onSvgLoad(item) {
+      svgItem = item.children[0];
+      //randomlyColorChildren(svgItem);
+    }
+
+    function echoItem(item){
+      item.children.forEach(function (c, i) {
+        var copy = c.copyTo(paper.project);
+        var range = 1000;
+        copy.position.x += (-range/2 + range*Math.random());
+        copy.position.y += (-range/2 + range*Math.random());
+        var s = Math.random()*3;
+        copy.scaling.x *= s;
+        copy.scaling.y *= s;
+        copy.bringToFront();
+      });
+    }
+
+    function randomlyColorChildren(item, time) {
+      var len = item.children.length,
+          hueStep = 360.0 / len;
+
+      //console.log("time = "+time);   
+      item.children.forEach(function (c, i) {
+        var h = (hueStep * i + time)%360;
+        c.fillColor = {
+          hue: h,
+          saturation: 1.0,
+          brightness: 1.0
+        };
+      });
+    }
+  </script>
+</html>
