@@ -20,7 +20,7 @@
         paths = [],
         tool = new paper.Tool();
 
-    paper.project.importSVG("contour-01.svg", onSvgLoad);
+    paper.project.importSVG("contour.svg", onSvgLoad);
 
     function onSvgLoad(item) {
       svgItem = item;
@@ -29,6 +29,7 @@
       path.strokeWidth = 1.0;
       path.strokeColor = "#FC6";
       path.fill = null;
+      paths.push(path);
       replicateOutwards(path, 40);
       var pairs = [];
       paths.forEach(function (path, i) {
@@ -38,8 +39,7 @@
         path.remove();
       });
 
-      console.log(pairs);
-      path.remove();
+      pairs[0].left.strokeWidth = 0.0;
 
       paper.view.onResize = function (event) {
         svgItem.position = paper.view.center;
