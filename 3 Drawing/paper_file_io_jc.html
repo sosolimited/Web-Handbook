@@ -2,7 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css" type="text/css"></link>
-    <script type="text/javascript" src="lib/paper-full.js"></script>
+    <script type="text/javascript" src="lib/paper-full.min.js"></script>
   </head>
   <body>
     <canvas id="paper_canvas" resize></canvas>
@@ -18,13 +18,27 @@
     function onSvgLoad(item) {
       var p;
       svgItem = item.children[0];
-      randomlyColorChildren(svgItem);
+      // randomlyColorChildren(svgItem);
+      createSmallMultiples(svgItem);
       svg = paper.project.exportSVG();
       p = document.createElement("p");
       p.innerText = paper.project.exportSVG({asString: true});
 
       // document.body.appendChild(svg);
       document.body.appendChild(p);
+    }
+
+    function createSmallMultiples(item) {
+      for (var i=0; i<10; i++){
+        var smallItem = item.clone().scale(0.5);
+        smallItem.position.x += (i * 200);
+        smallItem.children.forEach(function (c, ii){
+          console.log( "i = "+ i +", ii = "+ ii );
+          c.translate(new paper.Point( i*1, ii*1 ));
+        });
+        randomlyColorChildren(smallItem);
+      }
+      item.remove();
     }
 
     function randomlyColorChildren(item) {
