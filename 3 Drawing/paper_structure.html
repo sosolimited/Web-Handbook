@@ -122,7 +122,7 @@
     bubblePath = path.clone();
     var middle = bubblePath.segments[1];
     middle.handleIn = [-100, 0];
-    middle.handleOut = [100, 0];
+    middle.handleOut = middle.handleIn.clone().rotate(180);
     bubblePath.data.update = createPointOscillation(50.0);
     addSamplePath(bubblePath, "Custom (static) Handles, animating segment position.");
 
