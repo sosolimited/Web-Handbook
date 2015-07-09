@@ -2,7 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css" type="text/css"></link>
-    <script type="text/javascript" src="lib/paper-full.js"></script>
+    <script type="text/javascript" src="../lib/paper-full.js"></script>
   </head>
   <body>
     <canvas id="paper_canvas" resize></canvas>
@@ -14,7 +14,7 @@
         svgItem,
         tool = new paper.Tool();
 
-    paper.project.importSVG("img/octopus.svg", onSvgLoad);
+    paper.project.importSVG("../img/octopus.svg", onSvgLoad);
 
 
     tool.onMouseDown = function (event) {
