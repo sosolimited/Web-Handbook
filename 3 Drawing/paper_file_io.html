@@ -10,21 +10,25 @@
   <script type="text/javascript">
     paper.setup(document.getElementById("paper_canvas"));
 
-    var svg,
-        svgItem;
+    var svgItem;
 
     paper.project.importSVG("img/ghostscript_tiger.svg", onSvgLoad);
 
     function onSvgLoad(item) {
-      var p;
       svgItem = item.children[0];
       randomlyColorChildren(svgItem);
-      svg = paper.project.exportSVG();
+    }
+
+    function writeSvgSourceToDom() {
+      var p;
       p = document.createElement("p");
       p.innerText = paper.project.exportSVG({asString: true});
-
-      // document.body.appendChild(svg);
       document.body.appendChild(p);
+    }
+
+    function writeSvgToDom() {
+      var svg = paper.project.exportSVG();
+      document.body.appendChild(svg);
     }
 
     function randomlyColorChildren(item) {
