@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="style.css" type="text/css"></link>
-    <script type="text/javascript" src="lib/paper-full.js"></script>
+    <link rel="stylesheet" href="../style.css" type="text/css"></link>
+    <script type="text/javascript" src="../lib/paper-full.js"></script>
   </head>
   <body>
     <canvas id="paper_canvas" resize></canvas>
@@ -13,7 +13,7 @@
     var svgItem;
     var loaded = false;
 
-    paper.project.importSVG("img/donut.svg", onSvgLoad);
+    paper.project.importSVG("../img/donut.svg", onSvgLoad);
 
     function onSvgLoad(item) {
 
