@@ -49,9 +49,11 @@
     smoothedTriangle.position.y += 100;
 
     squiggle = new paper.Path();
+    // Absolute drawing commands in Paper use the suffix `To`
     squiggle.moveTo([0, 0]);
-    squiggle.cubicCurveTo([0, -30], [30, -30], [30, 0]);
-    squiggle.cubicCurveTo([30, 30], [60, 30], [60, 0]);
+    // Relative drawing commands in Paper use the suffix `By`
+    squiggle.cubicCurveBy([0, -30], [30, -30], [30, 0]);
+    squiggle.cubicCurveBy([0, 30], [30, 30], [30, 0]);
     squiggle.strokeColor = "#9F0";
     squiggle.strokeWidth = 5;
     squiggle.translate([275, 25]);
