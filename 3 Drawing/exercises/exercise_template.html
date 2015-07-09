@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="style.css" type="text/css"></link>
-    <script type="text/javascript" src="lib/paper-full.js"></script>
+    <link rel="stylesheet" href="../style.css" type="text/css"></link>
+    <script type="text/javascript" src="../lib/paper-full.js"></script>
   </head>
   <body>
     <canvas id="paper_canvas" resize></canvas>
@@ -12,23 +12,11 @@
 
     var svgItem;
 
-    paper.project.importSVG("img/ghostscript_tiger.svg", onSvgLoad);
+    paper.project.importSVG("../img/ghostscript_tiger.svg", onSvgLoad);
 
     function onSvgLoad(item) {
       svgItem = item.children[0];
       randomlyColorChildren(svgItem);
-    }
-
-    function writeSvgSourceToDom() {
-      var p;
-      p = document.createElement("p");
-      p.innerText = paper.project.exportSVG({asString: true});
-      document.body.appendChild(p);
-    }
-
-    function writeSvgToDom() {
-      var svg = paper.project.exportSVG();
-      document.body.appendChild(svg);
     }
 
     function randomlyColorChildren(item) {
