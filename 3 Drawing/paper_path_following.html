@@ -9,30 +9,8 @@
   </body>
   <script type="text/javascript">
     paper.setup(document.getElementById("paper-canvas"));
-    var path = new paper.Path(),
-        tool = new paper.Tool();
 
-    tool.onMouseDown = function (event) {
-      addFollower(event.point);
-    };
-
-    paper.view.onResize = function (event) {
-      path.position = paper.view.center;
-    };
-
-    paper.view.onFrame = function (event) {
-      updatePath(event.time);
-      var len = path.length
-      followers.forEach(function (f) {
-        var vel = len / f.secondsPerLoop;
-        f.time += event.delta * vel;
-        if (f.time > len) {
-          f.time -= len;
-        }
-        f.position = path.getPointAt(f.time);
-      });
-    };
-
+    // Utility functions
     function randomColor(hueMin, hueMax, brightness) {
       var hueMin = hueMin || 0,
           hueMax = hueMax || 360
@@ -44,11 +22,16 @@
         brightness: brightness
       });
     }
+
     function mix(a, b, t) {
       return a + (b - a) * t;
     }
 
-    // Create shapes by adding points together
+    // Drawing setup
+    var path = new paper.Path(),
+        tool = new paper.Tool(),
+        followers = [];
+
     path.strokeColor = randomColor(10, 60);
     path.dashArray = [4, 4];
     path.add([0, 30]);
@@ -58,12 +41,12 @@
     path.scale(5.0);
     path.smooth();
 
-    var followers = [];
-    function addFollower(position) {
-      var f = new paper.Path.Circle(position, 8.0);
+    function addFollower(normalizedSpeed) {
+      var f = new paper.Path.Circle([0, 0], 8.0);
       f.fillColor = randomColor();
-      f.time = 0.0;
-      f.secondsPerLoop = mix(6.0, 0.5, position.x / paper.view.size.width);
+      f.data.time = 0.0;
+      f.data.secondsPerLoop = mix(6.0, 0.5, normalizedSpeed);
+
       followers.push(f);
     }
 
@@ -76,7 +59,30 @@
       path.smooth();
     }
 
-    addFollower(new paper.Point(10, 10));
+    tool.onMouseDown = function (event) {
+      addFollower(event.point.x / paper.view.size.width);
+    };
+
+    paper.view.onResize = function (event) {
+      path.position = paper.view.center;
+    };
+
+    paper.view.onFrame = function (event) {
+
+      updatePath(event.time);
+
+      var len = path.length;
+      followers.forEach(function (f) {
+        var vel = len / f.data.secondsPerLoop;
+        f.data.time += event.delta * vel;
+        if (f.data.time > len) {
+          f.data.time -= len;
+        }
+        f.position = path.getPointAt(f.data.time);
+      });
+    };
+
+    addFollower(0.5);
     paper.view.onResize();
   </script>
 </html>
