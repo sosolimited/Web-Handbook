@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../style.css" type="text/css"></link>
+    <script type="text/javascript" src="../lib/paper-full.js"></script>
+  </head>
+  <body>
+    <canvas id="paper_canvas" resize></canvas>
+  </body>
+  <script type="text/javascript">
+    paper.setup(document.getElementById("paper_canvas"));
+
+    var svgItem;
+    var loaded = false;
+
+    paper.project.importSVG("../img/donut.svg", onSvgLoad);
+
+    function onSvgLoad(item) {
+
+      svgItem = item;
+      loaded = true;
+    }
+
+    // Go through some of the points in our icing SVG path
+    // Use a sine wave to move the points up and down, with an offset
+    function wiggleIcing(icingPath, event){
+
+      var speedScalar = .25;
+
+      // Which points we'll animate
+      var startIndex = 4;
+      var endIndex = 23;
+
+      // Only wiggle some of the icing path points
+      for (var i = startIndex; i < endIndex; i++) {
+
+        var origY = icingPath.segments[i].point.y;
+
+        // Spacing wiggle out for each point
+        var sinSeed =  (i % endIndex) * 100;
+
+        // Sine height ranges from 1 to 4
+        sinHeight = 1 + i%3;
+
+        var yPos = Math.sin(sinSeed + event.count * speedScalar) * sinHeight + origY;
+        icingPath.segments[i].point.y = yPos;
+
+        }
+
+      // Smooth out our path!
+      icingPath.smooth();
+
+    }
+
+    paper.view.draw();
+    paper.view.onFrame = function (event) {
+
+      if (loaded){
+        wiggleIcing( svgItem.children[1], event );
+ 
+      }
+    }
+
+    // Create a new paper Tool for mouse interaction
+    var tool = new paper.Tool();
+
+    // Add a new sprinkle with mouse click
+    tool.onMouseDown = function (event) {
+      
+      var circle = new paper.Path.Circle(event.point, 4 + Math.random()*4);
+
+      // Set initial fill color property so it's not null
+      circle.fillColor = 'red';
+
+      circle.fillColor.hue = 180 + Math.random() * 20;
+      circle.fillColor.saturation = 0.7;
+    }
+
+  </script>
+</html>
