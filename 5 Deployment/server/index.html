@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+
+      .vjs-default-skin { color: #f2f2f2; }
+      .vjs-default-skin .vjs-play-progress,
+      .vjs-default-skin .vjs-volume-level { background-color: #ff2fde }
+    </style>
+    <link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/4.12/video.js"></script>
+  </head>
+  <body>
+
+    <div id="container">
+      <div id="vid-container">
+        <video id="really-cool-video" class="video-js vjs-default-skin" controls
+         preload="auto" width="640" height="264" poster="http://www.videojs.com/img/poster.jpg">
+          <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+          <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+          <track kind="captions" src="/captions.vtt" srclang="en" label="English"></track>
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser
+            that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+          </p>
+        </video>
+      </div>
+      <div id="chat-container">
+        <ul id="messages"></ul>
+        <form action="">
+          <input id="m" autocomplete="off" /><button>Send</button>
+        </form>
+      </div>
+
+    </div><!-- End of Container  -->
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var player = videojs('really-cool-video', { /* Options */ }, function() {
+        console.log('Good to go!');
+
+        this.muted(true);
+
+        // this.play(); // if you don't trust autoplay for some reason
+
+        // How about an event listener?
+        this.on('ended', function() {
+          console.log('awww...over so soon?');
+        });
+      });
+
+      var socket = io();
+      
+      $('form').submit(function(){
+      
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+      
+        return false;
+      });
+
+      socket.on('chat message', function(msg) {
+        $('#messages').append($('<li>').text(msg));
+      });
+    </script>
+  </body>
+</html>

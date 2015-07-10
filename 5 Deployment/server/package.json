@@ -1,0 +1,27 @@
+{
+  "name": "virtual-theater",
+  "version": "1.0.0",
+  "description": "A server that lets you watch a movie with someone over the web.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "theater"
+  ],
+  "author": "Colin Wageman",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.1.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-plumber": "^1.0.1",
+    "gulp-traceur": "^0.17.1",
+    "gulp-typescript": "^2.7.7",
+    "gulp-uglify": "^1.2.0"
+  },
+  "dependencies": {
+    "express": "^4.12.4",
+    "socket.io": "^1.3.5"
+  }
+}
