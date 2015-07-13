@@ -19,9 +19,8 @@ header {
   float: left;
 }
 
-.group {
-  width: 74em;
-  margin: 0 auto;
+footer {
+  margin: 2em 0;
 }
 
 .group:after {
@@ -39,6 +38,8 @@ body
   font-size: 16px;
   line-height: 1.6;
   word-wrap: break-word;
+  width: 74em;
+  margin: 0 auto;
 }
 
 a {
