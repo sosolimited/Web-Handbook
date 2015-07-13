@@ -1,6 +1,7 @@
 safe: true
 highlighter: pygments
 github_username: sosolimited
+title: Soso Web Handbook
 
 # Get absolute paths to work
 baseurl: "http://sosolimited.github.io/Web-Handbook"
