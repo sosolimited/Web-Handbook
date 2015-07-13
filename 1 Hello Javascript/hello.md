@@ -1,3 +1,8 @@
+---
+title: Hello, Javascript!
+layout: default
+---
+
 Hello, Javascript
 =================
 
@@ -18,7 +23,7 @@ Javascript, originally designed as the scripting language for Netscape Navigator
 - In the terminal with [Node](https://nodejs.org/), which exposes networking and filesystem features to javascript through V8. Or [Phantom](http://phantomjs.org/), which is a headless browser.
 - In a web-application wrapping environment with [Electron (née Atom-Shell)](https://github.com/atom/electron) or [nw.js (née Node-Webkit)](https://github.com/nwjs/nw.js/), which provide a native application host for web applications.
 
-### [Javascript Overview](javascript-overview.md)
+### [Javascript Overview](javascript-overview.html)
 
 - Objects/values/variables
 - Functions

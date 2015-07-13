@@ -1,11 +1,14 @@
 ---
+title: Client-Server Model
+layout: default
 ---
+
 > **Contents**
 > [Dividing Work Between Client and Server](#dividing-work-between-client-and-server)
 > [The Concept of the API](#the-concept-of-the-api)
 > [Streaming Data Between Clients and Servers](#streaming-data-between-clients-and-servers)
 
-Many of Soso's interactive pieces focus on transforming data onto physical form, either with video, lighting, or other media. Understanding and managing the flow of data is important when building the projects. Center to the use of this data is the client/server model. The model separates the processing, storing, and transmission of data (server's role) with the requesting and display/use of this data (client's role).
+Many of Soso’s interactive pieces focus on transforming data onto physical form, either with video, lighting, or other media. Understanding and managing the flow of data is important when building the projects. Center to the use of this data is the client/server model. The model separates the processing, storing, and transmission of data (server's role) with the requesting and display/use of this data (client's role).
 
 If using the example of an installation that displays a live feed of Twitter data, the computer driving the physical installation would take on the role of the client, and a remote computer that connects to Twitter and processes the live feed before passing it along to the client would take on the role of the server. The client and server will communicate with an agreed-upon protocol, which allows the client to request data in a way the server can understand, and the server will send back data in a way the client understands.
 

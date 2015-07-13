@@ -1,6 +1,6 @@
 ---
 title: Soso Web Handbook
-layout: post
+layout: default
 ---
 
 This is the index.

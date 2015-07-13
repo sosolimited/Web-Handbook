@@ -1,15 +1,20 @@
-> **Contents**  
-> [Database Schemas](#database-schemas)  
-> [Concept of Relational Schemas](#concept-of-relational-schemas)  
-> [CRUD](#crud)  
-> [Introduction to Document-oriented Databases](#introduction-to-document-oriented-databases)  
-> [MongoDB Basics](#mongodb-basics)  
+---
+title: Introduction to Databases
+layout: default
+---
+
+> **Contents**
+> [Database Schemas](#database-schemas)
+> [Concept of Relational Schemas](#concept-of-relational-schemas)
+> [CRUD](#crud)
+> [Introduction to Document-oriented Databases](#introduction-to-document-oriented-databases)
+> [MongoDB Basics](#mongodb-basics)
 
 Often when handling data streaming from a third party API source, your project concept may require the reordering and transformation of the source data into a format useful to your custom software. Your concept may call for batch analysis of this data, or providing your own custom API to allow other clients to access your backlog of this data. In these cases, it is useful to store the data long-term. Database software allows you to efficiently store custom data structures, providing an API for your software to query and retrieve it.
 
 # Database Schemas
 
-Databases store your data in an ordered structure you define. Generally, you want to divide different classes of data into different sets, or **tables**. Tables typically organize data around "nouns," like Tweets, People, Posts, Books. The structure of a table, or **schema**, defines the fields you are storing in the table. Using a Tweet as an example, fields defined in the schema may be 
+Databases store your data in an ordered structure you define. Generally, you want to divide different classes of data into different sets, or **tables**. Tables typically organize data around "nouns," like Tweets, People, Posts, Books. The structure of a table, or **schema**, defines the fields you are storing in the table. Using a Tweet as an example, fields defined in the schema may be
 
 ```
 tweet_id (int, unique)
@@ -41,8 +46,8 @@ author_bio (string)
 
 Relational databases allow you to establish relationships between multiple tables. Instead of giving every book multiple author field types, which could cause data to be unnecessarily duplicated across multiple books by the same author, you would add a single field to the Book schema called author_id (int), referencing a unique ID from the Authors table. This keeps the Books table as lean as possible while drawing useful connections to external structures of data. Database software allows you to write a single query that returns information from both tables.
 
-> <a href="http://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561" target="_blank">Relational Patterns in Databases</a>    
-> ![ARTICLE](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_article.png)  
+> <a href="http://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561" target="_blank">Relational Patterns in Databases</a>
+> ![ARTICLE](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_article.png)
 
 Two widely used relational database are MySQL and PostgreSQL.
 
@@ -132,13 +137,13 @@ db.tweets.find({
     }
 })
 
-// updating documents takes a search parameter in the same format as used by find(), 
-// plus another object with key-values you wish to change on the set of matched documents. 
-// You must specify which update operation you want to perform. `$set` is a common one, 
+// updating documents takes a search parameter in the same format as used by find(),
+// plus another object with key-values you wish to change on the set of matched documents.
+// You must specify which update operation you want to perform. `$set` is a common one,
 // which sets any key-value pairs you provide. Another is `$inc` which increments a property.
 db.tweets.update({'user': 'fathom'}, {
-    $set: { 
-        'num_retweets': 1000, 
+    $set: {
+        'num_retweets': 1000,
         'num_saves': 150
     }
 });
@@ -153,4 +158,4 @@ db.tweets.drop()
 db.dropDatabase()
 ```
 
-That covers the basic command line CRUD operations with Mongo. Because the Mongo command line uses Javascript as an engine, you'll find that the syntax for working with Mongo inside of a Node.js script is quite similar. 
+That covers the basic command line CRUD operations with Mongo. Because the Mongo command line uses Javascript as an engine, you'll find that the syntax for working with Mongo inside of a Node.js script is quite similar.
