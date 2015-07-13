@@ -1,0 +1,40 @@
+[{
+ "title": "Web Fundamentals",
+ "url": "/Web-Fundamentals.html"
+},
+{
+ "title": "Tool Setup",
+ "url": "/Tool-Setup.html"
+},
+{
+ "title": "Hello, Javascript!",
+ "sections": [
+    {
+      "title": "A bit about Javascript",
+      "url": "/1 Hello Javascript/hello.html"
+    },
+    {
+      "title": "Javascript, the Essential Parts.",
+      "url": "/1 Hello Javascript/javascript-overview.html"
+    }
+  ]
+},
+{
+ "title": "Drawing in Javascript",
+ "url": "/3 Drawing/drawing.html"
+},
+{
+ "title": "Client-Server Model",
+ "url": "/Client-Server-Model.html"
+
+},
+{
+ "title": "Introduction to Databases",
+ "url": "/Introduction-to-Databases.html"
+
+},
+{
+ "title": "Javascript Libraries and Frameworks",
+ "url": "/Javascript-Libraries-and-Frameworks.html"
+
+}]

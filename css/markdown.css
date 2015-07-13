@@ -9,13 +9,6 @@
   text-align: justify;
 }
 
-header {
-  width: 16em;
-  margin: 1em 0.5em;
-  padding: 0;
-  float: left;
-}
-
 footer {
   border-top: 1px solid #ddd;
   margin: 1em 0;
@@ -838,4 +831,20 @@ kbd {
   float: left;
   margin: 0.3em 0 0.25em -1.6em;
   vertical-align: middle;
+}
+
+/*
+ Sidebar navigation
+*/
+
+header {
+  width: 16em;
+  margin: 1em 0.5em;
+  padding: 0;
+  float: left;
+}
+
+li p {
+  margin: 0;
+  padding: 0;
 }
