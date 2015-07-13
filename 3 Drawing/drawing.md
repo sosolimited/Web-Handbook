@@ -1,4 +1,6 @@
 ---
+title: Drawing in Javascript
+layout: default
 ---
 
 <head>

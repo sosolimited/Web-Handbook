@@ -1,3 +1,8 @@
+---
+title: "Javascript: The Essential Parts"
+layout: default
+---
+
 # Javascript: The Essential Parts
 
 Taken from [David’s javascript guide for Bloomington Code School](https://github.com/sansumbrella/BCS/blob/gh-pages/2014/javascript-overview.md).

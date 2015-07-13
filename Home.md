@@ -1,0 +1,1 @@
+Welcome to the Web-Handbook wiki! Use the [Template](https://github.com/sosolimited/Web-Handbook/wiki/z_Template) page as a guideline for formatting your lessons. 
