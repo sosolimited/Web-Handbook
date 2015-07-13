@@ -3,12 +3,6 @@ title: Drawing in Javascript
 layout: default
 ---
 
-<head>
-  <meta charset="UTF-8">
-  <title>Drawing in Javascript</title>
-  <link rel="stylesheet" href="markdown.css" type="text/css"></link>
-</head>
-
 Drawing in Javascript
 =====================
 

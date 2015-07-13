@@ -1,5 +1,4 @@
 ---
-title: Soso Web Handbook
 layout: default
 ---
 
