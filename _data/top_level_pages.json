@@ -37,4 +37,25 @@
  "title": "Javascript Libraries and Frameworks",
  "url": "/Javascript-Libraries-and-Frameworks.html"
 
+},
+{
+ "title": "Hello, D3.js!",
+ "sections": [
+    {
+      "title": "Examples",
+      "url": "/D3-Handbook/examples.html"
+    },
+    {
+      "title": "A tour of D3.js",
+      "url": "/D3-Handbook/tour-of-d3.html"
+    },
+    {
+      "title": "Resources",
+      "url": "/D3-Handbook/resources.html"
+    },
+    {
+      "title": "Soso D3.js team workshop",
+      "url": "https://github.com/sosolimited/D3-Workshop"
+    }
+  ]
 }]
