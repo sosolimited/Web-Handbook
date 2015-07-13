@@ -1,9 +1,8 @@
+<h2>{{ site.title }}</h2>
 <header>
-
-    <a href="{{ site.baseurl }}/">{{ site.title }}</a>
-
+    <a href="{{ site.baseurl }}/">Index</a>
     <nav>
-      <ul>
+      <ol>
         {% for page in site.data.top_level_pages %}
           {% if page.title %}
           <li>
@@ -11,7 +10,6 @@
           </li>
           {% endif %}
         {% endfor %}
-      </ul>
+      </ol>
     </nav>
-
 </header>
