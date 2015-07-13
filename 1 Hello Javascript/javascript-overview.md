@@ -236,8 +236,8 @@ Sometimes, you want your program to do things only when certain conditions are m
 
 Use `if` when you want to do something if some condition is true.
 If you want to do something if a condition is not true, you can use `!` to indicate the opposite of what follows.
-```javascript
 
+```javascript
 // `if` does something once if a condition is true.
 if (someNumber === 5) {
   doSomething();
@@ -252,7 +252,6 @@ var array = [];
 while(array.length < 100) {
   array.push({ value: (array.length + 1) });
 }
-
 ```
 
 Notice the similarity in structure between if() { ... }, while() { ... }, and function () { ... }. They all store instructions inside the curly braces. They differ in when you enter the curly braces to run those instructions. Also, of the three, only function is an object that you can store in a variable.
