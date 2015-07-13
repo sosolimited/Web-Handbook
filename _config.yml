@@ -1,5 +1,9 @@
+safe: true
 highlighter: pygments
 github_username: sosolimited
+
+# Get absolute paths to work
+baseurl: "http://sosolimited.github.io/Web-Handbook"
 
 # Build Settings
 markdown: redcarpet
