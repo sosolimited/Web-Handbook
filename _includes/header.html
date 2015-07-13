@@ -4,7 +4,18 @@
     <nav>
       <ol>
         {% for page in site.data.top_level_pages %}
-          {% if page.title %}
+          {% if page.sections %}
+          <li>
+            <p>{{ page.title }}</p>
+            <ol>
+            {% for section in page.sections %}
+            <li>
+              <a class="page-link" href="{{ section.url | prepend: site.baseurl }}">{{ section.title }}</a>
+            </li>
+            {% endfor %}
+            </ol>
+          </li>
+          {% else %}
           <li>
             <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
           </li>
