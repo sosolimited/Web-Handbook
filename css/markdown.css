@@ -6,7 +6,7 @@
   width: 45em;
   margin: 0 0.5em;
   float: left;
-  text-align: justify;
+  text-align: left;
 }
 
 footer {
@@ -29,7 +29,7 @@ body
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  word-wrap: break-word;
+  text-align: left;
   width: 63em;
   margin: 0 auto;
 }
@@ -143,6 +143,12 @@ hr:after {
   content: "";
 }
 
+.title{
+  font-weight: 200;
+  font-size:54px;
+}
+
+}
 h1,
 h2,
 h3,
