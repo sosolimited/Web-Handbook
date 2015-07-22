@@ -129,11 +129,11 @@ As mentioned before, elements can have attributes. A common attribute you'll fin
 `id` and `class` have other uses beyond CSS, but we'll focus their use with styling.
 
 > <a href="http://htmldog.com/guides/html/beginner/" target="_blank">HTML Tutorial</a>
-> ![TUTORIAL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tutorial.png)
+> ![TUTORIAL](images/links/tag_tutorial.png)
 > <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Introduction" target="_blank">Introduction to HTML</a>
-> ![TUTORIAL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tutorial.png)
+> ![TUTORIAL](images/links/tag_tutorial.png)
 > <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference" target="_blank">Extensive Reference to HTML Elements and Their Attributes</a>
-> ![REFERENCE](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_reference.png)
+> ![REFERENCE](images/links/tag_reference.png)
 
 # CSS Basics
 
@@ -243,13 +243,13 @@ Once you write the CSS selector in your declaration, you can set individual prop
 One final introductory note regarding CSS: CSS stands for `cascading style sheets`. The cascading refers to the fact that, because HTML elements can have the same properties set multiple times from different files or locations, there are rules for assigning priority to these multiple declarations.
 
 > <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors" target="_blank">Guide to CSS Selectors</a>
-> ![TUTORIAL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tutorial.png)
+> ![TUTORIAL](images/links/tag_tutorial.png)
 
 > <a href="http://www.htmldog.com/guides/css/beginner/" target="_blank">Beginner's Guide to CSS</a>
-> ![TUTORIAL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tutorial.png)
+> ![TUTORIAL](images/links/tag_tutorial.png)
 
 > <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started" target="_blank">Getting Started With CSS</a>
-> ![TUTORIAL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tutorial.png)
+> ![TUTORIAL](images/links/tag_tutorial.png)
 
 # CSS Layout and Positioning
 
@@ -279,7 +279,7 @@ Without any CSS applied to the classes, the elements will stack vertically. The 
 The `float` property when set to `left` causes an element to stick as far as left as possible, and more importantly, causes the following element to float towards that direction unless its float property is cleared.
 
 > <a href="http://www.smashingmagazine.com/2009/10/19/the-mystery-of-css-float-property/" target="_blank">The Mystery of the CSS Float Property</a>
-> ![TUTORIAL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tutorial.png)
+> ![TUTORIAL](images/links/tag_tutorial.png)
 
 ## The Position Property
 
@@ -328,7 +328,7 @@ On occasion you will need more control over the position of an element than floa
 CSS positioning and floating is tricky in practice and involves knowing a lot of quirks with how a browser's CSS layout engine works. This section just touched on the basics of the subject matter.
 
 > <a href="http://learnlayout.com/position.html" target="_blank">Guide to CSS Positioning</a>
-> ![TUTORIAL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tutorial.png)
+> ![TUTORIAL](images/links/tag_tutorial.png)
 
 # CSS Interactivity and Transitions
 
@@ -386,7 +386,7 @@ What if we wanted to animate the background-color from gray to red on hover? CSS
 What the definition means is: "when background-color is changed on elements targeted with this selector, animate between the existing value and new value for a duration of 500ms." There are additional arguments you can tack on to the transition property value, like the animation curve type and delay. Not every CSS property is animatable, but in general CSS properties that take color and dimension are.
 
 > <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference" target="_blank">Comprehensive Reference to CSS Properties, Selectors, and Pseudo-selectors</a>
-> ![REFERENCE](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_reference.png)
+> ![REFERENCE](images/links/tag_reference.png)
 
 # Resources
 
