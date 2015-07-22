@@ -3,20 +3,22 @@ title: Web Fundamentals
 layout: default
 ---
 
-> **Contents**
-> [Why create for the web?](#why-create-for-the-web)
-> [The Box Model](#the-box-model)
-> [Shaping the Boxes: Structure and Style](#shaping-the-boxes-structure-and-style)
-> [Web Infrastructure](#web-infrastructure)
-> [HTML Basics](#html-basics)
-> [CSS Basics](#css-basics)
-> [CSS Layout and Positioning](#css-layout-and-positioning)
-> [CSS Interactivity and Transitions](#css-interactivity-and-transitions)
-> [Resources](#resources)
-
-# Why create for the web?
+<h1 class="title">Web Fundamentals</h1>
 
 At Soso, we find ourselves utilizing web technologies on a regular basis. Much of our development hours are spent building for the web. Interactive visualizations, content management systems driving C++ apps, and backend configuration pages are a handful of recent projects we made to run in web browsers.
+
+> **Contents**<br/>
+> [Why create for the web?](#why-create-for-the-web)<br/>
+> [The Box Model](#the-box-model)<br/>
+> [Shaping the Boxes: Structure and Style](#shaping-the-boxes-structure-and-style)<br/>
+> [Web Infrastructure](#web-infrastructure)<br/>
+> [HTML Basics](#html-basics)<br/>
+> [CSS Basics](#css-basics)<br/>
+> [CSS Layout and Positioning](#css-layout-and-positioning)<br/>
+> [CSS Interactivity and Transitions](#css-interactivity-and-transitions)<br/>
+> [Resources](#resources)<br/>
+
+# Why create for the web?
 
 Often we pick the web as a platform for any number of reasons: ease of development and prototyping, large amount of pre-existing software we can utilize in our own work, the level of universal access the web provides, compatibility across a large number of devices, and the general richness of the web toolset.
 
@@ -128,12 +130,17 @@ As mentioned before, elements can have attributes. A common attribute you'll fin
 
 `id` and `class` have other uses beyond CSS, but we'll focus their use with styling.
 
-> <a href="http://htmldog.com/guides/html/beginner/" target="_blank">HTML Tutorial</a>
-> ![TUTORIAL](images/links/tag_tutorial.png)
-> <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Introduction" target="_blank">Introduction to HTML</a>
-> ![TUTORIAL](images/links/tag_tutorial.png)
-> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference" target="_blank">Extensive Reference to HTML Elements and Their Attributes</a>
-> ![REFERENCE](images/links/tag_reference.png)
+> <a href="http://htmldog.com/guides/html/beginner/" target="_blank">HTML Tutorial</a><br/>
+> ![TUTORIAL](images/links/tag_tutorial.png)<br/>
+> HTML is nothing more than fancy structured content and the visual formatting of that content will come later when we tackle CSS. You might find different approaches elsewhere on the web but HTML Dog focuses on best practice from the outset and getting into the frame of mind of doing things the right way from the start will lead to much better results in the end.
+
+> <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Introduction" target="_blank">Introduction to HTML</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
+> This article from Mozilla Developer Network provides an introduction to HTML.
+
+> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference" target="_blank">Extensive Reference to HTML Elements and Their Attributes</a><br/>
+> ![REFERENCE](images/links/tag_reference.png)<br/>
+> The articles here provide reference materials you can refer to while you develop for the Web. MDN offers references to all of the elements that comprise HTML, as well as for each of the attributes that control the behavior of the elements.
 
 # CSS Basics
 
@@ -242,14 +249,17 @@ Once you write the CSS selector in your declaration, you can set individual prop
 
 One final introductory note regarding CSS: CSS stands for `cascading style sheets`. The cascading refers to the fact that, because HTML elements can have the same properties set multiple times from different files or locations, there are rules for assigning priority to these multiple declarations.
 
-> <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors" target="_blank">Guide to CSS Selectors</a>
-> ![TUTORIAL](images/links/tag_tutorial.png)
+> <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors" target="_blank">Guide to CSS Selectors</a><br/>
+> ![TUTORIAL](images/links/tag_tutorial.png)<br/>
+> This tutorial from the Mozilla Developer Network explains how you can apply styles selectively, and how different kinds of selectors have different priorities. <br/>
 
-> <a href="http://www.htmldog.com/guides/css/beginner/" target="_blank">Beginner's Guide to CSS</a>
-> ![TUTORIAL](images/links/tag_tutorial.png)
+> <a href="http://www.htmldog.com/guides/css/beginner/" target="_blank">Beginner's Guide to CSS</a><br/>
+> ![TUTORIAL](images/links/tag_tutorial.png)<br/>
+> This tutorial from HTML Dog teaches the bare essentials of HTML.
 
-> <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started" target="_blank">Getting Started With CSS</a>
-> ![TUTORIAL](images/links/tag_tutorial.png)
+> <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started" target="_blank">Getting Started With CSS</a><br/>
+> ![TUTORIAL](images/links/tag_tutorial.png)<br/>
+> This tutorial from the Mozilla Developer Network introduces you to the basic features and language (the syntax) for CSS. The tutorial also includes sample exercises you can try on your own computer to see the effects of CSS and features that work in modern browsers.
 
 # CSS Layout and Positioning
 
@@ -278,8 +288,9 @@ Without any CSS applied to the classes, the elements will stack vertically. The 
 
 The `float` property when set to `left` causes an element to stick as far as left as possible, and more importantly, causes the following element to float towards that direction unless its float property is cleared.
 
-> <a href="http://www.smashingmagazine.com/2009/10/19/the-mystery-of-css-float-property/" target="_blank">The Mystery of the CSS Float Property</a>
-> ![TUTORIAL](images/links/tag_tutorial.png)
+> <a href="http://www.smashingmagazine.com/2009/10/19/the-mystery-of-css-float-property/" target="_blank">The Mystery of the CSS Float Property</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
+> This article from Smashing Magazine discusses exactly what the float property is and how it affects elements in particular contexts. It takes a look at some of the differences that can occur in connection with this property in the most commonly-used browsers. Finally, it showcases a few practical uses for the CSS float property.
 
 ## The Position Property
 
@@ -327,8 +338,9 @@ On occasion you will need more control over the position of an element than floa
 
 CSS positioning and floating is tricky in practice and involves knowing a lot of quirks with how a browser's CSS layout engine works. This section just touched on the basics of the subject matter.
 
-> <a href="http://learnlayout.com/position.html" target="_blank">Guide to CSS Positioning</a>
-> ![TUTORIAL](images/links/tag_tutorial.png)
+> <a href="http://learnlayout.com/position.html" target="_blank">Guide to CSS Positioning</a><br/>
+> ![TUTORIAL](images/links/tag_tutorial.png)<br/>
+> Learn to use the CSS `position` property in this tutorial from Learn CSS Layout.
 
 # CSS Interactivity and Transitions
 
@@ -385,17 +397,25 @@ What if we wanted to animate the background-color from gray to red on hover? CSS
 
 What the definition means is: "when background-color is changed on elements targeted with this selector, animate between the existing value and new value for a duration of 500ms." There are additional arguments you can tack on to the transition property value, like the animation curve type and delay. Not every CSS property is animatable, but in general CSS properties that take color and dimension are.
 
-> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference" target="_blank">Comprehensive Reference to CSS Properties, Selectors, and Pseudo-selectors</a>
-> ![REFERENCE](images/links/tag_reference.png)
+> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference" target="_blank">Mozilla Developer Network: CSS Reference</a><br/>
+> ![REFERENCE](images/links/tag_reference.png)<br/>
+> A comprehensive reference to CSS properties, selectors, and pseudo-selectors.
 
 # Resources
 
 ## HTML
 
-[HTML validator](https://validator.w3.org/)
+> <a href="https://validator.w3.org/" target="_blank">HTML Validator</a><br/>
+> ![TOOL](images/links/tag_tool.png)<br/>
+> This validator checks the markup validity of Web documents in HTML, XHTML, SMIL, MathML, etc. 
 
 ## CSS
 
-["Can I Use" guide to browser compatibility](http://caniuse.com/)
+> <a href="http://caniuse.com/" target="_blank">"Can I Use" Guide to Browser Compatibility</a><br/>
+> ![TOOL](images/links/tag_tool.png)<br/>
+> "Can I use" provides up-to-date browser support tables for support of front-end web technologies on desktop and mobile web browsers.
 
-[CSS validator](https://jigsaw.w3.org/css-validator/)
+> <a href="https://jigsaw.w3.org/css-validator/" target="_blank">CSS Validator</a><br/>
+> ![TOOL](images/links/tag_tool.png)<br/>
+> The W3C CSS Validation Service is a free software created by the W3C to help Web designers and Web developers check Cascading Style Sheets (CSS). It can be used on this free service on the web, or downloaded and used either as a java program, or as a java servlet on a Web server. Not only will it compare your style sheets to the CSS specifications, helping you find errors, typos, or incorrect uses of CSS, it will also tell you when your CSS poses some risks in terms of usability.
+
