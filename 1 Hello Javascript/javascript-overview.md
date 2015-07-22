@@ -175,7 +175,6 @@ array.forEach(function (element) {
   largest = Math.max(largest, element);
 });
 
-
 // Create values in a new array from the existing array using map().
 var other = array.map(function (element) {
   return element * 2;
@@ -186,7 +185,6 @@ var other = [];
 array.forEach(function (element) {
   other.push(element * 2);
 });
-
 
 // Create a new array that contains some elements from the first array using filter().
 var smaller = array.filter(function (element) {

@@ -2,7 +2,6 @@ Web-Handbook
 ============
 A collection of resources on Javascript and coding for the web.
 
-
 ## Other working materials
 
 [Google Doc](https://docs.google.com/document/d/1VOw8QANeKeQoANMjAcm8sYywmslGq9e5mSgsUZaxp7c/edit)
@@ -18,7 +17,6 @@ marked -i something.md -o something.html --gfm
 
 We are working with git right now.
 
-
 ## Running the jekyll build locally
 
 You need to specify a special base url in order for relative links to work.
@@ -30,4 +28,3 @@ jekyll serve --baseurl=""
 ```
 
 Note that you may need to restart jekyll from the command line multiple times while working. It is pretty crashy.
-

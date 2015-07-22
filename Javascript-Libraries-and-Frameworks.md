@@ -11,7 +11,6 @@ Javascript is great all on its own, but there are lots of awesome libraries, fra
 
 _Image from [html9responsiveboilerstrapjs.com](http://html9responsiveboilerstrapjs.com/)_
 
-
 > **Contents**
 > [A Simple Webpage: HTML + CSS + pure JS](#simple-webpage)
 > [Javascript Add-On Overview](#add-on-overview)
@@ -62,7 +61,6 @@ With JQuery, we can use CSS selectors in our code by appending a '$'. For exampl
     $( 'li' ); // Selects a list item
     $( '#menu'); // Selects a div with the 'menu' id
 
-
 #### Function Chaining
 After selecting a div, we can then call one of JQuery's other functions.  JQuery is chainable, meaning we can link together multiple actions.  For example:
 
@@ -80,7 +78,6 @@ JQuery is handy for animating CSS properties and using pseudo-selectors.  See ho
     $(".button").click( function() {
      $(this).fadeOut(400);
     });
-
 
 #### When to use JQuery
 
@@ -114,7 +111,6 @@ When to use underscore.js?
 * If you are using ANY data, collection of data, or data structures
 * If you are comparing objects or values beyond the basic types
 * For most Soso sites
-
 
 # Web Application Frameworks
 
@@ -251,7 +247,6 @@ CMSes allow many different people to work on content.
 * To provide a non-technical interface to web content
 * When a client wants to change content (e.g. on a brand wall, light display, etc)
 
-
 ### Do you ACTUALLY need a CMS?
 
 It's tempting to give the client more freedom by offering them a CMS to control content.  Oftentimes, a client may think they want CMS, but may not actually use it.
@@ -317,7 +312,6 @@ Reasons to use Node.js
 * Running JS on embedded systems (like a Raspberry Pi or [Tessel](https://tessel.io/) )
 * Collecting sensor data and storing it in a database
 * Jumping on board the Internet of Things train
-
 
 #### Node Package Manager
 

@@ -207,7 +207,6 @@
    * @memberOf module:webgl-utils
    */
 
-
   /**
    * Loads a shader.
    * @param {WebGLRenderingContext} gl The WebGLRenderingContext to use.
@@ -917,8 +916,6 @@
     return isVisible && isFrameVisible(topWindow);
   }
 
-
-
   // Add `push` to a typed array. It just keeps a 'cursor'
   // and allows use to `push` values into the array so we
   // don't have to manually compute offsets
@@ -1073,7 +1070,6 @@
    * @memberOf module:webgl-utils
    */
 
-
   /**
    * Creates a set of attribute data and WebGLBuffers from set of arrays
    *
@@ -1139,7 +1135,6 @@
    * @property {Object.<string, module:webgl-utils.AttribInfo>} attribs The attribs approriate to call `setAttributes`
    * @memberOf module:webgl-utils
    */
-
 
   /**
    * Creates a BufferInfo from an object of arrays.

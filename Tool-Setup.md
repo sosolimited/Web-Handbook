@@ -175,7 +175,6 @@ $ subl file.txt
 
 Key thing to note here is that applications managed by brew are contained in `/usr/local/bin/`.
 
-
 # Vagrant
 
 Vagrant is a tool for working on projects within a virtual machine. Instead of looking to your system for dependencies and configurations, you’ll work within a virtualized Unix environment. This makes it incredibly easy for all of us to work in identical environments and it makes deployment a breeze.
