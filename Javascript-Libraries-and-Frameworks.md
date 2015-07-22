@@ -103,7 +103,7 @@ properties, deep comparisons, etc.
 Check this out to see what underscore can do for you:
 
 > <a href="http://code.tutsplus.com/tutorials/getting-cozy-with-underscorejs--net-24581" target="_blank">Getting cozy with Underscore.js</a>
-> ![ARTICLE](https://github.com/sosolimited/Design-Handbook/blob/master/images/tag_article.png)
+> ![ARTICLE](images/links/tag_article.png)
 > Nice intro to Underscore.
 
 When to use underscore.js?
@@ -125,11 +125,11 @@ Web application frameworks go beyond what a library does.  They provide structur
 ### Background reading
 
 > <a href="http://www.jeffknupp.com/blog/2014/03/03/what-is-a-web-framework/" target="_blank">What is a web framework?</a>
-> ![ARTICLE](https://github.com/sosolimited/Design-Handbook/blob/master/images/tag_article.png)
+> ![ARTICLE](images/links/tag_article.png)
 > Quora post.
 
 > <a href="http://markonphp.com/dont-reinvent-wheel-use-a-framework/" target="_blank">Don't reinvent the wheel, use a framework!</a>
-> ![ARTICLE](https://github.com/sosolimited/Design-Handbook/blob/master/images/tag_article.png)
+> ![ARTICLE](images/links/tag_article.png)
 > Blog post.
 
 ## [Model-View-Controllers] (https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
@@ -141,11 +141,11 @@ Model-view controllers are a particular kind of web framework that separate the 
 _Image from [wikipedia.org](http://wikipedia.org)_
 
 > <a href="http://www.quora.com/When-does-it-make-sense-to-use-an-MVC-framework-for-JavaScript" target="_blank">When does it make sense to use an MVC?</a>
-> ![ARTICLE](https://github.com/sosolimited/Design-Handbook/blob/master/images/tag_article.png)
+> ![ARTICLE](images/links/tag_article.png)
 > Quora post.
 
 > <a href="http://blog.iandavis.com/2008/12/what-are-the-benefits-of-mvc/" target="_blank">What are the benefits of an MVC?</a>
-> ![ARTICLE](https://github.com/sosolimited/Design-Handbook/blob/master/images/tag_article.png)
+> ![ARTICLE](images/links/tag_article.png)
 > Blog post.
 
 In an MVC, the different components can be described as follows:
@@ -179,11 +179,11 @@ There are many popular MVC frameworks, and deciding which one to use can be inti
 The three most popular frameworks include Backbone, Angular, and Ember.  React.js is a partial MVC framework (Just the V), and will also be explored.
 
 > <a href="http://www.smashingmagazine.com/2012/07/27/journey-through-the-javascript-mvc-jungle/" target="_blank">Journey through the Javascript MVC Jungle</a>
-> ![ARTICLE](https://github.com/sosolimited/Design-Handbook/blob/master/images/tag_article.png)
+> ![ARTICLE](images/links/tag_article.png)
 > Lengthy article that includes some helpful background info and tips.
 
 > <a href="https://www.airpair.com/js/javascript-framework-comparison" target="_blank">Javascript Framework Comparison</a>
-> ![ARTICLE](https://github.com/sosolimited/Design-Handbook/blob/master/images/tag_article.png)
+> ![ARTICLE](images/links/tag_article.png)
 > Comparison between Backbone, Angular, and Ember.js.
 
 ### [Backbone.js](http://backbonejs.org/)
@@ -274,7 +274,7 @@ Some questions to consider before integrating a CMS
 ## CMS Examples: Open-Source
 
 > <a href="http://websitesetup.org/cms-comparison-wordpress-vs-joomla-drupal/" target="_blank">Wordpress vs. Joomla! vs. Drupal </a>
-> ![ARTICLE](https://github.com/sosolimited/Design-Handbook/blob/master/images/tag_article.png)
+> ![ARTICLE](images/links/tag_article.png)
 > Comparison of popular Open-Source CMS systems.
 
 ### [Wordpress](https://wordpress.com/)
@@ -323,9 +323,9 @@ Another great thing about Node is the convenient Node Package Manager (or npm fo
 * johnny-five (JS Hardware + Robotics framework)
 
 > <a href="http://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js" target="_blank">Why the Hell Would I Use Node.js?</a>
-> ![ARTICLE](https://github.com/sosolimited/Design-Handbook/blob/master/images/tag_article.png)
+> ![ARTICLE](images/links/tag_article.png)
 > Introduction to Node.js capabilities
 
 > <a href="https://learn.adafruit.com/node-embedded-development/why-node-dot-js" target="_blank">Installing Node.js on a Raspberry Pi</a>
-> ![ARTICLE](https://github.com/sosolimited/Design-Handbook/blob/master/images/tag_article.png)
+> ![ARTICLE](images/links/tag_article.png)
 > Intro to Node + Tutorial for Installing Node on a Pi
