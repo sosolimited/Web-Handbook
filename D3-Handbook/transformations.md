@@ -11,7 +11,6 @@ http://learnjsdata.com/
 
 There are exceptions, however -- I prefer other tactics to theirs on occasion -- and they will be posted here. Feel free to do the same if you notice a better way to do things.
 
-
 ## Exceptions:
 - [Deep Cloning](http://learnjsdata.com/iterate_data.html):
 	- for collection of objects with only basic property types (ints, strings, etc -- but not Date objs, and other complex types), that can also be nested (ie. "deep"), use:
@@ -44,7 +43,6 @@ There are exceptions, however -- I prefer other tactics to theirs on occasion --
 	```javascript
 	filteredPatentObjects.reverse();
 	```
-
 
 ## Benchmarking performance
 

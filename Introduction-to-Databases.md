@@ -47,7 +47,7 @@ author_bio (string)
 Relational databases allow you to establish relationships between multiple tables. Instead of giving every book multiple author field types, which could cause data to be unnecessarily duplicated across multiple books by the same author, you would add a single field to the Book schema called author_id (int), referencing a unique ID from the Authors table. This keeps the Books table as lean as possible while drawing useful connections to external structures of data. Database software allows you to write a single query that returns information from both tables.
 
 > <a href="http://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561" target="_blank">Relational Patterns in Databases</a>
-> ![ARTICLE](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_article.png)
+> ![ARTICLE](images/links/tag_article.png)
 
 Two widely used relational database are MySQL and PostgreSQL.
 

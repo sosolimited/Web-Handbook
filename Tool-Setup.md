@@ -14,7 +14,7 @@ layout: default
 Personally I love Oh My Zsh as my shell. It does really cool stuff like tell you if you’re in a git repo, what the branch is and its status.
 
 > <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank">Oh My ZSH</a>
-> ![TOOL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tool.png)
+> ![TOOL](images/links/tag_tool.png)
 > Oh My Zsh is an open source, community-driven framework for managing your zsh configuration.
 
 Install it within Terminal with the following line:
@@ -27,7 +27,7 @@ You can add all kinds of themes. I think the default is pretty solid.
 Download the <a href="http://ethanschoonover.com/solarized" target="_blank">Solarized</a> color space. Solarized is a sixteen color palette (eight monotones, eight accent colors) designed for use with terminal and gui applications.
 
 > <a href="https://github.com/tomislav/osx-terminal.app-colors-solarized" target="_blank">Solarized on Github</a>
-> ![TOOL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tool.png)
+> ![TOOL](images/links/tag_tool.png)
 > Download the Solarized color space files from github and import them (⌘O) within Terminal. Then using the preferences you can set new tabs and new windows to open with that setting.
 
 # Homebrew
@@ -35,7 +35,7 @@ Download the <a href="http://ethanschoonover.com/solarized" target="_blank">Sola
 Brew is our system-wide package manager of choice. Great for adding packages to your system at the top level. It tracks everything and makes it easy to upgrade.
 
 > <a href="http://brew.sh/" target="_blank">Homebrew</a>
-> ![TOOL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tool.png)
+> ![TOOL](images/links/tag_tool.png)
 > Package Manager. Allows to install, remove and updated applications and packages. Full documentation is available <a href="https://github.com/Homebrew/homebrew/tree/master/share/doc/homebrew#readme" target="_blank">here</a>.
 
 Install through the command line with the following:
@@ -79,13 +79,13 @@ Homebrew keeps older versions of packages installed, in case you want to roll ba
 $ brew cleanup
 ```
 > <a href="http://sourabhbajaj.com/mac-setup/Homebrew/Usage.html" target="_blank"> Using Homebrew: Mac OS X Setup Guide</a>
-> ![REFERENCE](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_reference.png)
+> ![REFERENCE](images/links/tag_reference.png)
 > Usage is summarized really nicely here - a pretty helpful guide for dev environment setup.
 
 ### Homebrew Cask
 
 > <a href="http://caskroom.io/" target="_blank">Homebrew Cask</a>
-> ![TOOL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tool.png)
+> ![TOOL](images/links/tag_tool.png)
 > Homebrew Cask allows you to use brew for the installation of GUI Mac applications. You can even install sublime with cask. Apps are kept in their Caskroom under /opt and symlinked to your ~/Applications folder.
 
 Initial setup
@@ -105,7 +105,7 @@ Basic usage is summarized <a href="https://github.com/caskroom/homebrew-cask/blo
 # Sublime Text
 
 > <a href="http://www.sublimetext.com/" target="_blank">Sublime Text</a>
-> ![TOOL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tool.png)
+> ![TOOL](images/links/tag_tool.png)
 > Sublime Text is a sophisticated text editor for code, markup and prose.
 
 Can be downloaded or installed with brew cask.
@@ -175,13 +175,12 @@ $ subl file.txt
 
 Key thing to note here is that applications managed by brew are contained in `/usr/local/bin/`.
 
-
 # Vagrant
 
 Vagrant is a tool for working on projects within a virtual machine. Instead of looking to your system for dependencies and configurations, you’ll work within a virtualized Unix environment. This makes it incredibly easy for all of us to work in identical environments and it makes deployment a breeze.
 
 > <a href="https://www.vagrantup.com/" target="_blank">Vagrant</a>
-> ![TOOL](https://github.com/sosolimited/Web-Handbook/blob/master/images/links/tag_tool.png)
+> ![TOOL](images/links/tag_tool.png)
 > Vagrant is a tool for building complete development environments.
 
 Other members of your team create their development environments from the same configuration, so whether you're working on Linux, Mac OS X, or Windows, all your team members are running code in the same environment, against the same dependencies, all configured the same way.

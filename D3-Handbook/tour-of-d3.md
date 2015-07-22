@@ -16,7 +16,6 @@ layout: default
 - Performance Limits
 - Next Steps
 
-
 ## What is D3?
 
 - [D3.js](http://d3js.org/) is a Javascript library.
@@ -32,7 +31,6 @@ At Soso, we use it mainly for 2 things:
 	- the prototype could be a 1st phase in a large project for which the final product is a robust C++ app.
 
 Once you're used to it, D3 really is great for taking a bunch of data and throwing it up on the page, to see what it looks like.
-
 
 ## The Basics
 
@@ -58,9 +56,7 @@ For example, here's a [basic intro tutorial](http://chimera.labs.oreilly.com/boo
 
 For understanding the trickier parts, I will break it down, below.
 
-
 ## A More Detailed Explanation
-
 
 ### Attaching Elements to the Page
 
@@ -70,7 +66,6 @@ More resources for understanding how the data-join & general update pattern work
 - http://bost.ocks.org/mike/join/
 - http://bl.ocks.org/mbostock/3808234
 - http://bost.ocks.org/mike/selection/
-
 
 ### Transforming the Data
 
@@ -99,7 +94,6 @@ _... TO BE CONTINUED_
 I defer 99% of explanations on how to transform data to http://learnjsdata.com/ since they really do cover everything. However, I do sometimes recommend other tactics for certain transformations, which you can read here:
 - [More On Transformations](transformations.html)
 
-
 ### Transitioning & Animating the Data
 
 More examples for animating and transitioning:
@@ -108,12 +102,10 @@ More examples for animating and transitioning:
 
 _... TO BE CONTINUED_
 
-
 ## Graphs built into D3
 
 D3 provides the following [layouts](https://github.com/mbostock/d3/wiki/Layouts) that generate pre-made graphs for you, if you feed them the data correctly (each layout wants its data in different ways).
 - See the [examples gallery](https://github.com/mbostock/d3/wiki/Gallery) for ideas of what they can look like.
-
 
 ## Performance Limits
 
@@ -124,7 +116,6 @@ Using Canvas with D3 can be more performant, depending on the scenario.
 Using WebGL is the most performant, as it uses the graphics card, but that requires very different techniques that don't necessarily blend well with D3.
 
 _... TO BE CONTINUED_
-
 
 ## Next Steps
 
@@ -145,4 +136,3 @@ _WIP: MVC (react.js, link openVizConfVideo, Swizec Teller book), multiple file l
 ### Potentially useful libraries
 
 _WIP: MISO, NVD3, etc? see scott murray's book for more._
-
