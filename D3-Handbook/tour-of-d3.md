@@ -3,20 +3,17 @@ title: Tour of D3.js
 layout: default
 ---
 
-# A Soso Tour of D3.js
+<h1 class="title">A Soso Tour of D3.js</h1>
 
-**Table of Contents**
-- What is D3?
-- The Basics
-- A More Detailed Explanation
-	- Attaching Elements to the Page
-	- Transforming the Data
-	- Transitioning & Animating the Data
-- Graphs built into D3
-- Performance Limits
-- Next Steps
+> **Table of Contents**<br/>
+> [What is D3?](#what-is-d3)<br/>
+> [The Basics](#the-basics)<br/>
+> [A More Detailed Explanation](#a-more-detailed-explanation)<br/>
+> [Graphs built into D3](#graphs-built-into-d3)<br/>
+> [Performance Limits](#performance-limits)<br/>
+> [Next Steps](#next-steps)<br/>
 
-## What is D3?
+# What is D3?
 
 - [D3.js](http://d3js.org/) is a Javascript library.
 - it's for binding data to DOM elements.
@@ -25,6 +22,7 @@ layout: default
 - it can be used for advanced charts too (like [maps](http://bl.ocks.org/r4vi/4185745), [force-layouts](http://bl.ocks.org/mbostock/929623), and many other [weird chart types](http://bost.ocks.org/mike/uberdata/)).
 
 At Soso, we use it mainly for 2 things:
+
 - to quickly **see the data**, get a sense of its shape, and understand what deeper meaning it may hold or what "stories" could emerge from it.
 	- this often leads us to the creation of a _dashboard_ to see and browse the data, which is also a great tool for the client.
 - to quickly **create a prototype** of a more complex app that want to eventually create.
@@ -32,7 +30,7 @@ At Soso, we use it mainly for 2 things:
 
 Once you're used to it, D3 really is great for taking a bunch of data and throwing it up on the page, to see what it looks like.
 
-## The Basics
+# The Basics
 
 As I explain things, I will often refer to Scott Murray's fantastic (and free!) online book, [found here](http://chimera.labs.oreilly.com/books/1230000000345/index.html).
 
@@ -56,13 +54,14 @@ For example, here's a [basic intro tutorial](http://chimera.labs.oreilly.com/boo
 
 For understanding the trickier parts, I will break it down, below.
 
-## A More Detailed Explanation
+# A More Detailed Explanation
 
 ### Attaching Elements to the Page
 
 With D3, you can attach HTML or SVG elements to the page. Usually, people use SVG elements, as SVG provides primitive shapes already (lines, circles, rectangles, etc) and are vector-based (meaning, they are always crisp, no matter if you scale them, and never pixelated).
 
 More resources for understanding how the data-join & general update pattern work:
+
 - http://bost.ocks.org/mike/join/
 - http://bl.ocks.org/mbostock/3808234
 - http://bost.ocks.org/mike/selection/
@@ -91,23 +90,25 @@ _... TO BE CONTINUED_
 
 #### Going Deeper
 
-I defer 99% of explanations on how to transform data to http://learnjsdata.com/ since they really do cover everything. However, I do sometimes recommend other tactics for certain transformations, which you can read here:
-- [More On Transformations](transformations.html)
+> <a href="transformations.html" target="_blank">More On Transformations</a><br/>
+> ![REFERENCE](../images/links/tag_reference.png)<br/>
+> I defer 99% of explanations on how to transform data to http://learnjsdata.com/ since they really do cover everything. However, I do sometimes recommend other tactics for certain transformations, which you can read here.
 
-### Transitioning & Animating the Data
+### Transitioning and Animating the Data
 
 More examples for animating and transitioning:
+
 - http://bl.ocks.org/mbostock/1125997
 - http://bl.ocks.org/mbostock/1256572
 
 _... TO BE CONTINUED_
 
-## Graphs built into D3
+# Graphs built into D3
 
 D3 provides the following [layouts](https://github.com/mbostock/d3/wiki/Layouts) that generate pre-made graphs for you, if you feed them the data correctly (each layout wants its data in different ways).
 - See the [examples gallery](https://github.com/mbostock/d3/wiki/Gallery) for ideas of what they can look like.
 
-## Performance Limits
+# Performance Limits
 
 Using SVG in D3 becomes too heavy when you have more than 3000 data elements on the page.
 
@@ -117,7 +118,7 @@ Using WebGL is the most performant, as it uses the graphics card, but that requi
 
 _... TO BE CONTINUED_
 
-## Next Steps
+# Next Steps
 
 _WIP_
 

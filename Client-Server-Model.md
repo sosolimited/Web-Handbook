@@ -3,10 +3,13 @@ title: Client-Server Model
 layout: default
 ---
 
-> **Contents**
-> [Dividing Work Between Client and Server](#dividing-work-between-client-and-server)
-> [The Concept of the API](#the-concept-of-the-api)
-> [Streaming Data Between Clients and Servers](#streaming-data-between-clients-and-servers)
+<h1 class="title">Client-Server Model</h1>
+
+> **Contents**<br/>
+> [Dividing Work Between Client and Server](#dividing-work-between-client-and-server)<br/>
+> [The Concept of the API](#the-concept-of-the-api)<br/>
+> [Streaming Data Between Clients and Servers](#streaming-data-between-clients-and-servers)<br/>
+> [Summary](#summary)<br/>
 
 Many of Soso’s interactive pieces focus on transforming data onto physical form, either with video, lighting, or other media. Understanding and managing the flow of data is important when building the projects. Center to the use of this data is the client/server model. The model separates the processing, storing, and transmission of data (server's role) with the requesting and display/use of this data (client's role).
 

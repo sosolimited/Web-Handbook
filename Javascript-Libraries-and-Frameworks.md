@@ -3,7 +3,7 @@ title: Javascript Libraries and Frameworks
 layout: default
 ---
 
-# Introduction
+<h1 class="title">Javascript Libraries and Frameworks</h1>
 
 Javascript is great all on its own, but there are lots of awesome libraries, frameworks, and more to make JS even more powerful. This guide is designed to help you pick the right JS add-ons for a project, without getting overwhelmed by buzzwords and weird library names.
 
@@ -11,13 +11,17 @@ Javascript is great all on its own, but there are lots of awesome libraries, fra
 
 _Image from [html9responsiveboilerstrapjs.com](http://html9responsiveboilerstrapjs.com/)_
 
-> **Contents**
-> [A Simple Webpage: HTML + CSS + pure JS](#simple-webpage)
-> [Javascript Add-On Overview](#add-on-overview)
-> [Javascript Libraries](#add-on-overview)
-> [Web Application Frameworks](#add-on-overview)
+> **Contents**<br/>
+> [A Simple Webpage: HTML + CSS + pure JS](#a-simple-webpage)<br/>
+> [Javascript Add-On Overview](#javascript-add-on-overview)<br/>
+> [Javascript Libraries](#javascript-libraries)<br/>
+> [Web Application Frameworks](#web-application-frameworks)<br/>
+> [Content Management Systems](#content-management-systems)<br/>
+> [Server-side Javascript](#server-side-javascript)<br>
 
-### A Simple Webpage: HTML + CSS
+# A Simple Webpage
+
+### HTML + CSS
 
 We're all probably familiar with HTML and CSS...if not, check out the Web Fundamentals section first.
 
@@ -26,11 +30,15 @@ adjusting background color, etc. With just HTML and CSS, we get a static webpage
 
 ### Pure Javascript
 
-We can accomplish a lot with plain, ole Javascript.  [This](http://hereistoday.com/) data visualization was created using basic JS on top of HTML/CSS.
+We can accomplish a lot with plain, ole Javascript.  
+
+> <a href="http://hereistoday.com/" target="_blank">Here is Today</a><br/> 
+> ![WEBSITE](images/links/tag_website.png)<br/>
+> This data visualization was created using basic JS on top of HTML/CSS.
 
 # Javascript Add-On Overview
 
-## Frameworks, Libraries, and Content Management Systems
+### Frameworks, Libraries, and Content Management Systems
 
 As we tackle more complicated programming tasks, it becomes more difficult to have clean, modular code. Frameworks can provide a programming architecture that encourages good programming practices, like separation of data from interface.  Javascript frameworks are often structured to optimize solutions to common problems in web programming.  For instance, updating a site based on data stored in a database.
 
@@ -40,11 +48,11 @@ Content Management Systems (or CMS) provide a way to easily update content on a 
 
 # Javascript Libraries
 
-###[Jquery](http://jquery.com/)
+> <a href="http://jquery.com/)" target="_blank">Jquery</a><br/> 
+> ![WEBSITE](images/links/tag_website.png)<br/>
+> JQuery is a lightweight Javascript library that provides a more simplified syntax for common operations.  JQuery also smooths over differences in browsers, eliminating the need for additional JS commands to handle various browser preferences.
 
-JQuery is a lightweight Javascript library that provides a more simplified syntax for common operations.  JQuery also smooths over differences in browsers, eliminating the need for additional JS commands to handle various browser preferences.
-
-#### Starting JQuery
+### Starting JQuery
 
 When using JQuery, we need to ensure our page has loaded before calling any functions.  We do this by placing all of our code inside of a ready function.
 
@@ -54,14 +62,14 @@ When using JQuery, we need to ensure our page has loaded before calling any func
 
     });
 
-#### DOM Selections
+### DOM Selections
 
 With JQuery, we can use CSS selectors in our code by appending a '$'. For example:
 
     $( 'li' ); // Selects a list item
     $( '#menu'); // Selects a div with the 'menu' id
 
-#### Function Chaining
+### Function Chaining
 After selecting a div, we can then call one of JQuery's other functions.  JQuery is chainable, meaning we can link together multiple actions.  For example:
 
     // Select p1 div, set color to red
@@ -71,7 +79,7 @@ After selecting a div, we can then call one of JQuery's other functions.  JQuery
       .slideDown(2000)
       .fadeOut( 400 );
 
-#### Interactivity and Animations
+### Interactivity and Animations
 
 JQuery is handy for animating CSS properties and using pseudo-selectors.  See how easy it is to animate a CSS property after a mouse click:
 
@@ -79,7 +87,7 @@ JQuery is handy for animating CSS properties and using pseudo-selectors.  See ho
      $(this).fadeOut(400);
     });
 
-#### When to use JQuery
+### When to use JQuery
 
 * Traverse the DOM (Document Object Model) and manipulate our HTML
 * Handle mouse events
@@ -87,9 +95,10 @@ JQuery is handy for animating CSS properties and using pseudo-selectors.  See ho
 * Make AJAX requests
 * To simplify handling multiple browsers
 
-###[Underscore.js](http://underscorejs.org/)
 
-Underscore.is is a collection of over 100 useful functions. In particular, underscore provides many utilitarian data structures and functional helpers.
+> <a href="Underscore.js" target="_blank">Underscore.js</a><br/>
+> ![tool](images/links/tag_tool.png)<br/>
+> Underscore.is is a collection of over 100 useful functions. In particular, underscore provides many utilitarian data structures and functional helpers.
 
 Examples of underscore.js functionality:
 * Functions that operate over a collection of objects,
@@ -102,11 +111,12 @@ properties, deep comparisons, etc.
 
 Check this out to see what underscore can do for you:
 
-> <a href="http://code.tutsplus.com/tutorials/getting-cozy-with-underscorejs--net-24581" target="_blank">Getting cozy with Underscore.js</a>
-> ![ARTICLE](images/links/tag_article.png)
+> <a href="http://code.tutsplus.com/tutorials/getting-cozy-with-underscorejs--net-24581" target="_blank">Getting cozy with Underscore.js</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
 > Nice intro to Underscore.
 
 When to use underscore.js?
+
 * If you're using anything besides the DOM
 * If you are using ANY data, collection of data, or data structures
 * If you are comparing objects or values beyond the basic types
@@ -124,15 +134,16 @@ Web application frameworks go beyond what a library does.  They provide structur
 
 ### Background reading
 
-> <a href="http://www.jeffknupp.com/blog/2014/03/03/what-is-a-web-framework/" target="_blank">What is a web framework?</a>
-> ![ARTICLE](images/links/tag_article.png)
-> Quora post.
+> <a href="http://www.jeffknupp.com/blog/2014/03/03/what-is-a-web-framework/" target="_blank">What is a web framework?</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
+> By the end of this article by Jeff Knupp, you should have a solid understanding of what a web framework is and why they exist in the first place. This will make it far easier to learn a new web framework and make an informed decision regarding which framework to use.
 
-> <a href="http://markonphp.com/dont-reinvent-wheel-use-a-framework/" target="_blank">Don't reinvent the wheel, use a framework!</a>
-> ![ARTICLE](images/links/tag_article.png)
-> Blog post.
 
-## [Model-View-Controllers] (https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
+> <a href="http://markonphp.com/dont-reinvent-wheel-use-a-framework/" target="_blank">Don't reinvent the wheel, use a framework!</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
+> If you want to fix something or develop a particular feature, you’ll probably stumble on “download that framework, take this library, install this, click there” type of tutorial.But where’s vanilla JavaScript? In exile somewhere? Buried in JQuery’s basement? And since when is WordPress a framework to develop Web applications?
+
+### Model-View Controllers
 
 Model-view controllers are a particular kind of web framework that separate the data used to generate a web page from the actual user interface.  MVCs are a particular design pattern
 
@@ -140,13 +151,17 @@ Model-view controllers are a particular kind of web framework that separate the 
 
 _Image from [wikipedia.org](http://wikipedia.org)_
 
-> <a href="http://www.quora.com/When-does-it-make-sense-to-use-an-MVC-framework-for-JavaScript" target="_blank">When does it make sense to use an MVC?</a>
-> ![ARTICLE](images/links/tag_article.png)
+> <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank">Model-View-Controllers</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
+> Wikipedia article on Model-View Controllers
+
+> <a href="http://www.quora.com/When-does-it-make-sense-to-use-an-MVC-framework-for-JavaScript" target="_blank">When does it make sense to use an MVC?</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
 > Quora post.
 
-> <a href="http://blog.iandavis.com/2008/12/what-are-the-benefits-of-mvc/" target="_blank">What are the benefits of an MVC?</a>
-> ![ARTICLE](images/links/tag_article.png)
-> Blog post.
+> <a href="http://blog.iandavis.com/2008/12/what-are-the-benefits-of-mvc/" target="_blank">What are the benefits of an MVC?</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
+> Blog post on Internet Alchemy.
 
 In an MVC, the different components can be described as follows:
 
@@ -178,15 +193,15 @@ There are many popular MVC frameworks, and deciding which one to use can be inti
 
 The three most popular frameworks include Backbone, Angular, and Ember.  React.js is a partial MVC framework (Just the V), and will also be explored.
 
-> <a href="http://www.smashingmagazine.com/2012/07/27/journey-through-the-javascript-mvc-jungle/" target="_blank">Journey through the Javascript MVC Jungle</a>
-> ![ARTICLE](images/links/tag_article.png)
+> <a href="http://www.smashingmagazine.com/2012/07/27/journey-through-the-javascript-mvc-jungle/" target="_blank">Journey through the Javascript MVC Jungle</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
 > Lengthy article that includes some helpful background info and tips.
 
-> <a href="https://www.airpair.com/js/javascript-framework-comparison" target="_blank">Javascript Framework Comparison</a>
-> ![ARTICLE](images/links/tag_article.png)
+> <a href="https://www.airpair.com/js/javascript-framework-comparison" target="_blank">Javascript Framework Comparison</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
 > Comparison between Backbone, Angular, and Ember.js.
 
-### [Backbone.js](http://backbonejs.org/)
+#### [Backbone.js](http://backbonejs.org/)
 
 Backbone is lightweight.  Unlike Angular or Ember, Backbone doesn't enforce a specific
 strucutre on your code.  Rather, it provides functions and classes that allow you to
@@ -201,32 +216,41 @@ To summarize, use Backbone when:
 * You need a small and fast MVC
 
 Sites that use Backbone;
-* [Typing cat] (http://thetypingcat.com/)
-* [Foursquare] (https://foursquare.com/)
 
-### [Angular.js](https://angularjs.org/)
+* [Typing cat](http://thetypingcat.com/)
+* [Foursquare](https://foursquare.com/)
+
+#### [Angular.js](https://angularjs.org/)
 
 Angular.js is the most popular Javascript framework and it's backed by Google.  Angular has a more rigid framework, but this can make your code more easily testable and adaptable later-on.
 
 Sites using Angular:
-* [IndieGogo] (https://www.indiegogo.com/)
-* [Weather.com] (http://www.weather.com/)
 
-### [Ember.js](http://emberjs.com/)
+* [IndieGogo](https://www.indiegogo.com/)
+* [Weather.com](http://www.weather.com/)
+
+#### [Ember.js](http://emberjs.com/)
 
 Ember is the newest of the three frameworks.  It's also the most expansive.  It includes code for supporting an MVC framework, as well as lots of useful utilities.  Ember is great for multi-page, complicated navigational projects...not so much for small one-page apps! The consensus seems to be that Angular is simpler and smaller; Ember is a richer, more "opinionated" framework.
 
 #### Sites that use Ember.js
-* https://vine.co/
+* [Vine](https://vine.co/)
 
-http://readwrite.com/2014/02/06/angular-backbone-ember-best-javascript-framework-for-you
-http://blog.backand.com/angularjs-vs-emberjs/
+> <a href="http://readwrite.com/2014/02/06/angular-backbone-ember-best-javascript-framework-for-you" target="_blank">Angular, Ember, And Backbone: Which JavaScript Framework Is Right For You?</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
+> Picking a Javascript framework isn't about preference. It's about what best fits your project.
 
-### [React.js](http://facebook.github.io/react/)
+> <a href="http://blog.backand.com/angularjs-vs-emberjs/" target="_blank">AngularJS vs. EmberJS</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
+> In this article we’ll take a look at EmberJS, a framework that aims to do “all the heavy lifting” in web development. Below we’ll look briefly at its history, its usage, and we’ll compare it to AngularJS in terms of features and functionality.
+
+
+#### [React.js](http://facebook.github.io/react/)
 
 React.js implements the "V" portion of the MVC design pattern.  React can be used alongside other MVCs.
 
 Sites that use React
+
 * Facebook
 * Instagram
 
@@ -285,11 +309,11 @@ Projects using Wordpress:
 * TechCrunch (blog)
 * The New Yorker
 
-### [Drupal](https://www.drupal.org/)
+#### [Drupal](https://www.drupal.org/)
 
-### [Joomla](http://www.joomla.org/)
+#### [Joomla](http://www.joomla.org/)
 
-### [ProcessWire](https://processwire.com/)
+#### [ProcessWire](https://processwire.com/)
 
 ProcessWire is an opensource, PHP-based CMS. We use ProcessWire for the Soso webpage.
 
@@ -300,7 +324,7 @@ So far, we've covered many ways to use Javascript in a clientside (frontend) con
 
 Javascript can also be used serverside (in the backend), before the the HTML of a page is loaded.  Serverside code runs on a computer (or server) instead of in the browser.
 
-### [Node.js] (https://nodejs.org/)
+#### [Node.js](https://nodejs.org/)
 
 Node.js is a server-side Javascript environment.  It's non-blocking and I/O driven, making it great for real-time applications that are data-intensive and distributed across multiple devices.  Non-blocking I/O means that Node can handle multiple requests and tasks (like querying a database, etc.) without "hanging" on any one task.
 
@@ -322,10 +346,10 @@ Another great thing about Node is the convenient Node Package Manager (or npm fo
 * socket.io
 * johnny-five (JS Hardware + Robotics framework)
 
-> <a href="http://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js" target="_blank">Why the Hell Would I Use Node.js?</a>
-> ![ARTICLE](images/links/tag_article.png)
+> <a href="http://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js" target="_blank">Why the Hell Would I Use Node.js?</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
 > Introduction to Node.js capabilities
 
-> <a href="https://learn.adafruit.com/node-embedded-development/why-node-dot-js" target="_blank">Installing Node.js on a Raspberry Pi</a>
-> ![ARTICLE](images/links/tag_article.png)
+> <a href="https://learn.adafruit.com/node-embedded-development/why-node-dot-js" target="_blank">Installing Node.js on a Raspberry Pi</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
 > Intro to Node + Tutorial for Installing Node on a Pi

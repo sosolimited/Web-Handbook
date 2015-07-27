@@ -3,29 +3,24 @@ title: "Javascript: The Essential Parts"
 layout: default
 ---
 
-# Javascript: The Essential Parts
+<h1 class="title">Javascript: The Essential Parts</h1>
 
-Taken from [David’s javascript guide for Bloomington Code School](https://github.com/sansumbrella/BCS/blob/gh-pages/2014/javascript-overview.md).
+Taken from [David’s Javascript guide for Bloomington Code School](https://github.com/sansumbrella/BCS/blob/gh-pages/2014/javascript-overview.md).
 
-This provides an overview of the main concepts in javascript. You can build just about anything with functions and objects as described below.
+This provides an overview of the main concepts in Javascript. You can build just about anything with functions and objects as described below.
 
-In the wild, you will see many ways of working with javascript. It is important to eventually understand the different ways people use the language and different language features they like. However, I prefer to use only a few parts of the language: the ones I find intuitive and fun to work with.
+In the wild, you will see many ways of working with Javascript. It is important to eventually understand the different ways people use the language and different language features they like. However, I prefer to use only a few parts of the language: the ones I find intuitive and fun to work with.
 
-## Additional references and sources for this material
+> **Contents**<br/>
+> [What We’re Working With](#what-were-working-with)<br/>
+> [Logic Structures and Comparison](logic-structures-and-comparison)<br/>
+> [The Future](#the-future)<br/>
 
-Douglas Crockford has written and spoken a lot [about JavaScript](http://javascript.crockford.com), and I pull the main ideas for working with javascript from what Crockford considers “[The Good Parts](http://www.amazon.com/exec/obidos/ASIN/0596517742/wrrrldwideweb).”
-
-For a comparison of prototypal and factory-based object creation, see a post by [Eric Elliot](http://ericleads.com/2013/01/javascript-constructor-functions-vs-factory-functions/). That post makes the argument for factory functions (which we describe below) over constructors.
-
-### Further reading:
-[Javascript: The Good Parts](http://www.amazon.com/exec/obidos/ASIN/0596517742/wrrrldwideweb)
-[Speaking Javascript](http://speakingjs.com/es5/index.html)
-
-## What We’re Working With
+# What We’re Working With
 
 ### Objects and their properties
 
-Objects are the essential building blocks in javascript. They are a collection of named properties.
+Objects are the essential building blocks in Javascript. They are a collection of named properties.
 
 Let’s look at how we create objects and give them properties.
 
@@ -50,11 +45,11 @@ var otherObject = { x: 5, y: 5, name: "Friendly Object" };
 object.friend = otherObject;
 ```
 
-So, objects let us store information in javascript. Now, how can we tell javascript to do things?
+So, objects let us store information in Javascript. Now, how can we tell Javascript to do things?
 
 ### Functions
 
-Functions are objects that store instructions for completing an action. They are the verbs that let us perform actions with javascript.
+Functions are objects that store instructions for completing an action. They are the verbs that let us perform actions with Javascript.
 
 You tell a function object to perform its instructions by placing parentheses`()`—also known as the call operator—after its name.
 
@@ -76,7 +71,7 @@ function announceObject(obj) {
 announceObject(object);
 ```
 
-### Creating Many Similar Objects
+# Creating Many Similar Objects
 
 If you want to create a lot of objects that have the same basic properties, you can do that with a function. We call these functions factory functions because they create objects.
 
@@ -123,7 +118,7 @@ The variables created inside the factory are accessible to the functions created
 
 ### Arrays: Keeping Track of Many (Similar) Things
 
-Arrays are lists of things in javascript. They are a special type of Object that keeps a numbered list of things instead of having a lot of named properties.
+Arrays are lists of things in Javascript. They are a special type of Object that keeps a numbered list of things instead of having a lot of named properties.
 
 ```javascript
 // Create an empty array.
@@ -217,7 +212,7 @@ for (i = 0; i < end; i += 1) {
 
 ### Associative Containers: Call them by Name
 
-Javascript objects behave similarly to dictionaries/maps. Unfortunately, they also come loaded with a bunch of baggage from the Object prototype. This can cause unexpected errors when using them to count the frequency of different words, for example. Fortunately, ES5 (the common version of javascript) provides a way to create an object without a prototype. These objects then behave just like an associative container.
+Javascript objects behave similarly to dictionaries/maps. Unfortunately, they also come loaded with a bunch of baggage from the Object prototype. This can cause unexpected errors when using them to count the frequency of different words, for example. Fortunately, ES5 (the common version of Javascript) provides a way to create an object without a prototype. These objects then behave just like an associative container.
 
 Note that you are not limited to using strings as keys. You can also use an object as a key to information that you may not want to store in the object itself.
 
@@ -228,7 +223,7 @@ var dict = Object.create(null);
 dict["key"] = value;
 ```
 
-### Logic Structures and Comparison
+# Logic Structures and Comparison
 
 Sometimes, you want your program to do things only when certain conditions are met. Javascript provides a handful of useful logical structures for handling those situations.
 
@@ -256,7 +251,7 @@ Notice the similarity in structure between if() { ... }, while() { ... }, and fu
 
 ### A Note on Scope
 
-Variables in javascript are scoped to the lifetime of the function body in which they are created (a closure). This can mean some surprising things; variables declared anywhere within a function body are interpreted by javascript as if they were declared at the top of that scope. To avoid surprises, we declare all our variables for a given scope in a single statement at the beginning of that scope. In addition to preventing surprises, this enables better minification.
+Variables in Javascript are scoped to the lifetime of the function body in which they are created (a closure). This can mean some surprising things; variables declared anywhere within a function body are interpreted by Javascript as if they were declared at the top of that scope. To avoid surprises, we declare all our variables for a given scope in a single statement at the beginning of that scope. In addition to preventing surprises, this enables better minification.
 
 ```javascript
 var thing = 1,
@@ -289,11 +284,34 @@ namespace.doSomething();
 namespace.universalConstant(); // => 6.674e-11
 ```
 
-### The Future
+# The Future
 
-ES6 introduces classes to Javascript. While browser support for ES6 is a ways out, you can use javascript compilers to use many of the new language features now.
+ES6 introduces classes to Javascript. While browser support for ES6 is a ways out, you can use Javascript compilers to use many of the new language features now.
 
 When building big libraries, using one of these compilers might be a real boon. When you don’t want to set up a big build environment, the lambda capture approach to building objects is the way to go.
 
-[Babel](https://babeljs.io/)
-[Traceur](https://github.com/google/traceur-compiler)
+> <a href="https://babeljs.io/" target="_blank">Babel</a><br/>
+> ![TOOL](../images/links/tag_tool.png)<br/>
+> Babel is a compiler for writing next generation Javascript.
+
+> <a href="https://github.com/google/traceur-compiler" target="_blank">Traceur</a><br/>
+> ![TOOL](../images/links/tag_tool.png)<br/>
+> Traceur is a JavaScript.next-to-JavaScript-of-today compiler that allows you to use features from the future today. Traceur supports ES6 as well as some experimental ES.next features.
+
+# Further reading:
+
+> <a href="http://www.amazon.com/exec/obidos/ASIN/0596517742/wrrrldwideweb" target="_blank">Javascript: The Good Parts</a><br/>
+> ![REFERENCE](../images/links/tag_reference.png)<br/>
+> Considered the Javascript expert by many people in the development community, author Douglas Crockford identifies the abundance of good ideas that make JavaScript an outstanding object-oriented programming language-ideas such as functions, loose typing, dynamic objects, and an expressive object literal notation. 
+
+> <a href="http://speakingjs.com/es5/index.html" target="_blank">Speaking Javascript</a><br/>
+> ![REFERENCE](../images/links/tag_reference.png)<br/>
+> Written by a programmer for programmers, <i>Speaking Javascript</i> provides a quick start guide to learning Javascript quickly and properly.
+
+### Additional references and sources for this material
+
+Douglas Crockford has written and spoken a lot [about Javascript](http://javascript.crockford.com), and I pull the main ideas for working with Javascript from what Crockford considers “[The Good Parts](http://www.amazon.com/exec/obidos/ASIN/0596517742/wrrrldwideweb).”
+
+> <a href="http://ericleads.com/2013/01/javascript-constructor-functions-vs-factory-functions/" target="_blank">Eric Elliot's Javascript Blog</a><br/>
+> ![ARTICLE](../images/links/tag_article.png)<br/>
+> For a comparison of prototypal and factory-based object creation, see a post by Eric Elliot. The post makes the argument for factory functions (which we describe below) over constructors.

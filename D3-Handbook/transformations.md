@@ -3,7 +3,7 @@ title: Data transformations for D3.js
 layout: default
 ---
 
-# More On Transformations
+<h1 class="title">More On Transformations</h1>
 
 The guys at Bocoup wrote a great guide for parsing data in JS. Our parsing tactics are very very similar, so I recommend we use it as a guide for various ways to parse various things.
 

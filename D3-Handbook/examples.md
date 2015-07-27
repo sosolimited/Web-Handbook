@@ -3,7 +3,7 @@ title: D3.js Examples
 layout: default
 ---
 
-# Examples
+<h1 class="title">Examples</h1>
 
 Informative / Classic dataviz
 

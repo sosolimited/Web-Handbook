@@ -3,12 +3,14 @@ title: Introduction to Databases
 layout: default
 ---
 
-> **Contents**
-> [Database Schemas](#database-schemas)
-> [Concept of Relational Schemas](#concept-of-relational-schemas)
-> [CRUD](#crud)
-> [Introduction to Document-oriented Databases](#introduction-to-document-oriented-databases)
-> [MongoDB Basics](#mongodb-basics)
+<h1 class="title">Introduction to Databases</h1>
+
+> **Contents**<br/>
+> [Database Schemas](#database-schemas)<br/>
+> [Concept of Relational Schemas](#concept-of-relational-schemas)<br/>
+> [CRUD](#crud)<br/>
+> [Introduction to Document-Oriented Databases](#introduction-to-document-oriented-databases)<br/>
+> [MongoDB Basics](#mongodb-basics)<br/>
 
 Often when handling data streaming from a third party API source, your project concept may require the reordering and transformation of the source data into a format useful to your custom software. Your concept may call for batch analysis of this data, or providing your own custom API to allow other clients to access your backlog of this data. In these cases, it is useful to store the data long-term. Database software allows you to efficiently store custom data structures, providing an API for your software to query and retrieve it.
 
@@ -46,8 +48,9 @@ author_bio (string)
 
 Relational databases allow you to establish relationships between multiple tables. Instead of giving every book multiple author field types, which could cause data to be unnecessarily duplicated across multiple books by the same author, you would add a single field to the Book schema called author_id (int), referencing a unique ID from the Authors table. This keeps the Books table as lean as possible while drawing useful connections to external structures of data. Database software allows you to write a single query that returns information from both tables.
 
-> <a href="http://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561" target="_blank">Relational Patterns in Databases</a>
-> ![ARTICLE](images/links/tag_article.png)
+> <a href="http://code.tutsplus.com/articles/sql-for-beginners-part-3-database-relationships--net-8561" target="_blank">SQL for Beginners: Relational Patterns in Databases</a><br/>
+> ![ARTICLE](images/links/tag_article.png)<br/>
+> In this part three of the series, we'll learn how to work with multiple tables that have relationships with each other. First, we will go over some core concepts, and then will begin working with JOIN queries in SQL.
 
 Two widely used relational database are MySQL and PostgreSQL.
 
@@ -62,7 +65,7 @@ update the tweet with id 38457723 by incrementing its retweet count by 3
 delete every author with a less than 3 published books
 ```
 
-# Introduction to Document-oriented Databases
+# Introduction to Document-Oriented Databases
 
 Standing in contrast to the relational databases, document-oriented databases (also called NoSQL databases) care less about schema and rigid structure. With relational databases, every instance of data in a given table has to strictly follow the same data structure. Changing this structure is difficult. With document databases, every instance of data in a given "table" (sometimes called **collections** with NoSQL databases) can have a completely different structure. After inserting data, or document, you can arbitrarily change the document's structure.
 

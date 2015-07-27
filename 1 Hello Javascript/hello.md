@@ -3,8 +3,7 @@ title: Hello, Javascript!
 layout: default
 ---
 
-Hello, Javascript
-=================
+<h1 class="title">Hello, Javascript</h1>
 
 This directory contains some documents that will give you a quick introduction to javascript.
 
@@ -12,7 +11,11 @@ The focus is on working productively with javascript the language as it is today
 
 Below are my presentation notes for talking through everything in this directory.
 
-## Language Basics
+> **Contents**<br/>
+> [Language Basics](#language-basics)<br/>
+> [Ways of Making Objects](#ways-of-making-objects)<br/>
+
+# Language Basics
 
 ### Running Javascript
 
@@ -34,7 +37,7 @@ Javascript, originally designed as the scripting language for Netscape Navigator
 - Control flow
 - Scope
 
-### Ways of making objects
+# Ways of Making Objects
 
 There are many ways to construct objects in javascript. Let’s review them for clarity.
 
