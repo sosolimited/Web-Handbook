@@ -3,25 +3,28 @@ title: D3.js Resources
 layout: default
 ---
 
-# Resources
+<h1 class="title">Resources</h1>
 
-Official
+#### Official
+
 - http://d3js.org/
 - https://github.com/mbostock/d3/wiki/API-Reference
 
-Topics
-- Parsing
-	- http://learnjsdata.com
-- Benchmarking
-	- https://jsperf.com
+#### Topics
 
-Online Coding w D3:
+- Parsing: http://learnjsdata.com
+- Benchmarking: https://jsperf.com
+
+#### Online Coding w D3:
+
 - http://www.jsfiddle.com
 
-Books/Websites for Learning
+#### Books/Websites for Learning
+
 - [Interactive Data Visualization for the Web, by Scott Murray](http://chimera.labs.oreilly.com/books/1230000000345/index.html)
 
-Important People in D3
+#### Important People in D3
+
 - [Mike Bostock](https://twitter.com/mbostock)
 - [Jeffrey Heer](https://twitter.com/jeffrey_heer)
 - [Scott Murray](https://twitter.com/alignedleft)
@@ -32,5 +35,6 @@ Important People in D3
 - [Dashing D3.js](https://twitter.com/DashingD3js)
 - [Santiago Ortiz](https://twitter.com/moebio)
 
-Events
+#### Events
+
 - [OpenVizConf](https://twitter.com/OpenVisConf)
