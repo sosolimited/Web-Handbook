@@ -114,24 +114,6 @@ Can be downloaded or installed with brew cask.
 $ brew cask install sublime-text3
 ```
 
-### License
-
-```
------ BEGIN LICENSE -----
-Sosolimited
-Single User License
-EA7E-860681
-55523C0B 9E24B191 69399AEA D6E7F90B
-784D0ABE 7DBBABDC 31B8C9E5 7FC104AE
-7BAA5546 6D6D085A 4DBBAB2F 4B69B0C6
-C3570E47 7731D012 75410EA2 AD7B1FB8
-32332153 7074A962 B1F4B65F F6255840
-28156542 79BA1022 AE6AF889 236D59FC
-1C7924DC AD601AE1 3A39BE9A D9F9DD03
-5568D1EB 0491568F 3C855C64 37B9D3EE
------- END LICENSE ------
-```
-
 ### Notes and Tricks
 
 Set tabs to two spaces.
@@ -154,13 +136,16 @@ Maybe install the solarized color palette to increase readability
 * Search for “Solarized Toggle”
 * Once installed, toggle between light and dark with F12 key
 
-**Command Palette**
-⇧⌘P
+**Command Palette**<br/>
+⇧⌘P<br/>
 Super useful for installing packages, setting the syntax highlighting, and other tricks
 
-**Multiple Selections**
-⌘D
+**Multiple Selections**<br/>
+⌘D<br/>
 Highlight a region of text and use ⌘D to select the next instance of it. You can continue to do this as much as you like. Once everything is highlighted, you edit in one place and all are changed. Great for renaming variables.
+
+**Keyboard Shortcuts**<br/>
+Check out the <a href="http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/keyboard_shortcuts_osx.html" target="_blank">full list of keyboard shortcuts</a> for Sublime Text on Mac OS.
 
 ### Launch Sublime from the Command Line
 

@@ -1,6 +1,6 @@
 Web-Handbook
 ============
-A collection of resources on Javascript and coding for the web.
+A collection of resources on Javascript and coding for the web. The aster branch is [gh-pages](http://sosolimited.github.io/Web-Handbook/).
 
 ## Other working materials
 

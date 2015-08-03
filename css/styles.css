@@ -167,6 +167,7 @@ small {
   font-size:11px;
 }
 
+
 hr {
   border:0;
   background:#e5e5e5;
@@ -180,6 +181,7 @@ footer {
   position:fixed;
   bottom:50px;
 }
+
 
 @media print, screen and (max-width: 960px) {
 
