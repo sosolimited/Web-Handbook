@@ -32,7 +32,7 @@ The remainder of the guide will examine more specific ways in which clients and 
 You have a Node process connected to a Twitter streaming API, saving tweets to a database around the clock. You want the ability for a user/client to connect to a web page and see tweets stream into their browser in real time. What are a couple of ways to achieve this functionality?
 
 ### Web client periodically checks a server REST API endpoint ("polling")
-A simple way to achieve (what appears to be) a realtime stream of data is to set up short polling. Polling refers to making background requests from a client to a server on some short interval. When polling with a web client, AJAX calls are used (asynchronous Javascript HTTP requests). The request interval can change depending on your goals, but typically it is on the order of seconds or minutes, not milliseconds, to reduce load on the server.
+A simple way to achieve (what appears to be) a realtime stream of data is to set up short polling. Polling refers to making background requests from a client to a server on a short interval. When polling with a web client, AJAX calls are used (asynchronous Javascript HTTP requests). The request interval can change depending on your goals, but typically it is on the order of seconds or minutes, not milliseconds, to reduce load on the server.
 
 Polling can be a very effective model when you expect a large number of clients to poll the same server API. When expecting a large amount of traffic, you can design servers to provide cached responses to API requests. On some interval, servers will internally refresh their cache to match up-to-date data. Serving cached responses to polling clients greatly reduces the time a server spends responding to requests, as the process of interfacing with a database and forming the data into a response is skipped over.
 
@@ -54,7 +54,25 @@ function pollData(){
 var reqInt = setTimeout( pollData, 5000 );
 ```
 
-The data returned by the API could be in JSON format for easy processing. Further code should be written to handle for errors, scaling back the request interval if the server becomes errant or unreachable.
+The data returned by the API could be in JSON format for easy processing. Further code should be written on the client side to handle for errors, scaling back the request interval if the server becomes errant or unreachable. A quick look at what the server-side of things could look like in this example:
+
+```javascript		
+// using the Express package to simplify building the api endpoint		
+var express = require('express');		
+var app = express();		
+		
+app.get('/api/tweets', function (req, res) {		
+    // interface to database query greatly abstracted here...		
+    getTweetsSince( req.query.since, function( results ){		
+        // return response in JSON format		
+        res.json( results );		
+    });		
+});		
+		
+var server = app.listen(8080, function () {		
+    console.log("Server now listening for connections.");		
+});		
+```
 
 ### Web client and server communicate over WebSockets
 Although HTTP API polling is a simple approach to keeping a client up-to-date with continuously changing data, there are better ways of connecting clients to servers with the goal of receiving real time data. If, for instance, you'd prefer a model where servers inform clients of new data (as opposed to clients requesting new data from servers), using WebSockets on both the client and server side is preferable.
