@@ -137,6 +137,8 @@ Name vars that are used in the DOM (ie. for element ID's and classes that also a
 
 ## More
 
-See sample code snippets for our preferred methods for creating classes, etc.
-
+  - Sample code snippets for bigger chunks of code -- ie. our preferred methods for creating classes, new objects, etc. -- will be created and linked to here eventually.
+  - Other useful style guides
+    - [Airbnb style guide](https://github.com/airbnb/javascript)
+    - [Douglas Crockford style guide](http://javascript.crockford.com/code.html)
 
